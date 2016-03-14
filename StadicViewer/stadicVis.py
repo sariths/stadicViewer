@@ -11,10 +11,11 @@ import os,sys
 
 # sys.path.append(r'F:\Dropbox\RadScripts')
 
-from plots.gridPlots2 import gridPlot
+from visuals.gridPlots import gridPlot
+from visuals.heatMaps import thermalPlots
 
 from results.dayIll import Dayill
-from stadic.readStadic import StadicProject
+from software.stadic.readStadic import StadicProject
 
 
 class Main(QtGui.QDialog,Ui_Form):
@@ -94,9 +95,12 @@ def main(jsonFile=None,spaceID=None,*args):
     if len(sys.argv)>=3:
         jsonFile = sys.argv[-2]
         spaceID = int(sys.argv[-1])
+
         form = Main(jsonFile=jsonFile,spaceID=spaceID)
         form.show()
         app.exec_()
 
 if __name__ =="__main__":
+     sys.argv.extend([r"E:\C-SHAP\testC.json", 0])
+     print(sys.argv)
      main()
