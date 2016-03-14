@@ -61,13 +61,6 @@ class Main(QtGui.QDialog,Ui_Form):
             self.layoutIlluminance.addWidget(self.toolbar)
             self.layoutIlluminance.addWidget(self.canvas)
             self.illuminanceActivated = True
-        # projectJson = r"E:\C-SHAP\testC.json"
-        # # projectJson = r'E:\debug2\base2wgangsig2.json'
-        # # projectJson = r"E:\SExample\SExample.json"
-        # project = StadicProject(projectJson)
-        # illFile = project.spaces[0].resultsFile
-        # ptsFile = project.spaces[0].analysisPointsFiles[0]
-        # illData = Dayill(illFile,ptsFile)
 
         dateVal = self.calDateTimeIllum.dateTime().date().dayOfYear()
         hours = (dateVal-1)*24+self.cmbTimeIllum.currentIndex()
