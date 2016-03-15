@@ -27,8 +27,7 @@ class Main(QtGui.QDialog,Ui_Form):
         self.figure = Figure()
         self.canvas = FigureCanvas(self.figure)
 
-        #Remove these flags later.
-        self.groupBox.setVisible(False)
+
 
 
 
