@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1091</width>
+    <width>1093</width>
     <height>813</height>
    </rect>
   </property>
@@ -14,6 +14,9 @@
    <string>STADICvis</string>
   </property>
   <widget class="QTabWidget" name="tabWidget">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -35,7 +38,7 @@
        <x>210</x>
        <y>0</y>
        <width>871</width>
-       <height>731</height>
+       <height>611</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="layoutIlluminance"/>
@@ -46,7 +49,7 @@
        <x>0</x>
        <y>30</y>
        <width>201</width>
-       <height>581</height>
+       <height>583</height>
       </rect>
      </property>
      <property name="toolTip">
@@ -59,10 +62,13 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>270</y>
+        <y>260</y>
         <width>81</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>Click to toggle between contour display on the chart.</string>
       </property>
       <property name="text">
        <string>Contours</string>
@@ -75,7 +81,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>290</y>
+        <y>280</y>
         <width>81</width>
         <height>21</height>
        </rect>
@@ -84,6 +90,9 @@
        <font>
         <pointsize>7</pointsize>
        </font>
+      </property>
+      <property name="toolTip">
+       <string>Click to show further settings.</string>
       </property>
       <property name="text">
        <string>Show Settings</string>
@@ -98,6 +107,9 @@
         <height>191</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>The navigation settings can be used to view plots corresponding to different dates and hours.</string>
+      </property>
       <property name="autoFillBackground">
        <bool>false</bool>
       </property>
@@ -107,475 +119,6 @@
       <property name="title">
        <string>Navigate</string>
       </property>
-      <widget class="QWidget" name="horizontalLayoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>60</y>
-         <width>181</width>
-         <height>25</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="layoutSpacePreviousNextHours">
-        <item>
-         <widget class="QPushButton" name="btnSpacePrevHour">
-          <property name="text">
-           <string>Previous</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btnSpaceNextHour">
-          <property name="text">
-           <string>Next</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="horizontalLayoutWidget_2">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>100</y>
-         <width>181</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="layoutSpaceTimeInterval">
-        <item>
-         <widget class="QLabel" name="lblSpaceDayInterval">
-          <property name="text">
-           <string>Interval</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="cmbSpaceTimeIntervalMin">
-          <property name="currentIndex">
-           <number>8</number>
-          </property>
-          <item>
-           <property name="text">
-            <string>1</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>2</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>3</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>4</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>5</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>6</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>7</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>8</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>9</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>10</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>11</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>12</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>13</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>14</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>15</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>16</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>17</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>18</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>19</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>20</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>21</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>22</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>23</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>24</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="cmbSpaceTimeIntervalMax">
-          <property name="currentIndex">
-           <number>8</number>
-          </property>
-          <item>
-           <property name="text">
-            <string>1</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>2</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>3</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>4</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>5</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>6</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>7</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>8</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>9</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>10</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>11</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>12</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>13</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>14</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>15</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>16</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>17</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>18</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>19</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>20</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>21</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>22</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>23</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>24</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QCheckBox" name="chkSpaceSkipDarkHours">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>130</y>
-         <width>181</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Skip dark hours</string>
-       </property>
-      </widget>
-      <widget class="QWidget" name="horizontalLayoutWidget_3">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>160</y>
-         <width>181</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="layoutSpaceIlluminanceStep">
-        <item>
-         <widget class="QLabel" name="lblSpaceTimeStep">
-          <property name="text">
-           <string>Time Step</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="cmbSpaceIlluminanceStepType">
-          <item>
-           <property name="text">
-            <string>Hour</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Day</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="cmbSpaceIluminanceStepValue">
-          <item>
-           <property name="text">
-            <string>1</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>2</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>3</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>4</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>5</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>6</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>7</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>8</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>9</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>10</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>11</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>12</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>13</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>14</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>15</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>16</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>17</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>18</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>19</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>20</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>21</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>22</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>23</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>24</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-       </layout>
-      </widget>
       <widget class="QComboBox" name="cmbSpaceTimeIllum">
        <property name="geometry">
         <rect>
@@ -735,7 +278,7 @@
         </rect>
        </property>
        <property name="toolTip">
-        <string>Select a date by clicking on the calendar. Please note that selecting a year has no bearing on the data being displayed.</string>
+        <string>Select a date by clicking on the pop-up calendar. Please note that selecting a year has no bearing on the data being displayed.</string>
        </property>
        <property name="wrapping">
         <bool>true</bool>
@@ -804,12 +347,543 @@
         <string>Date</string>
        </property>
       </widget>
+      <widget class="QGroupBox" name="grpSpaceIlluminanceNavigateDetailed">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>60</y>
+         <width>201</width>
+         <height>131</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <widget class="QComboBox" name="cmbSpaceTimeIntervalMin">
+        <property name="geometry">
+         <rect>
+          <x>42</x>
+          <y>40</y>
+          <width>71</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>7</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>The interval settings, both inclusive, can be used to specify the time intervals for which the data is to be shown.</string>
+        </property>
+        <property name="currentIndex">
+         <number>8</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>3</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>4</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>5</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>6</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>7</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>8</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>9</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>10</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>11</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>12</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>13</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>14</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>15</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>16</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>17</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>18</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>19</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>20</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>21</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>22</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>23</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>24</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="lblSpaceTimeStep">
+        <property name="geometry">
+         <rect>
+          <x>7</x>
+          <y>100</y>
+          <width>56</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>The Time Step settings can be used to specify a time step for navigating between different plots.</string>
+        </property>
+        <property name="text">
+         <string>Time Step</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="cmbSpaceIlluminanceStepType">
+        <property name="geometry">
+         <rect>
+          <x>69</x>
+          <y>100</y>
+          <width>55</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Choose between an hour or day.</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Hour</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Day</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QComboBox" name="cmbSpaceTimeIntervalMax">
+        <property name="geometry">
+         <rect>
+          <x>119</x>
+          <y>40</y>
+          <width>71</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>7</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>The interval settings, both inclusive, can be used to specify the time intervals for which the data is to be shown.</string>
+        </property>
+        <property name="currentIndex">
+         <number>8</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>3</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>4</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>5</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>6</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>7</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>8</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>9</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>10</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>11</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>12</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>13</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>14</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>15</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>16</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>17</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>18</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>19</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>20</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>21</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>22</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>23</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>24</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QCheckBox" name="chkSpaceSkipDarkHours">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>70</y>
+          <width>181</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Check this to skip over hours for which illuminance at every grid point is zero.</string>
+        </property>
+        <property name="text">
+         <string>Skip dark hours</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="lblSpaceDayInterval">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>40</y>
+          <width>41</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>The interval settings, both inclusive, can be used to specify the time intervals for which the data is to be shown.</string>
+        </property>
+        <property name="text">
+         <string>Intvl</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="cmbSpaceIluminanceStepValue">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>100</y>
+          <width>56</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Choose a multiplier for the timestep.</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>3</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>4</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>5</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>6</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>7</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>8</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>9</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>10</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>11</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>12</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>13</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>14</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>15</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>16</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>17</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>18</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>19</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>20</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>21</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>22</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>23</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>24</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QPushButton" name="btnSpacePrevHour">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>88</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Click to plot the previous hour/day as per the options specified in the controls below.</string>
+        </property>
+        <property name="text">
+         <string>Previous</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnSpaceNextHour">
+        <property name="geometry">
+         <rect>
+          <x>103</x>
+          <y>10</y>
+          <width>88</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Click to plot the next hour/day as per the options specified in the controls below.</string>
+        </property>
+        <property name="text">
+         <string>Next</string>
+        </property>
+       </widget>
+      </widget>
      </widget>
      <widget class="QPushButton" name="btnSpaceSettingsColours">
       <property name="geometry">
        <rect>
         <x>110</x>
-        <y>290</y>
+        <y>280</y>
         <width>81</width>
         <height>21</height>
        </rect>
@@ -819,6 +893,9 @@
         <pointsize>7</pointsize>
        </font>
       </property>
+      <property name="toolTip">
+       <string>Click to show further settings.</string>
+      </property>
       <property name="text">
        <string>Show Settings</string>
       </property>
@@ -827,10 +904,13 @@
       <property name="geometry">
        <rect>
         <x>110</x>
-        <y>270</y>
+        <y>260</y>
         <width>81</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>Click to toggle between display of colored grids on the plot.</string>
       </property>
       <property name="text">
        <string>Colors</string>
@@ -845,7 +925,7 @@
         <x>110</x>
         <y>320</y>
         <width>81</width>
-        <height>251</height>
+        <height>261</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -858,23 +938,29 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>210</y>
+         <y>190</y>
          <width>81</width>
          <height>21</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>This option can be used to assign a specifc color to grid points which are lesser than the value specified in the text box below.</string>
+       </property>
        <property name="text">
-        <string>Select Color</string>
+        <string>Lower Mask</string>
        </property>
       </widget>
       <widget class="QLabel" name="lblColorMinLimit">
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>40</y>
+         <y>70</y>
          <width>81</width>
          <height>20</height>
         </rect>
+       </property>
+       <property name="toolTip">
+        <string>The minimum limit specifies the lowest value for the color grid.</string>
        </property>
        <property name="text">
         <string>Minimum Limit</string>
@@ -887,16 +973,22 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>60</y>
+         <y>90</y>
          <width>81</width>
          <height>20</height>
         </rect>
+       </property>
+       <property name="toolTip">
+        <string>The minimum limit specifies the lowest value for the color grid.</string>
        </property>
        <property name="inputMethodHints">
         <set>Qt::ImhDigitsOnly</set>
        </property>
        <property name="inputMask">
-        <string>000000; </string>
+        <string/>
+       </property>
+       <property name="text">
+        <string/>
        </property>
        <property name="cursorPosition">
         <number>0</number>
@@ -914,24 +1006,33 @@
          <height>21</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>This option can be used to assign a specifc color to grid points which are greater than the value specified in the text box below.</string>
+       </property>
        <property name="text">
-        <string>Select Color</string>
+        <string>Upper Mask</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="txtColorsMax">
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>20</y>
+         <y>40</y>
          <width>81</width>
          <height>20</height>
         </rect>
+       </property>
+       <property name="toolTip">
+        <string>The maximum limit specifies the highest value for the color grid.</string>
        </property>
        <property name="inputMethodHints">
         <set>Qt::ImhDigitsOnly</set>
        </property>
        <property name="inputMask">
-        <string>000000; </string>
+        <string/>
+       </property>
+       <property name="text">
+        <string/>
        </property>
        <property name="cursorPosition">
         <number>0</number>
@@ -940,30 +1041,17 @@
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
        </property>
       </widget>
-      <widget class="QLabel" name="lblColorUpperMask">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>90</y>
-         <width>81</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Upper Mask</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
       <widget class="QLabel" name="lblColorMaxLimit">
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
+         <y>20</y>
          <width>81</width>
          <height>20</height>
         </rect>
+       </property>
+       <property name="toolTip">
+        <string>The maximum limit specifies the highest value for the color grid.</string>
        </property>
        <property name="text">
         <string>Maximum Limit</string>
@@ -972,36 +1060,26 @@
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QLabel" name="lblColorLowerMask">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>170</y>
-         <width>81</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Lower Mask</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
       <widget class="QLineEdit" name="txtColorsUpperMask">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>110</y>
+         <y>150</y>
          <width>81</width>
          <height>20</height>
         </rect>
+       </property>
+       <property name="toolTip">
+        <string>Enter a positive number. The value of the upper mask should be always higher than the lower mask.</string>
        </property>
        <property name="inputMethodHints">
         <set>Qt::ImhDigitsOnly</set>
        </property>
        <property name="inputMask">
-        <string>000000; </string>
+        <string/>
        </property>
        <property name="cursorPosition">
         <number>0</number>
@@ -1011,19 +1089,25 @@
        </property>
       </widget>
       <widget class="QLineEdit" name="txtColorsLowerMask">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>190</y>
+         <y>210</y>
          <width>81</width>
          <height>20</height>
         </rect>
+       </property>
+       <property name="toolTip">
+        <string>Enter a positive number. The value of the upper mask should be always higher than the lower mask.</string>
        </property>
        <property name="inputMethodHints">
         <set>Qt::ImhDigitsOnly</set>
        </property>
        <property name="inputMask">
-        <string>000000; </string>
+        <string/>
        </property>
        <property name="cursorPosition">
         <number>0</number>
@@ -1032,6 +1116,49 @@
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
        </property>
       </widget>
+      <widget class="QPushButton" name="btnSpaceSetColors">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>240</y>
+         <width>79</width>
+         <height>19</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Click to confirm the color settings.</string>
+       </property>
+       <property name="text">
+        <string>Confirm</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnSpaceResetColors">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>1</y>
+         <width>79</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Click to reset the color settings to their default values.</string>
+       </property>
+       <property name="text">
+        <string>Reset</string>
+       </property>
+      </widget>
+      <zorder>btnSelectColorLowerMask</zorder>
+      <zorder>lblColorMinLimit</zorder>
+      <zorder>txtColorsMin</zorder>
+      <zorder>btnSelectColorUpperMask</zorder>
+      <zorder>txtColorsMax</zorder>
+      <zorder>lblColorMaxLimit</zorder>
+      <zorder>txtColorsUpperMask</zorder>
+      <zorder>txtColorsLowerMask</zorder>
+      <zorder>btnSpaceSetColors</zorder>
+      <zorder>btnSpaceResetColors</zorder>
+      <zorder>btnSpaceResetColors</zorder>
      </widget>
      <widget class="QGroupBox" name="grpContoursIlluminance">
       <property name="geometry">
@@ -1039,206 +1166,290 @@
         <x>10</x>
         <y>320</y>
         <width>81</width>
-        <height>231</height>
+        <height>261</height>
        </rect>
       </property>
       <property name="title">
        <string/>
       </property>
-     </widget>
-     <widget class="QWidget" name="verticalLayoutWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>320</y>
-        <width>81</width>
-        <height>285</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="layoutSpaceContourSettings">
+      <widget class="QPushButton" name="btnSpaceSetContours">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>240</y>
+         <width>79</width>
+         <height>19</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Click to confirm the contour settings.</string>
+       </property>
+       <property name="text">
+        <string>Confirm</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtSpaceCountourValue6">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>166</y>
+         <width>79</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Enter a positive number to set a contour line.</string>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhNone</set>
+       </property>
+       <property name="inputMask">
+        <string/>
+       </property>
+       <property name="cursorPosition">
+        <number>0</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnSpaceResetContours">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>1</y>
+         <width>79</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Click to reset the contour settings to their default values.</string>
+       </property>
+       <property name="text">
+        <string>Reset</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtSpaceCountourValue7">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>190</y>
+         <width>79</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Enter a positive number to set a contour line.</string>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhNone</set>
+       </property>
+       <property name="inputMask">
+        <string/>
+       </property>
+       <property name="cursorPosition">
+        <number>0</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtSpaceCountourValue5">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>143</y>
+         <width>79</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Enter a positive number to set a contour line.</string>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhNone</set>
+       </property>
+       <property name="inputMask">
+        <string/>
+       </property>
+       <property name="cursorPosition">
+        <number>0</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtSpaceCountourValue4">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>119</y>
+         <width>79</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Enter a positive number to set a contour line.</string>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhNone</set>
+       </property>
+       <property name="inputMask">
+        <string/>
+       </property>
+       <property name="cursorPosition">
+        <number>0</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtSpaceCountourValue1">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>49</y>
+         <width>79</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Enter a positive number to set a contour line.</string>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhNone</set>
+       </property>
+       <property name="inputMask">
+        <string/>
+       </property>
+       <property name="cursorPosition">
+        <number>0</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtSpaceCountourValue2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>72</y>
+         <width>79</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Enter a positive number to set a contour line.</string>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhNone</set>
+       </property>
+       <property name="inputMask">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtSpaceCountourValue3">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>96</y>
+         <width>79</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Enter a positive number to set a contour line.</string>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhNone</set>
+       </property>
+       <property name="inputMask">
+        <string/>
+       </property>
+       <property name="cursorPosition">
+        <number>0</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cmbSpaceContourQuantity">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>25</y>
+         <width>79</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Select the number of contour lines on the plot.</string>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="currentIndex">
+        <number>5</number>
+       </property>
        <item>
-        <widget class="QComboBox" name="cmbSpaceContourQuantity">
-         <property name="layoutDirection">
-          <enum>Qt::LeftToRight</enum>
-         </property>
-         <property name="currentIndex">
-          <number>0</number>
-         </property>
-         <item>
-          <property name="text">
-           <string>2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7</string>
-          </property>
-         </item>
-        </widget>
+        <property name="text">
+         <string>2</string>
+        </property>
        </item>
        <item>
-        <widget class="QPushButton" name="btnSpaceResetContours">
-         <property name="text">
-          <string>Reset</string>
-         </property>
-        </widget>
+        <property name="text">
+         <string>3</string>
+        </property>
        </item>
        <item>
-        <widget class="QLineEdit" name="txtSpaceCountourValue1">
-         <property name="layoutDirection">
-          <enum>Qt::LeftToRight</enum>
-         </property>
-         <property name="autoFillBackground">
-          <bool>true</bool>
-         </property>
-         <property name="inputMethodHints">
-          <set>Qt::ImhNone</set>
-         </property>
-         <property name="inputMask">
-          <string/>
-         </property>
-         <property name="cursorPosition">
-          <number>0</number>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-         </property>
-        </widget>
+        <property name="text">
+         <string>4</string>
+        </property>
        </item>
        <item>
-        <widget class="QLineEdit" name="txtSpaceCountourValue2">
-         <property name="inputMethodHints">
-          <set>Qt::ImhNone</set>
-         </property>
-         <property name="inputMask">
-          <string/>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-         </property>
-        </widget>
+        <property name="text">
+         <string>5</string>
+        </property>
        </item>
        <item>
-        <widget class="QLineEdit" name="txtSpaceCountourValue3">
-         <property name="inputMethodHints">
-          <set>Qt::ImhNone</set>
-         </property>
-         <property name="inputMask">
-          <string/>
-         </property>
-         <property name="cursorPosition">
-          <number>0</number>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-         </property>
-        </widget>
+        <property name="text">
+         <string>6</string>
+        </property>
        </item>
        <item>
-        <widget class="QLineEdit" name="txtSpaceCountourValue4">
-         <property name="inputMethodHints">
-          <set>Qt::ImhNone</set>
-         </property>
-         <property name="inputMask">
-          <string/>
-         </property>
-         <property name="cursorPosition">
-          <number>0</number>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-         </property>
-        </widget>
+        <property name="text">
+         <string>7</string>
+        </property>
        </item>
-       <item>
-        <widget class="QLineEdit" name="txtSpaceCountourValue5">
-         <property name="inputMethodHints">
-          <set>Qt::ImhNone</set>
-         </property>
-         <property name="inputMask">
-          <string/>
-         </property>
-         <property name="cursorPosition">
-          <number>0</number>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="txtSpaceCountourValue6">
-         <property name="inputMethodHints">
-          <set>Qt::ImhNone</set>
-         </property>
-         <property name="inputMask">
-          <string/>
-         </property>
-         <property name="cursorPosition">
-          <number>0</number>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="txtSpaceCountourValue7">
-         <property name="inputMethodHints">
-          <set>Qt::ImhNone</set>
-         </property>
-         <property name="inputMask">
-          <string/>
-         </property>
-         <property name="cursorPosition">
-          <number>0</number>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="btnSpaceSetContours">
-         <property name="text">
-          <string>Set</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="chkSpaceAutoFillContours">
-         <property name="toolTip">
-          <string>If checked, blank values will be filled through interpolation and extrapolation</string>
-         </property>
-         <property name="text">
-          <string>Autofill</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      </widget>
+      <widget class="QCheckBox" name="chkSpaceAutoFillContours">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>217</y>
+         <width>79</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>If checked, blank values will be filled through interpolation and extrapolation</string>
+       </property>
+       <property name="text">
+        <string>Autofill</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
      </widget>
      <widget class="QComboBox" name="cmbSpaceSelectIlluminanceFile">
       <property name="geometry">
@@ -1248,6 +1459,11 @@
         <width>181</width>
         <height>22</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
       </property>
       <property name="toolTip">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select the annual illuminance data that is to be plotted. The data selected by default is from the final illuminance file.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -1304,6 +1520,9 @@
         <height>16</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>Select an opacity for the colors in the chart by using the slider.</string>
+      </property>
       <property name="text">
        <string>Select Chart Opacity</string>
       </property>
@@ -1332,6 +1551,9 @@
         <width>141</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>Select an opacity for the colors in the chart by using the slider.</string>
       </property>
       <property name="maximum">
        <number>100</number>
@@ -1365,6 +1587,9 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>Select a color scheme for the chart.</string>
+      </property>
      </widget>
      <widget class="QCheckBox" name="chkSpaceColorSchemeInvert">
       <property name="geometry">
@@ -1374,6 +1599,9 @@
         <width>51</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>Check this box to invert the selected color scheme.</string>
       </property>
       <property name="text">
        <string>Invert</string>
@@ -1388,10 +1616,23 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>Click to confirm the Color Scheme and Opacity settings.</string>
+      </property>
       <property name="text">
        <string>Confirm</string>
       </property>
      </widget>
+    </widget>
+    <widget class="QTextBrowser" name="textBrowser">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>620</y>
+       <width>871</width>
+       <height>111</height>
+      </rect>
+     </property>
     </widget>
    </widget>
    <widget class="QWidget" name="tabTimeSeries">
@@ -1402,7 +1643,7 @@
   </widget>
   <widget class="QGroupBox" name="grpFileDialog">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -1413,13 +1654,13 @@
     </rect>
    </property>
    <property name="title">
-    <string>GroupBox</string>
+    <string/>
    </property>
    <widget class="QPushButton" name="btnOpenJson">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
+      <y>20</y>
       <width>101</width>
       <height>23</height>
      </rect>
@@ -1434,62 +1675,91 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>10</y>
-      <width>931</width>
-      <height>20</height>
+      <x>120</x>
+      <y>20</y>
+      <width>591</width>
+      <height>23</height>
      </rect>
     </property>
     <property name="readOnly">
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox">
+   <widget class="QComboBox" name="cmbSpaceName">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>40</y>
-      <width>69</width>
-      <height>16</height>
+      <x>780</x>
+      <y>20</y>
+      <width>161</width>
+      <height>23</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnSelectSpaceName">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>960</x>
+      <y>20</y>
+      <width>91</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Confirm</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblSpaceName">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>20</y>
+      <width>46</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Space</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
   </widget>
  </widget>
  <tabstops>
-  <tabstop>tabWidget</tabstop>
-  <tabstop>btnOpenJson</tabstop>
-  <tabstop>txtJsonPath</tabstop>
-  <tabstop>comboBox</tabstop>
   <tabstop>cmbSpacePlotType</tabstop>
-  <tabstop>btnSpacePrevHour</tabstop>
-  <tabstop>btnSpaceNextHour</tabstop>
-  <tabstop>cmbSpaceTimeIntervalMin</tabstop>
-  <tabstop>cmbSpaceTimeIntervalMax</tabstop>
-  <tabstop>cmbSpaceIlluminanceStepType</tabstop>
-  <tabstop>cmbSpaceIluminanceStepValue</tabstop>
+  <tabstop>cmbSpaceSelectIlluminanceFile</tabstop>
+  <tabstop>btnSapceSelectFileTypeIlluminance</tabstop>
+  <tabstop>calSpaceDateTimeIllum</tabstop>
+  <tabstop>cmbSpaceTimeIllum</tabstop>
   <tabstop>chkSpaceContours</tabstop>
-  <tabstop>chkSpaceColors</tabstop>
   <tabstop>btnSpaceSettingsContour</tabstop>
-  <tabstop>cmbSpaceContourQuantity</tabstop>
-  <tabstop>btnSpaceResetContours</tabstop>
-  <tabstop>txtSpaceCountourValue1</tabstop>
-  <tabstop>txtSpaceCountourValue2</tabstop>
-  <tabstop>txtSpaceCountourValue3</tabstop>
-  <tabstop>txtSpaceCountourValue4</tabstop>
-  <tabstop>txtSpaceCountourValue5</tabstop>
-  <tabstop>txtSpaceCountourValue6</tabstop>
-  <tabstop>txtSpaceCountourValue7</tabstop>
-  <tabstop>btnSpaceSetContours</tabstop>
-  <tabstop>chkSpaceAutoFillContours</tabstop>
+  <tabstop>chkSpaceColors</tabstop>
   <tabstop>btnSpaceSettingsColours</tabstop>
+  <tabstop>btnSpaceSetContours</tabstop>
+  <tabstop>btnSpaceResetColors</tabstop>
   <tabstop>txtColorsMax</tabstop>
   <tabstop>txtColorsMin</tabstop>
-  <tabstop>txtColorsUpperMask</tabstop>
   <tabstop>btnSelectColorUpperMask</tabstop>
-  <tabstop>txtColorsLowerMask</tabstop>
+  <tabstop>txtColorsUpperMask</tabstop>
   <tabstop>btnSelectColorLowerMask</tabstop>
-  <tabstop>chkSpaceSkipDarkHours</tabstop>
+  <tabstop>txtColorsLowerMask</tabstop>
+  <tabstop>btnSpaceSetColors</tabstop>
+  <tabstop>cmbSpaceColorScheme</tabstop>
+  <tabstop>chkSpaceColorSchemeInvert</tabstop>
+  <tabstop>sliderSpaceOpacity</tabstop>
+  <tabstop>txtSpaceOpacityValue</tabstop>
+  <tabstop>btnSpaceSetColorScheme</tabstop>
+  <tabstop>txtJsonPath</tabstop>
+  <tabstop>cmbSpaceName</tabstop>
+  <tabstop>btnOpenJson</tabstop>
+  <tabstop>tabWidget</tabstop>
  </tabstops>
  <resources/>
  <connections/>
