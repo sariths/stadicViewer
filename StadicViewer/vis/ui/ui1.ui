@@ -6,9 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1093</width>
-    <height>813</height>
+    <width>977</width>
+    <height>740</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>977</width>
+    <height>740</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>977</width>
+    <height>740</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>STADICvis 0.01</string>
@@ -20,9 +38,9 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>50</y>
-     <width>1091</width>
-     <height>761</height>
+     <y>30</y>
+     <width>981</width>
+     <height>711</height>
     </rect>
    </property>
    <property name="currentIndex">
@@ -37,8 +55,8 @@
       <rect>
        <x>210</x>
        <y>30</y>
-       <width>871</width>
-       <height>581</height>
+       <width>761</width>
+       <height>541</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="layoutIlluminance"/>
@@ -49,7 +67,7 @@
        <x>0</x>
        <y>30</y>
        <width>201</width>
-       <height>583</height>
+       <height>541</height>
       </rect>
      </property>
      <property name="toolTip">
@@ -62,7 +80,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>70</y>
+        <y>40</y>
         <width>201</width>
         <height>191</height>
        </rect>
@@ -837,16 +855,6 @@
          <string>Next</string>
         </property>
        </widget>
-       <zorder>cmbSpaceTimeIntervalMin</zorder>
-       <zorder>lblSpaceTimeStep</zorder>
-       <zorder>cmbSpaceIlluminanceStepType</zorder>
-       <zorder>cmbSpaceTimeIntervalMax</zorder>
-       <zorder>chkSpaceSkipDarkHours</zorder>
-       <zorder>lblSpaceDayInterval</zorder>
-       <zorder>cmbSpaceIluminanceStepValue</zorder>
-       <zorder>btnSpacePrevHour</zorder>
-       <zorder>btnSpaceNextHour</zorder>
-       <zorder>grpSpaceColorContourSettings</zorder>
       </widget>
      </widget>
      <widget class="QComboBox" name="cmbSpaceSelectIlluminanceFile">
@@ -855,7 +863,7 @@
         <x>10</x>
         <y>20</y>
         <width>181</width>
-        <height>22</height>
+        <height>20</height>
        </rect>
       </property>
       <property name="font">
@@ -867,29 +875,13 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select the annual illuminance data that is to be plotted. The data selected by default is from the final illuminance file.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btnSapceSelectFileTypeIlluminance">
-      <property name="geometry">
-       <rect>
-        <x>60</x>
-        <y>43</y>
-        <width>75</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Click to confirm the selection of the annual illuminance time series data.</string>
-      </property>
-      <property name="text">
-       <string>Confirm</string>
-      </property>
-     </widget>
      <widget class="QGroupBox" name="grpSpaceColorContourSettings">
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>260</y>
+        <y>230</y>
         <width>201</width>
-        <height>321</height>
+        <height>311</height>
        </rect>
       </property>
       <property name="title">
@@ -899,7 +891,7 @@
        <property name="geometry">
         <rect>
          <x>110</x>
-         <y>60</y>
+         <y>50</y>
          <width>81</width>
          <height>261</height>
         </rect>
@@ -1148,7 +1140,7 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>60</y>
+         <y>50</y>
          <width>81</width>
          <height>261</height>
         </rect>
@@ -1496,19 +1488,11 @@
         <bool>true</bool>
        </property>
       </widget>
-      <zorder>btnSpaceSettingsColours</zorder>
-      <zorder>grpContoursIlluminance</zorder>
-      <zorder>chkSpaceContours</zorder>
-      <zorder>grpColoursIlluminance</zorder>
-      <zorder>btnSpaceSettingsContour</zorder>
-      <zorder>chkSpaceColors</zorder>
-      <zorder>grpColoursIlluminance</zorder>
-      <zorder>chkSpaceContours</zorder>
-      <zorder>grpContoursIlluminance</zorder>
-      <zorder>btnSpaceSettingsColours</zorder>
-      <zorder>btnSpaceSettingsContour</zorder>
-      <zorder>chkSpaceColors</zorder>
      </widget>
+     <zorder>groupSpaceNavigateIlluminance</zorder>
+     <zorder>cmbSpaceSelectIlluminanceFile</zorder>
+     <zorder>grpSpaceColorContourSettings</zorder>
+     <zorder>grpSpaceColorScheme</zorder>
     </widget>
     <widget class="QComboBox" name="cmbSpacePlotType">
      <property name="geometry">
@@ -1527,7 +1511,7 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>620</y>
+       <y>570</y>
        <width>201</width>
        <height>111</height>
       </rect>
@@ -1593,7 +1577,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>5</y>
+        <y>0</y>
         <width>121</width>
         <height>16</height>
        </rect>
@@ -1652,9 +1636,9 @@
      <property name="geometry">
       <rect>
        <x>610</x>
-       <y>620</y>
-       <width>471</width>
-       <height>111</height>
+       <y>580</y>
+       <width>361</width>
+       <height>101</height>
       </rect>
      </property>
      <property name="font">
@@ -1677,23 +1661,11 @@
       <rect>
        <x>210</x>
        <y>2</y>
-       <width>871</width>
+       <width>761</width>
        <height>21</height>
       </rect>
      </property>
     </widget>
-    <zorder>verticalLayoutWidget</zorder>
-    <zorder>grpSpaceIlluminance</zorder>
-    <zorder>cmbSpacePlotType</zorder>
-    <zorder>grpSpaceColorScheme</zorder>
-    <zorder>txtSpaceMsgBox</zorder>
-    <zorder>txtSpaceStatusDisplay</zorder>
-    <zorder>chkSpaceColors</zorder>
-    <zorder>btnSpaceSettingsColours</zorder>
-    <zorder>grpContoursIlluminance</zorder>
-    <zorder>btnSpaceSettingsContour</zorder>
-    <zorder>chkSpaceContours</zorder>
-    <zorder>grpColoursIlluminance</zorder>
    </widget>
    <widget class="QWidget" name="tabTimeSeries">
     <attribute name="title">
@@ -1709,8 +1681,8 @@
     <rect>
      <x>-10</x>
      <y>-10</y>
-     <width>1101</width>
-     <height>61</height>
+     <width>981</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="title">
@@ -1720,7 +1692,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>20</y>
+      <y>10</y>
       <width>101</width>
       <height>23</height>
      </rect>
@@ -1736,8 +1708,8 @@
     <property name="geometry">
      <rect>
       <x>120</x>
-      <y>20</y>
-      <width>591</width>
+      <y>10</y>
+      <width>511</width>
       <height>23</height>
      </rect>
     </property>
@@ -1751,8 +1723,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>780</x>
-      <y>20</y>
+      <x>710</x>
+      <y>10</y>
       <width>161</width>
       <height>23</height>
      </rect>
@@ -1764,8 +1736,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>960</x>
-      <y>20</y>
+      <x>890</x>
+      <y>10</y>
       <width>91</width>
       <height>23</height>
      </rect>
@@ -1777,8 +1749,8 @@
    <widget class="QLabel" name="lblSpaceName">
     <property name="geometry">
      <rect>
-      <x>730</x>
-      <y>20</y>
+      <x>660</x>
+      <y>10</y>
       <width>46</width>
       <height>23</height>
      </rect>
@@ -1790,12 +1762,19 @@
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
+   <zorder>btnOpenJson</zorder>
+   <zorder>txtJsonPath</zorder>
+   <zorder>cmbSpaceName</zorder>
+   <zorder>btnSelectSpaceName</zorder>
+   <zorder>lblSpaceName</zorder>
+   <zorder>txtSpaceStatusDisplay</zorder>
+   <zorder>tabWidget</zorder>
+   <zorder>tabWidget</zorder>
   </widget>
  </widget>
  <tabstops>
   <tabstop>cmbSpacePlotType</tabstop>
   <tabstop>cmbSpaceSelectIlluminanceFile</tabstop>
-  <tabstop>btnSapceSelectFileTypeIlluminance</tabstop>
   <tabstop>calSpaceDateTimeIllum</tabstop>
   <tabstop>cmbSpaceTimeIllum</tabstop>
   <tabstop>chkSpaceContours</tabstop>

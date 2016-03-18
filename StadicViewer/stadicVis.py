@@ -1,7 +1,7 @@
 from __future__ import  print_function
 
 from PyQt4 import QtCore,QtGui
-from vis.ui3 import Ui_Form
+from vis.ui4 import Ui_Form
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
@@ -144,7 +144,7 @@ class Main(QtGui.QDialog,Ui_Form):
         self.btnOpenJson.clicked.connect(self.openJsonFileDirectly)
         self.btnSelectSpaceName.clicked.connect(self.loadVisualsFromOpenedJsonFile)
 
-        self.btnSapceSelectFileTypeIlluminance.clicked.connect(self.loadDifferentIlluminanceFile)
+
 
         if jsonFile and spaceID is not None:
             self.jsonFile = jsonFile
@@ -369,6 +369,7 @@ class Main(QtGui.QDialog,Ui_Form):
         illFilesOnly = mainIllFile + sorted(illFilesOnly)
         self.cmbSpaceSelectIlluminanceFile.clear()
         self.cmbSpaceSelectIlluminanceFile.addItems(illFilesOnly)
+        self.cmbSpaceSelectIlluminanceFile.currentIndexChanged.connect(self.loadDifferentIlluminanceFile)
 
         self.ptsFile = ptsFile
         self.illData = Dayill(illFile,ptsFile)
