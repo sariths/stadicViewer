@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>STADICvis</string>
+   <string>STADICvis 0.01</string>
   </property>
   <widget class="QTabWidget" name="tabWidget">
    <property name="enabled">
@@ -36,9 +36,9 @@
      <property name="geometry">
       <rect>
        <x>210</x>
-       <y>0</y>
+       <y>30</y>
        <width>871</width>
-       <height>611</height>
+       <height>581</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="layoutIlluminance"/>
@@ -58,46 +58,6 @@
      <property name="title">
       <string>Illuminance Settings</string>
      </property>
-     <widget class="QCheckBox" name="chkSpaceContours">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>260</y>
-        <width>81</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Click to toggle between contour display on the chart.</string>
-      </property>
-      <property name="text">
-       <string>Contours</string>
-      </property>
-      <property name="checked">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btnSpaceSettingsContour">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>280</y>
-        <width>81</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>7</pointsize>
-       </font>
-      </property>
-      <property name="toolTip">
-       <string>Click to show further settings.</string>
-      </property>
-      <property name="text">
-       <string>Show Settings</string>
-      </property>
-     </widget>
      <widget class="QGroupBox" name="groupSpaceNavigateIlluminance">
       <property name="geometry">
        <rect>
@@ -877,578 +837,16 @@
          <string>Next</string>
         </property>
        </widget>
-      </widget>
-     </widget>
-     <widget class="QPushButton" name="btnSpaceSettingsColours">
-      <property name="geometry">
-       <rect>
-        <x>110</x>
-        <y>280</y>
-        <width>81</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>7</pointsize>
-       </font>
-      </property>
-      <property name="toolTip">
-       <string>Click to show further settings.</string>
-      </property>
-      <property name="text">
-       <string>Show Settings</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="chkSpaceColors">
-      <property name="geometry">
-       <rect>
-        <x>110</x>
-        <y>260</y>
-        <width>81</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Click to toggle between display of colored grids on the plot.</string>
-      </property>
-      <property name="text">
-       <string>Colors</string>
-      </property>
-      <property name="checked">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QGroupBox" name="grpColoursIlluminance">
-      <property name="geometry">
-       <rect>
-        <x>110</x>
-        <y>320</y>
-        <width>81</width>
-        <height>261</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="title">
-       <string/>
-      </property>
-      <widget class="QPushButton" name="btnSelectColorLowerMask">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>190</y>
-         <width>81</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>This option can be used to assign a specifc color to grid points which are lesser than the value specified in the text box below.</string>
-       </property>
-       <property name="text">
-        <string>Lower Mask</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lblColorMinLimit">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>70</y>
-         <width>81</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>The minimum limit specifies the lowest value for the color grid.</string>
-       </property>
-       <property name="text">
-        <string>Minimum Limit</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="txtColorsMin">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>90</y>
-         <width>81</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>The minimum limit specifies the lowest value for the color grid.</string>
-       </property>
-       <property name="inputMethodHints">
-        <set>Qt::ImhDigitsOnly</set>
-       </property>
-       <property name="inputMask">
-        <string/>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="cursorPosition">
-        <number>0</number>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="btnSelectColorUpperMask">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>130</y>
-         <width>81</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>This option can be used to assign a specifc color to grid points which are greater than the value specified in the text box below.</string>
-       </property>
-       <property name="text">
-        <string>Upper Mask</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="txtColorsMax">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>40</y>
-         <width>81</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>The maximum limit specifies the highest value for the color grid.</string>
-       </property>
-       <property name="inputMethodHints">
-        <set>Qt::ImhDigitsOnly</set>
-       </property>
-       <property name="inputMask">
-        <string/>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="cursorPosition">
-        <number>0</number>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-       </property>
-      </widget>
-      <widget class="QLabel" name="lblColorMaxLimit">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>20</y>
-         <width>81</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>The maximum limit specifies the highest value for the color grid.</string>
-       </property>
-       <property name="text">
-        <string>Maximum Limit</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="txtColorsUpperMask">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>150</y>
-         <width>81</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>Enter a positive number. The value of the upper mask should be always higher than the lower mask.</string>
-       </property>
-       <property name="inputMethodHints">
-        <set>Qt::ImhDigitsOnly</set>
-       </property>
-       <property name="inputMask">
-        <string/>
-       </property>
-       <property name="cursorPosition">
-        <number>0</number>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="txtColorsLowerMask">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>210</y>
-         <width>81</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>Enter a positive number. The value of the upper mask should be always higher than the lower mask.</string>
-       </property>
-       <property name="inputMethodHints">
-        <set>Qt::ImhDigitsOnly</set>
-       </property>
-       <property name="inputMask">
-        <string/>
-       </property>
-       <property name="cursorPosition">
-        <number>0</number>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="btnSpaceSetColors">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>240</y>
-         <width>79</width>
-         <height>19</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>Click to confirm the color settings.</string>
-       </property>
-       <property name="text">
-        <string>Confirm</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="btnSpaceResetColors">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>1</y>
-         <width>79</width>
-         <height>18</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>Click to reset the color settings to their default values.</string>
-       </property>
-       <property name="text">
-        <string>Reset</string>
-       </property>
-      </widget>
-      <zorder>btnSelectColorLowerMask</zorder>
-      <zorder>lblColorMinLimit</zorder>
-      <zorder>txtColorsMin</zorder>
-      <zorder>btnSelectColorUpperMask</zorder>
-      <zorder>txtColorsMax</zorder>
-      <zorder>lblColorMaxLimit</zorder>
-      <zorder>txtColorsUpperMask</zorder>
-      <zorder>txtColorsLowerMask</zorder>
-      <zorder>btnSpaceSetColors</zorder>
-      <zorder>btnSpaceResetColors</zorder>
-      <zorder>btnSpaceResetColors</zorder>
-     </widget>
-     <widget class="QGroupBox" name="grpContoursIlluminance">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>320</y>
-        <width>81</width>
-        <height>261</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string/>
-      </property>
-      <widget class="QPushButton" name="btnSpaceSetContours">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>240</y>
-         <width>79</width>
-         <height>19</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>Click to confirm the contour settings.</string>
-       </property>
-       <property name="text">
-        <string>Confirm</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="txtSpaceCountourValue6">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>166</y>
-         <width>79</width>
-         <height>18</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>Enter a positive number to set a contour line.</string>
-       </property>
-       <property name="inputMethodHints">
-        <set>Qt::ImhNone</set>
-       </property>
-       <property name="inputMask">
-        <string/>
-       </property>
-       <property name="cursorPosition">
-        <number>0</number>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="btnSpaceResetContours">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>1</y>
-         <width>79</width>
-         <height>18</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>Click to reset the contour settings to their default values.</string>
-       </property>
-       <property name="text">
-        <string>Reset</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="txtSpaceCountourValue7">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>190</y>
-         <width>79</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>Enter a positive number to set a contour line.</string>
-       </property>
-       <property name="inputMethodHints">
-        <set>Qt::ImhNone</set>
-       </property>
-       <property name="inputMask">
-        <string/>
-       </property>
-       <property name="cursorPosition">
-        <number>0</number>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="txtSpaceCountourValue5">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>143</y>
-         <width>79</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>Enter a positive number to set a contour line.</string>
-       </property>
-       <property name="inputMethodHints">
-        <set>Qt::ImhNone</set>
-       </property>
-       <property name="inputMask">
-        <string/>
-       </property>
-       <property name="cursorPosition">
-        <number>0</number>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="txtSpaceCountourValue4">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>119</y>
-         <width>79</width>
-         <height>18</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>Enter a positive number to set a contour line.</string>
-       </property>
-       <property name="inputMethodHints">
-        <set>Qt::ImhNone</set>
-       </property>
-       <property name="inputMask">
-        <string/>
-       </property>
-       <property name="cursorPosition">
-        <number>0</number>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="txtSpaceCountourValue1">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>49</y>
-         <width>79</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>Enter a positive number to set a contour line.</string>
-       </property>
-       <property name="layoutDirection">
-        <enum>Qt::LeftToRight</enum>
-       </property>
-       <property name="autoFillBackground">
-        <bool>true</bool>
-       </property>
-       <property name="inputMethodHints">
-        <set>Qt::ImhNone</set>
-       </property>
-       <property name="inputMask">
-        <string/>
-       </property>
-       <property name="cursorPosition">
-        <number>0</number>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="txtSpaceCountourValue2">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>72</y>
-         <width>79</width>
-         <height>18</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>Enter a positive number to set a contour line.</string>
-       </property>
-       <property name="inputMethodHints">
-        <set>Qt::ImhNone</set>
-       </property>
-       <property name="inputMask">
-        <string/>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="txtSpaceCountourValue3">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>96</y>
-         <width>79</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>Enter a positive number to set a contour line.</string>
-       </property>
-       <property name="inputMethodHints">
-        <set>Qt::ImhNone</set>
-       </property>
-       <property name="inputMask">
-        <string/>
-       </property>
-       <property name="cursorPosition">
-        <number>0</number>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-       </property>
-      </widget>
-      <widget class="QComboBox" name="cmbSpaceContourQuantity">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>25</y>
-         <width>79</width>
-         <height>18</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>Select the number of contour lines on the plot.</string>
-       </property>
-       <property name="layoutDirection">
-        <enum>Qt::LeftToRight</enum>
-       </property>
-       <property name="currentIndex">
-        <number>5</number>
-       </property>
-       <item>
-        <property name="text">
-         <string>2</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>3</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>4</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>5</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>6</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>7</string>
-        </property>
-       </item>
-      </widget>
-      <widget class="QCheckBox" name="chkSpaceAutoFillContours">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>217</y>
-         <width>79</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="toolTip">
-        <string>If checked, blank values will be filled through interpolation and extrapolation</string>
-       </property>
-       <property name="text">
-        <string>Autofill</string>
-       </property>
-       <property name="checked">
-        <bool>true</bool>
-       </property>
+       <zorder>cmbSpaceTimeIntervalMin</zorder>
+       <zorder>lblSpaceTimeStep</zorder>
+       <zorder>cmbSpaceIlluminanceStepType</zorder>
+       <zorder>cmbSpaceTimeIntervalMax</zorder>
+       <zorder>chkSpaceSkipDarkHours</zorder>
+       <zorder>lblSpaceDayInterval</zorder>
+       <zorder>cmbSpaceIluminanceStepValue</zorder>
+       <zorder>btnSpacePrevHour</zorder>
+       <zorder>btnSpaceNextHour</zorder>
+       <zorder>grpSpaceColorContourSettings</zorder>
       </widget>
      </widget>
      <widget class="QComboBox" name="cmbSpaceSelectIlluminanceFile">
@@ -1484,6 +882,632 @@
       <property name="text">
        <string>Confirm</string>
       </property>
+     </widget>
+     <widget class="QGroupBox" name="grpSpaceColorContourSettings">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>260</y>
+        <width>201</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string/>
+      </property>
+      <widget class="QGroupBox" name="grpColoursIlluminance">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>60</y>
+         <width>81</width>
+         <height>261</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <widget class="QPushButton" name="btnSelectColorLowerMask">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>190</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>This option can be used to assign a specifc color to grid points which are lesser than the value specified in the text box below.</string>
+        </property>
+        <property name="text">
+         <string>Lower Mask</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="lblColorMinLimit">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>70</y>
+          <width>81</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>The minimum limit specifies the lowest value for the color grid.</string>
+        </property>
+        <property name="text">
+         <string>Minimum Limit</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="txtColorsMin">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>90</y>
+          <width>81</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>The minimum limit specifies the lowest value for the color grid.</string>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhDigitsOnly</set>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="cursorPosition">
+         <number>0</number>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnSelectColorUpperMask">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>130</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>This option can be used to assign a specifc color to grid points which are greater than the value specified in the text box below.</string>
+        </property>
+        <property name="text">
+         <string>Upper Mask</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="txtColorsMax">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>40</y>
+          <width>81</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>The maximum limit specifies the highest value for the color grid.</string>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhDigitsOnly</set>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="cursorPosition">
+         <number>0</number>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="lblColorMaxLimit">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>20</y>
+          <width>81</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>The maximum limit specifies the highest value for the color grid.</string>
+        </property>
+        <property name="text">
+         <string>Maximum Limit</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="txtColorsUpperMask">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>150</y>
+          <width>81</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Enter a positive number. The value of the upper mask should be always higher than the lower mask.</string>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhDigitsOnly</set>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="cursorPosition">
+         <number>0</number>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="txtColorsLowerMask">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>210</y>
+          <width>81</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Enter a positive number. The value of the upper mask should be always higher than the lower mask.</string>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhDigitsOnly</set>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="cursorPosition">
+         <number>0</number>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnSpaceSetColors">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>240</y>
+          <width>79</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Click to confirm the color settings.</string>
+        </property>
+        <property name="text">
+         <string>Confirm</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnSpaceResetColors">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>1</y>
+          <width>79</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Click to reset the color settings to their default values.</string>
+        </property>
+        <property name="text">
+         <string>Reset</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QCheckBox" name="chkSpaceContours">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>0</y>
+         <width>81</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Click to toggle between contour display on the chart.</string>
+       </property>
+       <property name="text">
+        <string>Contours</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QGroupBox" name="grpContoursIlluminance">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>60</y>
+         <width>81</width>
+         <height>261</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <widget class="QPushButton" name="btnSpaceSetContours">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>240</y>
+          <width>79</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Click to confirm the contour settings.</string>
+        </property>
+        <property name="text">
+         <string>Confirm</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="txtSpaceCountourValue6">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>166</y>
+          <width>79</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Enter a positive number to set a contour line.</string>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhNone</set>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="cursorPosition">
+         <number>0</number>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnSpaceResetContours">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>1</y>
+          <width>79</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Click to reset the contour settings to their default values.</string>
+        </property>
+        <property name="text">
+         <string>Reset</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="txtSpaceCountourValue7">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>190</y>
+          <width>79</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Enter a positive number to set a contour line.</string>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhNone</set>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="cursorPosition">
+         <number>0</number>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="txtSpaceCountourValue5">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>143</y>
+          <width>79</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Enter a positive number to set a contour line.</string>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhNone</set>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="cursorPosition">
+         <number>0</number>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="txtSpaceCountourValue4">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>119</y>
+          <width>79</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Enter a positive number to set a contour line.</string>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhNone</set>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="cursorPosition">
+         <number>0</number>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="txtSpaceCountourValue1">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>49</y>
+          <width>79</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Enter a positive number to set a contour line.</string>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="autoFillBackground">
+         <bool>true</bool>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhNone</set>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="cursorPosition">
+         <number>0</number>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="txtSpaceCountourValue2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>72</y>
+          <width>79</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Enter a positive number to set a contour line.</string>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhNone</set>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="txtSpaceCountourValue3">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>96</y>
+          <width>79</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Enter a positive number to set a contour line.</string>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhNone</set>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="cursorPosition">
+         <number>0</number>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="cmbSpaceContourQuantity">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>25</y>
+          <width>79</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Select the number of contour lines on the plot.</string>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="currentIndex">
+         <number>5</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>3</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>4</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>5</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>6</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>7</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QCheckBox" name="chkSpaceAutoFillContours">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>217</y>
+          <width>79</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>If checked, blank values will be filled through interpolation and extrapolation</string>
+        </property>
+        <property name="text">
+         <string>Autofill</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QPushButton" name="btnSpaceSettingsColours">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>20</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>7</pointsize>
+        </font>
+       </property>
+       <property name="toolTip">
+        <string>Click to show further settings.</string>
+       </property>
+       <property name="text">
+        <string>Show Settings</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnSpaceSettingsContour">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>7</pointsize>
+        </font>
+       </property>
+       <property name="toolTip">
+        <string>Click to show further settings.</string>
+       </property>
+       <property name="text">
+        <string>Show Settings</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="chkSpaceColors">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>0</y>
+         <width>81</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Click to toggle between display of colored grids on the plot.</string>
+       </property>
+       <property name="text">
+        <string>Colors</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <zorder>btnSpaceSettingsColours</zorder>
+      <zorder>grpContoursIlluminance</zorder>
+      <zorder>chkSpaceContours</zorder>
+      <zorder>grpColoursIlluminance</zorder>
+      <zorder>btnSpaceSettingsContour</zorder>
+      <zorder>chkSpaceColors</zorder>
+      <zorder>grpColoursIlluminance</zorder>
+      <zorder>chkSpaceContours</zorder>
+      <zorder>grpContoursIlluminance</zorder>
+      <zorder>btnSpaceSettingsColours</zorder>
+      <zorder>btnSpaceSettingsContour</zorder>
+      <zorder>chkSpaceColors</zorder>
      </widget>
     </widget>
     <widget class="QComboBox" name="cmbSpacePlotType">
@@ -1624,16 +1648,52 @@
       </property>
      </widget>
     </widget>
-    <widget class="QTextBrowser" name="textBrowser">
+    <widget class="QTextBrowser" name="txtSpaceMsgBox">
      <property name="geometry">
       <rect>
-       <x>210</x>
+       <x>610</x>
        <y>620</y>
-       <width>871</width>
+       <width>471</width>
        <height>111</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>7</pointsize>
+      </font>
+     </property>
+     <property name="toolTip">
+      <string>This text panel displays data pertaining to visualizations and file paths which might be helpful in troubleshooting errors.</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
     </widget>
+    <widget class="QLineEdit" name="txtSpaceStatusDisplay">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>2</y>
+       <width>871</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <zorder>verticalLayoutWidget</zorder>
+    <zorder>grpSpaceIlluminance</zorder>
+    <zorder>cmbSpacePlotType</zorder>
+    <zorder>grpSpaceColorScheme</zorder>
+    <zorder>txtSpaceMsgBox</zorder>
+    <zorder>txtSpaceStatusDisplay</zorder>
+    <zorder>chkSpaceColors</zorder>
+    <zorder>btnSpaceSettingsColours</zorder>
+    <zorder>grpContoursIlluminance</zorder>
+    <zorder>btnSpaceSettingsContour</zorder>
+    <zorder>chkSpaceContours</zorder>
+    <zorder>grpColoursIlluminance</zorder>
    </widget>
    <widget class="QWidget" name="tabTimeSeries">
     <attribute name="title">

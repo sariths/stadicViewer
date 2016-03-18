@@ -15,8 +15,8 @@ import os
 # Removed from Excludes: 'libgdk-win32-2.0-0.dll'
 #Removed from options: "dist_dir": "F:\Dropbox\StadicViewer\Deploy",
 sys.path.append(r"C:\Users\Sarith\Anaconda2\Lib\site-packages\numpy\core")
-sys.path.append(r'F:\Dropbox\PyScripts\sarith')
-sys.path.append(r'F:\Dropbox\StadicViewer')
+sys.path.append(r'C:\Users\Sarith\Projects\sarith\sarith')
+sys.path.append(r'C:\Users\Sarith\Projects\stadicViewer\StadicViewer')
 
 
 
@@ -27,7 +27,7 @@ dataFilesList += [(".",[r"C:\Users\Sarith\Anaconda2\Library\bin\mkl_avx.dll",r"C
 
 
 #PyQt4.QtNetwork was added in this case because the program uses a web viewer.
-setup(console=[{"script" : r"F:\Dropbox\StadicViewer\stadicVis.py"}],
+setup(windows=[{"script" : r"C:\Users\Sarith\Projects\stadicViewer\StadicViewer\stadicVis.py"}],
       options={"py2exe" : {"dll_excludes": ["MSVCP90.dll",'libgdk-win32-2.0-0.dll','mkl_avx.dll','mkl_p4.dll'],
                            # "dll_includes":['mkl_avx.dll','mkl_p4.dll'],
                            "includes" : ["matplotlib.backends","matplotlib.backends.backend_tkagg","matplotlib.backends.backend_qt4agg","matplotlib.figure",
@@ -37,5 +37,5 @@ setup(console=[{"script" : r"F:\Dropbox\StadicViewer\stadicVis.py"}],
                            'packages':['FileDialog'],
                            'optimize':2,
                            'compressed':True,
-                           "dist_dir": r"F:\Dropbox\StadicViewer\deploy\vis"}},
+                           "dist_dir": r"C:\Users\Sarith\Projects\stadicViewer\StadicViewer\deploy\vis"}},
       data_files=dataFilesList)

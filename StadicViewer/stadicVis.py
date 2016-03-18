@@ -5,7 +5,7 @@ from vis.ui3 import Ui_Form
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
-
+import warnings
 import os,sys
 
 # sys.path.append(r'F:\Dropbox\RadScripts')
@@ -16,15 +16,21 @@ from visuals.heatMaps import thermalPlots
 from results.dayIll import Dayill
 from software.stadic.readStadic import StadicProject
 
-
+warnings.filterwarnings('ignore')
 
 class Main(QtGui.QDialog,Ui_Form):
     def __init__(self,parent=None,jsonFile=None,spaceID=None):
         super(Main,self).__init__(parent)
         self.setupUi(self)
 
+        self.defaultWindowTitle = str(self.windowTitle())
+
+        # TODO: Disable runtime warnings eventually.
+
+
         # TODO:Contours
         self.grpContoursIlluminance.setEnabled(False)
+        self.btnSpaceSettingsContour.setEnabled(False)
 
         #TODO: Metrics
         #TODO: Code the readStadic file to recognize metrics files.
@@ -45,7 +51,7 @@ class Main(QtGui.QDialog,Ui_Form):
 
 
         #Initiate a dictioanry for ill files.
-        self.illuminanceFilesDict = {}
+        self.allFilesDict = {}
 
         #Code for manipulating navigation settings for illuminance.
         #Code for manipulating navigation settings for illuminance.
@@ -131,6 +137,7 @@ class Main(QtGui.QDialog,Ui_Form):
         self.btnSpaceSetColorScheme.clicked.connect(self.assignSpaceColorScheme)
 
 
+        self.txtSpaceStatusDisplay.setEnabled(False)
 
 
         #Open json file settings.
@@ -147,8 +154,9 @@ class Main(QtGui.QDialog,Ui_Form):
 
     def loadDifferentIlluminanceFile(self):
         selectedIllFileKey = str(self.cmbSpaceSelectIlluminanceFile.currentText())
-        selectedIllFile = self.illuminanceFilesDict[selectedIllFileKey]
+        selectedIllFile = self.allFilesDict[selectedIllFileKey]
         self.illData = Dayill(selectedIllFile,self.ptsFile)
+        self.txtSpaceStatusDisplay.setText("Current space: {} \tCurrent data set: {}.\t Source:{}".format(self.spaceName,selectedIllFileKey,selectedIllFile))
         self.plotIlluminance()
 
 
@@ -165,9 +173,15 @@ class Main(QtGui.QDialog,Ui_Form):
 
              self.cmbSpaceName.setEnabled(True)
              self.btnSelectSpaceName.setEnabled(True)
+
+             newWindowTitle = jsonFileName+"  --  "+self.defaultWindowTitle
+             self.setWindowTitle(newWindowTitle)
+
+
              del project
 
     def loadVisualsFromOpenedJsonFile(self):
+        self.txtSpaceStatusDisplay.clear()
         self.loadJson(self.jsonFile,self.cmbSpaceName.currentIndex())
         self.tabWidget.setEnabled(True)
 
@@ -334,21 +348,32 @@ class Main(QtGui.QDialog,Ui_Form):
 
     def loadJson(self,jsonFileName,spaceID):
         projectJson = jsonFileName
-        # projectJson = r"E:\C-SHAP\testC.json"
-        # projectJson = r'E:\debug2\base2wgangsig2.json'
-        # projectJson = r"E:\SExample\SExample.json"
+
         project = StadicProject(projectJson)
         illFile = project.spaces[spaceID].resultsFile
         ptsFile = project.spaces[spaceID].analysisPointsFiles[0]
 
-        self.illuminanceFilesDict = project.spaces[spaceID].filesDict
+        self.spaceName =project.spaces[0].spaceName
 
-        illFilesOnly = [(fileKey,fileName) for fileKey,fileName in self.illuminanceFilesDict.items() if fileName]
-        illFilesOnly = [fileKey for fileKey,fileName in illFilesOnly if fileName.endswith('.ill')]
-        self.cmbSpaceSelectIlluminanceFile.addItems(sorted(illFilesOnly))
+        self.allFilesDict = project.spaces[spaceID].filesDict
+
+        self.txtSpaceMsgBox.setText(project.spaces[spaceID].log)
+        # print(project.spaces[spaceID].log)
+
+
+
+        illFilesExisting = [(fileKey,fileName) for fileKey,fileName in self.allFilesDict.items() if fileName]
+        illFilesOnly = [fileKey for fileKey,fileName in illFilesExisting if fileName.endswith('.ill') and fileName != illFile]
+        mainIllFile = [fileKey for fileKey,fileName in illFilesExisting if fileName.endswith('.ill') and fileName == illFile]
+
+        illFilesOnly = mainIllFile + sorted(illFilesOnly)
+        self.cmbSpaceSelectIlluminanceFile.clear()
+        self.cmbSpaceSelectIlluminanceFile.addItems(illFilesOnly)
 
         self.ptsFile = ptsFile
         self.illData = Dayill(illFile,ptsFile)
+        self.txtSpaceStatusDisplay.setText("Current space: {} \tCurrent data set: {}.\t Source:{}".format(self.spaceName,mainIllFile[0],illFile))
+
 
         hourFormat = self.illData.timedata[0:24]
         hourFormat = [hourVal['tstamp'].strftime("%I:%M %p") for hourVal in hourFormat]
@@ -365,6 +390,9 @@ class Main(QtGui.QDialog,Ui_Form):
         self.cmbSpaceTimeIntervalMin.clear()
         self.cmbSpaceTimeIntervalMin.addItems(map(str,hourFormat))
         self.cmbSpaceTimeIntervalMin.setCurrentIndex(0)
+
+        newWindowTitle =  jsonFileName+"  --  "+self.defaultWindowTitle
+        self.setWindowTitle(newWindowTitle)
 
     def plotIlluminance(self):
         if not self.illuminanceActivated:
@@ -415,5 +443,4 @@ def main(jsonFile=None,spaceID=None,*args):
 
 if __name__ =="__main__":
      # sys.argv.extend([r"E:\C-SHAP\testC.json", 0])
-     print(sys.argv)
      main()
