@@ -1286,8 +1286,6 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/StadicViewer/deploy/vis/zmq.libzmq.pyd" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StadicViewer/vis/ui/ui1.ui" afterPath="$PROJECT_DIR$/StadicViewer/vis/ui/ui1.ui" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StadicViewer/deploySetup.py" afterPath="$PROJECT_DIR$/StadicViewer/deploySetup.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StadicViewer/stadicVis.py" afterPath="$PROJECT_DIR$/StadicViewer/stadicVis.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StadicViewer/vis/ui3.py" afterPath="$PROJECT_DIR$/StadicViewer/vis/ui3.py" />
     </list>
     <ignored path="stadicViewer.iws" />
@@ -1309,11 +1307,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="stadicVis.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="stadicVis.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/StadicViewer/stadicVis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7965812">
-              <caret line="445" column="11" selection-start-line="445" selection-start-column="11" selection-end-line="445" selection-end-column="11" />
+            <state vertical-scroll-proportion="-11.965517">
+              <caret line="420" column="35" selection-start-line="420" selection-start-column="35" selection-end-line="420" selection-end-column="35" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
                 <element signature="e#693#6632#0" expanded="true" />
@@ -1332,9 +1330,18 @@
                 <element signature="e#13177#13956#0" expanded="true" />
                 <element signature="e#14002#14340#0" expanded="true" />
                 <element signature="e#14396#16397#0" expanded="true" />
-                <element signature="e#16438#17829#0" expanded="true" />
                 <element signature="e#17882#18134#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ui3.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/StadicViewer/vis/ui3.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.71986973">
+              <caret line="694" column="0" selection-start-line="694" selection-start-column="0" selection-end-line="694" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1846,27 +1853,33 @@
       <option name="project" value="LOCAL" />
       <updated>1458189605883</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="deleted redundant py files for the pyqt viewer">
+      <created>1458276391245</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1458276391245</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39916405" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1915,7 +1928,6 @@
             <element signature="e#13177#13956#0" expanded="true" />
             <element signature="e#14002#14340#0" expanded="true" />
             <element signature="e#14396#16397#0" expanded="true" />
-            <element signature="e#16438#17829#0" expanded="true" />
             <element signature="e#17882#18134#0" expanded="true" />
           </folding>
         </state>
@@ -1995,7 +2007,6 @@
             <element signature="e#13177#13956#0" expanded="true" />
             <element signature="e#14002#14340#0" expanded="true" />
             <element signature="e#14396#16397#0" expanded="true" />
-            <element signature="e#16438#17829#0" expanded="true" />
             <element signature="e#17882#18134#0" expanded="true" />
           </folding>
         </state>
@@ -2050,7 +2061,6 @@
             <element signature="e#13177#13956#0" expanded="true" />
             <element signature="e#14002#14340#0" expanded="true" />
             <element signature="e#14396#16397#0" expanded="true" />
-            <element signature="e#16438#17829#0" expanded="true" />
             <element signature="e#17882#18134#0" expanded="true" />
           </folding>
         </state>
@@ -2094,7 +2104,6 @@
             <element signature="e#13177#13956#0" expanded="true" />
             <element signature="e#14002#14340#0" expanded="true" />
             <element signature="e#14396#16397#0" expanded="true" />
-            <element signature="e#16438#17829#0" expanded="true" />
             <element signature="e#17882#18134#0" expanded="true" />
           </folding>
         </state>
@@ -2130,7 +2139,6 @@
             <element signature="e#13177#13956#0" expanded="true" />
             <element signature="e#14002#14340#0" expanded="true" />
             <element signature="e#14396#16397#0" expanded="true" />
-            <element signature="e#16438#17829#0" expanded="true" />
             <element signature="e#17882#18134#0" expanded="true" />
           </folding>
         </state>
@@ -2206,18 +2214,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/StadicViewer/vis/ui3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StadicViewer/stadicVis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7965812">
-          <caret line="445" column="11" selection-start-line="445" selection-start-column="11" selection-end-line="445" selection-end-column="11" />
+        <state vertical-scroll-proportion="-11.965517">
+          <caret line="420" column="35" selection-start-line="420" selection-start-column="35" selection-end-line="420" selection-end-column="35" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
             <element signature="e#693#6632#0" expanded="true" />
@@ -2236,9 +2236,16 @@
             <element signature="e#13177#13956#0" expanded="true" />
             <element signature="e#14002#14340#0" expanded="true" />
             <element signature="e#14396#16397#0" expanded="true" />
-            <element signature="e#16438#17829#0" expanded="true" />
             <element signature="e#17882#18134#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StadicViewer/vis/ui3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.71986973">
+          <caret line="694" column="0" selection-start-line="694" selection-start-column="0" selection-end-line="694" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

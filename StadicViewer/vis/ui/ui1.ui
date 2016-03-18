@@ -30,7 +30,7 @@
    </property>
    <widget class="QWidget" name="tabSpace">
     <attribute name="title">
-     <string>Space</string>
+     <string>Spatial Plots</string>
     </attribute>
     <widget class="QWidget" name="verticalLayoutWidget">
      <property name="geometry">
@@ -1697,7 +1697,7 @@
    </widget>
    <widget class="QWidget" name="tabTimeSeries">
     <attribute name="title">
-     <string>Time Series</string>
+     <string>Time Series Plots</string>
     </attribute>
    </widget>
   </widget>
