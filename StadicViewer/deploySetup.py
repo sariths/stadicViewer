@@ -37,5 +37,6 @@ setup(windows=[{"script" : r"C:\Users\Sarith\Projects\stadicViewer\StadicViewer\
                            'packages':['FileDialog'],
                            'optimize':2,
                            'compressed':True,
-                           "dist_dir": r"C:\Users\Sarith\Projects\stadicViewer\StadicViewer\deploy\vis"}},
+                           "dist_dir": r"C:\Users\Sarith\Projects\stadicViewer\StadicViewer\deploy\vis",
+						   'bundle_files':1}},
       data_files=dataFilesList)
