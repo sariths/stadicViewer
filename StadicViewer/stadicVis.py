@@ -558,6 +558,8 @@ class Main(QtGui.QDialog,Ui_Form):
                 # currentIndex = [idx for idx,value in enumerate(self.cmbSpaceColorScheme.)]
                 # print(currentIndex)
 
+            #I am resetting the values for colors and contours everytime. Ideally I should be saving state for each occassion but that will result in too much data getting store in
+            #each instance.
             self.resetColorSettings()
             self.resetContourSettings()
 
