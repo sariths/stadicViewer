@@ -18,7 +18,7 @@ from results.dayIll import Dayill
 from software.stadic.readStadic import StadicProject
 
 warnings.filterwarnings('ignore')
-
+# TODO: This class should also inherit from a Json object class.
 class Spatial(QtGui.QDialog, Ui_Form):
     def __init__(self,parent=None,jsonFile=None,spaceID=None):
         super(Spatial, self).__init__(parent)

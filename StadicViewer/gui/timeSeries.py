@@ -12,7 +12,7 @@ import os,sys,operator
 
 from visuals.heatMaps import thermalPlots
 
-
+# TODO: This class should also inherit from a Json object class.
 class TimeSeries(QtGui.QDialog, Ui_Form):
    def setupTimeSeries(self):
 

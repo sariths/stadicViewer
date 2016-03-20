@@ -4,18 +4,11 @@
     <option name="CUSTOM_SCOPE_NAME" value="Current File" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d6f4dbd-bde3-448c-a001-ea6a4035a40c" name="Default" comment="Almost finished space based charts. Added metrics, added contour manipulation etc.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/StadicViewer/gui/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/StadicViewer/gui/base.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/StadicViewer/gui/scrap.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/StadicViewer/gui/spatial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/StadicViewer/gui/timeSeries.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/StadicViewer/jsonData/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/StadicViewer/stadicVis2.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StadicViewer/vis/ui/ui1.ui" afterPath="$PROJECT_DIR$/StadicViewer/vis/ui/ui1.ui" />
+    <list default="true" id="7d6f4dbd-bde3-448c-a001-ea6a4035a40c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StadicViewer/stadicVis.py" afterPath="$PROJECT_DIR$/StadicViewer/stadicVis.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StadicViewer/vis/ui4.py" afterPath="$PROJECT_DIR$/StadicViewer/vis/ui4.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StadicViewer/gui/base.py" afterPath="$PROJECT_DIR$/StadicViewer/gui/base.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StadicViewer/gui/spatial.py" afterPath="$PROJECT_DIR$/StadicViewer/gui/spatial.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StadicViewer/gui/timeSeries.py" afterPath="$PROJECT_DIR$/StadicViewer/gui/timeSeries.py" />
     </list>
     <list id="7a9896ae-cba5-4943-a8d8-b3fdde8a5ffb" name="DeploymentFiles" comment="I don't really want to sync these files everytime." />
     <ignored path="stadicViewer.iws" />
@@ -32,28 +25,6 @@
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="DockManager">
-    <window id="3">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="spatial.py" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/StadicViewer/gui/spatial.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="-5.700326">
-                    <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-                    <folding>
-                      <element signature="e#15#53#0" expanded="true" />
-                      <element signature="e#691#7803#0" expanded="true" />
-                      <element signature="e#27349#27605#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
     <window id="1">
       <content type="file-editors">
         <state>
@@ -61,11 +32,12 @@
             <file leaf-file-name="timeSeries.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/StadicViewer/gui/timeSeries.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.375">
-                    <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+                  <state vertical-scroll-proportion="0.4068376">
+                    <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="64" />
                     <folding>
                       <element signature="e#15#53#0" expanded="true" />
-                      <element signature="e#916#997#0" expanded="true" />
+                      <element signature="e#563#934#0" expanded="true" />
+                      <element signature="e#980#1061#0" expanded="true" />
                     </folding>
                   </state>
                 </provider>
@@ -137,7 +109,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ui4.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ui4.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/StadicViewer/vis/ui4.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
@@ -223,15 +195,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="base.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/StadicViewer/gui/base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.24757281">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding>
                 <element signature="e#15#52#0" expanded="true" />
-                <element signature="e#257#317#0" expanded="true" />
-                <element signature="e#335#419#0" expanded="true" />
+                <element signature="e#330#390#0" expanded="true" />
+                <element signature="e#408#492#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -290,8 +262,10 @@
         <option value="$PROJECT_DIR$/StadicViewer/tabs/timeSeries.py" />
         <option value="$PROJECT_DIR$/StadicViewer/stadicVis2.py" />
         <option value="$PROJECT_DIR$/StadicViewer/stadicVis.py" />
-        <option value="$PROJECT_DIR$/StadicViewer/gui/base.py" />
         <option value="$PROJECT_DIR$/StadicViewer/gui/scrap.py" />
+        <option value="$PROJECT_DIR$/StadicViewer/gui/base.py" />
+        <option value="$PROJECT_DIR$/StadicViewer/gui/timeSeries.py" />
+        <option value="$PROJECT_DIR$/StadicViewer/gui/spatial.py" />
       </list>
     </option>
   </component>
@@ -803,15 +777,22 @@
       <option name="project" value="LOCAL" />
       <updated>1458360869216</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Almost finished space based charts. Added metrics, added contour manipulation etc.">
+      <created>1458451613821</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1458451613821</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25104168" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25104168" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32810867" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291536" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -822,7 +803,6 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39916405" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1529,17 +1509,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/StadicViewer/gui/timeSeries.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.375">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding>
-            <element signature="e#15#53#0" expanded="true" />
-            <element signature="e#916#997#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StadicViewer/stadicVis2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1568,30 +1537,6 @@
             <element signature="e#25420#26695#0" expanded="true" />
             <element signature="e#26787#26886#0" expanded="true" />
             <element signature="e#26939#27192#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StadicViewer/gui/spatial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.700326">
-          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-          <folding>
-            <element signature="e#15#53#0" expanded="true" />
-            <element signature="e#691#7803#0" expanded="true" />
-            <element signature="e#27349#27605#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StadicViewer/gui/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-          <folding>
-            <element signature="e#15#52#0" expanded="true" />
-            <element signature="e#257#317#0" expanded="true" />
-            <element signature="e#335#419#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1628,6 +1573,42 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#323#331#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StadicViewer/gui/timeSeries.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4068376">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="64" />
+          <folding>
+            <element signature="e#15#53#0" expanded="true" />
+            <element signature="e#563#934#0" expanded="true" />
+            <element signature="e#980#1061#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StadicViewer/gui/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24757281">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="e#15#52#0" expanded="true" />
+            <element signature="e#330#390#0" expanded="true" />
+            <element signature="e#408#492#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StadicViewer/gui/spatial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41856676">
+          <caret line="20" column="64" selection-start-line="20" selection-start-column="64" selection-end-line="20" selection-end-column="64" />
+          <folding>
+            <element signature="e#15#53#0" expanded="true" />
+            <element signature="e#755#7867#0" expanded="true" />
+            <element signature="e#27413#27669#0" expanded="true" />
           </folding>
         </state>
       </provider>

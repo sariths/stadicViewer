@@ -5,6 +5,8 @@ from PyQt4 import QtCore,QtGui
 from StadicViewer.vis.ui4 import Ui_Form
 import os,sys,operator
 
+# TODO: Define a jsonobject class that will then be inherited by others
+
 
 class Base(QtGui.QDialog,Ui_Form):
     def __init__(self,parent=None,jsonFile=None,spaceID=None):
