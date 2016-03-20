@@ -59,7 +59,7 @@
        <height>541</height>
       </rect>
      </property>
-     <layout class="QVBoxLayout" name="layoutIlluminance"/>
+     <layout class="QVBoxLayout" name="layoutSpace"/>
     </widget>
     <widget class="QGroupBox" name="grpSpaceIlluminance">
      <property name="geometry">
@@ -1091,7 +1091,7 @@
         <string>Lower Mask</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lblColorMinLimit">
+      <widget class="QLabel" name="lblSpaceColorMinLimit">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -1110,7 +1110,7 @@
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QLineEdit" name="txtColorsMin">
+      <widget class="QLineEdit" name="txtSpaceColorsMin">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -1154,7 +1154,7 @@
         <string>Upper Mask</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="txtColorsMax">
+      <widget class="QLineEdit" name="txtSpaceColorsMax">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -1182,7 +1182,7 @@
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
        </property>
       </widget>
-      <widget class="QLabel" name="lblColorMaxLimit">
+      <widget class="QLabel" name="lblSpaceColorMaxLimit">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -1201,7 +1201,7 @@
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QLineEdit" name="txtColorsUpperMask">
+      <widget class="QLineEdit" name="txtSpaceColorsUpperMask">
        <property name="enabled">
         <bool>false</bool>
        </property>
@@ -1229,7 +1229,7 @@
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
        </property>
       </widget>
-      <widget class="QLineEdit" name="txtColorsLowerMask">
+      <widget class="QLineEdit" name="txtSpaceColorsLowerMask">
        <property name="enabled">
         <bool>false</bool>
        </property>
@@ -1681,6 +1681,202 @@
     <attribute name="title">
      <string>Time Series Plots</string>
     </attribute>
+    <widget class="QGroupBox" name="grpTimeSeriesMain">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>971</width>
+       <height>691</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QComboBox" name="cmbTimeSeriesPlotType">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>2</y>
+        <width>181</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>Select the type of data that you wish to plot</string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="grpTimeSeriesColorScheme">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>570</y>
+        <width>201</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string/>
+      </property>
+      <widget class="QLabel" name="lblTimeSeriesChartOpacity">
+       <property name="geometry">
+        <rect>
+         <x>11</x>
+         <y>50</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Select an opacity for the colors in the chart by using the slider.</string>
+       </property>
+       <property name="text">
+        <string>Select Chart Opacity</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtTimeSeriesOpacityValue">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>60</y>
+         <width>31</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="placeholderText">
+        <string>100</string>
+       </property>
+      </widget>
+      <widget class="QSlider" name="sliderTimeSeriesOpacity">
+       <property name="geometry">
+        <rect>
+         <x>11</x>
+         <y>60</y>
+         <width>141</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Select an opacity for the colors in the chart by using the slider.</string>
+       </property>
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="sliderPosition">
+        <number>100</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblTimeSeriesColorSchemeSelect">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>0</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Color Scheme</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cmbTimeSeriesColorScheme">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>121</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Select a color scheme for the chart.</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="chkTimeSeriesColorSchemeInvert">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>15</y>
+         <width>51</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Check this box to invert the selected color scheme.</string>
+       </property>
+       <property name="text">
+        <string>Invert</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnTimeSeriesSetColorScheme">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>82</y>
+         <width>181</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Click to confirm the Color Scheme and Opacity settings.</string>
+       </property>
+       <property name="text">
+        <string>Confirm</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QTextBrowser" name="txtTimeSeriesMsgBox">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>580</y>
+        <width>361</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>7</pointsize>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>This text panel displays data pertaining to visualizations and file paths which might be helpful in troubleshooting errors.</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>30</y>
+        <width>761</width>
+        <height>411</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="layoutTimeSeries"/>
+     </widget>
+    </widget>
+    <widget class="QLineEdit" name="txtTimeSeriesStatusDisplay">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>2</y>
+       <width>761</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QGroupBox" name="grpFileDialog">
@@ -1785,12 +1981,12 @@
   <tabstop>btnSpaceSettingsColours</tabstop>
   <tabstop>btnSpaceSetContours</tabstop>
   <tabstop>btnSpaceResetColors</tabstop>
-  <tabstop>txtColorsMax</tabstop>
-  <tabstop>txtColorsMin</tabstop>
+  <tabstop>txtSpaceColorsMax</tabstop>
+  <tabstop>txtSpaceColorsMin</tabstop>
   <tabstop>btnSelectColorUpperMask</tabstop>
-  <tabstop>txtColorsUpperMask</tabstop>
+  <tabstop>txtSpaceColorsUpperMask</tabstop>
   <tabstop>btnSelectColorLowerMask</tabstop>
-  <tabstop>txtColorsLowerMask</tabstop>
+  <tabstop>txtSpaceColorsLowerMask</tabstop>
   <tabstop>btnSpaceSetColors</tabstop>
   <tabstop>cmbSpaceColorScheme</tabstop>
   <tabstop>chkSpaceColorSchemeInvert</tabstop>
