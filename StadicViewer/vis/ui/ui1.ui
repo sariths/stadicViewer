@@ -44,7 +44,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tabSpace">
     <attribute name="title">
@@ -1863,6 +1863,11 @@
       </property>
       <layout class="QVBoxLayout" name="layoutTimeSeries"/>
      </widget>
+     <zorder>cmbTimeSeriesPlotType</zorder>
+     <zorder>grpTimeSeriesColorScheme</zorder>
+     <zorder>txtTimeSeriesMsgBox</zorder>
+     <zorder>verticalLayoutWidget_2</zorder>
+     <zorder>txtTimeSeriesStatusDisplay</zorder>
     </widget>
     <widget class="QLineEdit" name="txtTimeSeriesStatusDisplay">
      <property name="enabled">
@@ -1871,9 +1876,9 @@
      <property name="geometry">
       <rect>
        <x>210</x>
-       <y>2</y>
+       <y>3</y>
        <width>761</width>
-       <height>21</height>
+       <height>20</height>
       </rect>
      </property>
     </widget>

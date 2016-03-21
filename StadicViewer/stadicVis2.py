@@ -1,7 +1,7 @@
 from __future__ import  print_function
 
 from PyQt4 import QtCore,QtGui
-from vis.ui4 import Ui_Form
+from vis.gui import Ui_Form
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar

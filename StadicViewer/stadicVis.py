@@ -3,24 +3,41 @@
 from __future__ import  print_function
 
 from PyQt4 import QtCore,QtGui
-from StadicViewer.vis.ui4 import Ui_Form
+
+from gui.base import Base
 from gui.spatial import Spatial
 from gui.timeSeries import TimeSeries
 
 import warnings
 import os,sys,operator
 
-class StadicVis(Spatial,TimeSeries):
+warnings.filterwarnings('ignore')
+
+class StadicVis(Base,Spatial,TimeSeries):
+    """
+    The Base class sets up the Gui and also provides logic for opening a json file through a dialog.
+    All the other classes define logic for separate tabs.
+    """
     def __init__(self,parent=None,jsonFile=None,spaceID=None):
 
-        # super(StadicVis,self).__init__(parent)
-        Spatial.__init__(self,jsonFile=jsonFile,spaceID=spaceID)
+        Base.__init__(self,jsonFile=jsonFile,spaceID=spaceID)
 
-        self.setupTimeSeries()
+        try:
+            if self.dataSpaceNameSelected:
+                Spatial.setupGui(self)
+                TimeSeries.setupGui(self)
+        except AttributeError:
+            pass
 
 
-        # super(TimeSeries,self).__init__()
-        # TimeSeries.__init__(self)
+    def __initializeCharts__(self):
+        """
+        This function is actually first defined by the base class as the actions for buttons are defined over there.
+        :return:
+        """
+        Spatial.setupGui(self)
+        TimeSeries.setupGui(self)
+
 
 def main(jsonFile=None,spaceID=None,*args):
 
@@ -38,5 +55,5 @@ def main(jsonFile=None,spaceID=None,*args):
 
 if __name__ =="__main__":
      sys.argv.extend([r"C:\C-SHAP\testC.json", 0])
-     # sys.argv.extend([r'E:\debug2\base2wgangsig2.json',0])
+     # sys.argv.extend([r"E:\SExample\SExample.json",0])
      main()

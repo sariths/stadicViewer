@@ -2,13 +2,14 @@
 from __future__ import  print_function
 
 from PyQt4 import QtCore,QtGui
-from StadicViewer.vis.ui4 import Ui_Form
+from StadicViewer.vis.gui import Ui_Form
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
 import warnings
 import os,sys,operator
 
+from StadicViewer.data.procData import VisData
 
 
 from visuals.gridPlots import gridPlot
@@ -17,171 +18,197 @@ from visuals.heatMaps import thermalPlots
 from results.dayIll import Dayill
 from software.stadic.readStadic import StadicProject
 
-warnings.filterwarnings('ignore')
-# TODO: This class should also inherit from a Json object class.
-class Spatial(QtGui.QDialog, Ui_Form):
-    def __init__(self,parent=None,jsonFile=None,spaceID=None):
-        super(Spatial, self).__init__(parent)
-        # Ui_Form.__init__(self,parent)
-        self.setupUi(self)
-
-        self.defaultWindowTitle = str(self.windowTitle())
-
-        # TODO: Disable runtime warnings eventually.
 
 
-        # TODO:Contours
-        self.grpContoursIlluminance.setEnabled(True)
-        self.btnSpaceSettingsContour.setEnabled(True)
+class Spatial(QtGui.QDialog, Ui_Form,VisData):
+
+    def setupGui(self):
+
+            if self.dataSpaceNameSelected:
+                self.tabWidget.setEnabled(True)
+                self.grpContoursIlluminance.setEnabled(True)
+                self.btnSpaceSettingsContour.setEnabled(True)
+
+                #Setup matplotlib inside Qt.
+                self.spFigure = Figure()
+                self.spCanvas = FigureCanvas(self.spFigure)
+
+
+                #Validator for setting values
+                floatValidator = QtGui.QDoubleValidator(0.0,20000.0,3)
+
+                #Settings for showing and hiding color and contours.
+                self.grpColoursIlluminance.setVisible(False)
+                self.grpContoursIlluminance.setVisible(False)
+                self.btnSpaceSettingsContour.clicked.connect(self.spToggleContourSettings)
+                self.btnSpaceSettingsColours.clicked.connect(self.spToggleColorSettings)
+
+                #Initiate a dictioanry for ill files.
+                self.spAllFilesDict = {}
+
+                #Code for manipulating navigation settings for illuminance.
+                #Code for manipulating navigation settings for illuminance.
+
+                self.spTimeStepIlluminance = 1 #This attribute determines the time step for stepping between different illuminance plots.
+
+                #Changing/clicking any of the below controls should trigger the illuminance plots.
+                self.calSpaceDateTimeIllum.dateChanged.connect(self.spSetCurrentIlluminanceHourCalendar)
+                self.cmbSpaceTimeIllum.currentIndexChanged.connect(self.spSetCurrentIlluminanceHourCalendar)
+
+
+                self.btnSpacePrevHour.clicked.connect(lambda:self.spSetCurrentIlluminanceHourTimeStep(False))
+                self.btnSpaceNextHour.clicked.connect(lambda:self.spSetCurrentIlluminanceHourTimeStep(True))
+
+                #If the timestep settings are changed, change the time step but don't trigger the illuminance plot.
+                self.cmbSpaceIlluminanceStepType.currentIndexChanged.connect(self.spUpdateIlluminanceTimeStep)
+                self.cmbSpaceIluminanceStepValue.currentIndexChanged.connect(self.spUpdateIlluminanceTimeStep)
+
+
+                self.spIlluminanceActivated = False
+                self.spCurrentIlluminanceHour = 9
+
+
+                #Settings for displaying the opacity value on a box.
+                self.sliderSpaceOpacity.valueChanged.connect(self.spOpacitySliderChanged)
+
+
+                #Settings for color values of the illuminance plot.
+                self.btnSelectColorLowerMask.clicked.connect(lambda:self.spMaskSettingsActivated(False))
+                self.btnSelectColorUpperMask.clicked.connect(lambda:self.spMaskSettingsActivated(True))
+
+                self.spIlluminanceMaxVal = 5000
+                self.spIlluminanceMinVal = 1
+
+                self.spIlluminanceMaxValDefault = 5000
+                self.spIlluminanceMinValDefault = 1
+                self.spIlluminanceUpperMaskValue = None
+                self.spIlluminanceLowerMaskValue = None
+                self.spIlluminanceUpperMaskColor = None
+                self.spIlluminanceLowerMaskColor = None
+
+
+                self.spMetricsMaxVal = 1.0
+                self.spMetricsMinVal = 0.0
+                self.spMetricsMaxValDefault = 1.0
+                self.spMetricsMinValDefault = 0
+                self.spMetricsUpperMaskValue = None
+                self.spMetricsLowerMaskValue = None
+                self.spMetricsUpperMaskColor = None
+                self.spMetricsLowerMaskColor = None
+
+
+                self.spCurrentPlotIsIlluminance = True
+
+
+                self.txtSpaceColorsMax.setText(str(self.spIlluminanceMaxValDefault))
+                self.txtSpaceColorsMin.setText(str(self.spIlluminanceMinValDefault))
+                self.txtSpaceColorsMax.setValidator(floatValidator)
+                self.txtSpaceColorsMin.setValidator(floatValidator)
+
+                self.btnSpaceResetColors.clicked.connect(self.spResetColorSettings)
+                self.btnSpaceSetColors.clicked.connect(self.spSetColorSettings)
+
+
+                self.chkSpaceColors.clicked.connect(self.spRefreshPlots)
+                self.spPlotIlluminanceColors = True
+
+
+                #settings for contour values for the illuminance plot.
+                self.cmbSpaceContourQuantity.currentIndexChanged.connect(self.spSetContourQuantity)
+                #Put all contourboxes inside a list for easy iteration.
+                self.spContourBoxes = [self.txtSpaceCountourValue1, self.txtSpaceCountourValue2, self.txtSpaceCountourValue3, self.txtSpaceCountourValue4,
+                                       self.txtSpaceCountourValue5, self.txtSpaceCountourValue6, self.txtSpaceCountourValue7, self.txtSpaceCountourValue8]
+
+                for contourBox in self.spContourBoxes:
+                    contourBox.setValidator(floatValidator)
+
+                self.chkSpaceContours.clicked.connect(self.spRefreshPlots)
+
+                self.spContourValuesIlluminance = (50, 100, 500, 1000, 2000, 3000, 5000, 10000)
+                self.spContourValuesIlluminanceDefault = (50, 100, 500, 1000, 2000, 3000, 5000, 10000)
+                self.spContourValuesMetrics = (0.1, 0.2, 0.3, 0.4, 0.5, 0.7, 0.9, 1.0)
+                self.spContourValuesMetricsDefault = (0.1, 0.2, 0.3, 0.4, 0.5, 0.7, 0.9, 1.0)
+
+                self.btnSpaceResetContours.clicked.connect(self.spResetContourSettings)
+                self.btnSpaceSetContours.clicked.connect(self.spSetContourSettings)
+
+                #Contstuctor Stuff
+                self.spColorMapTuple = (('Uniform01', 'viridis'), ('Uniform02', 'inferno'), ('Uniform03', 'plasma'), ('Uniform04', 'magma'), ('Blues', 'Blues'),
+                                        ('BlueGreen','BuGn'), ('BluePurple','BuPu'), ('GreenBlue','GnBu'), ('Greens','Greens'), ('Greys','Greys'), ('Oranges','Oranges'),
+                                        ('OrangeRed','OrRd'), ('PurpleBlue','PuBu'), ('PurpleBlueGreen','PuBuGn'), ('PurpleRed','PuRd'), ('Purples','Purples'),
+                                        ('RedPurple','RdPu'), ('Reds','Reds'), ('YellowGreen','YlGn'), ('YellowGreenBlue','YlGnBu'), ('YellowOrangeBrown','YlOrBr'),
+                                        ('YellowOrangeRed','YlOrRd'), ('Hot01','afmhot'), ('Hot02','hot'), ('Hot03','gist_heat'), ('Autumn','autumn'), ('Bone','bone'), ('Cool','cool'),
+                                        ('Copper','copper'), ('Spring','spring'), ('Summer','summer'), ('Winter','winter'))
+
+                colorNames = [name for name,plotName in self.spColorMapTuple]
+                self.spColorDict =dict(self.spColorMapTuple)
+                self.cmbSpaceColorScheme.addItems(colorNames)
+                self.cmbSpaceColorScheme.setCurrentIndex(21)
+
+                self.spCurrentColorScheme = 'YlOrRd'
+                self.spCurrentSpaceChartOpacityValue = 1
+
+                self.spCurrentColorSchemeMetrics = 'YlOrRd'
+                self.spCurrentSpaceChartOpacityValueMetrics = 1
+
+                self.btnSpaceSetColorScheme.clicked.connect(self.spAssignSpaceColorScheme)
+
+                self.txtSpaceStatusDisplay.setEnabled(False)
 
 
 
 
-        #Setup matplotlib inside Qt.
-        self.spFigure = Figure()
-        self.spCanvas = FigureCanvas(self.spFigure)
 
 
-        #Validator for setting values
-        floatValidator = QtGui.QDoubleValidator(0.0,20000.0,3)
-
-        #Settings for showing and hiding color and contours.
-        self.grpColoursIlluminance.setVisible(False)
-        self.grpContoursIlluminance.setVisible(False)
-        self.btnSpaceSettingsContour.clicked.connect(self.spToggleContourSettings)
-        self.btnSpaceSettingsColours.clicked.connect(self.spToggleColorSettings)
 
 
-        #Initiate a dictioanry for ill files.
-        self.spAllFilesDict = {}
+                illFileKeys,illFileNames = zip(*self.dataDayIllFilesList)
 
-        #Code for manipulating navigation settings for illuminance.
-        #Code for manipulating navigation settings for illuminance.
+                self.ptsFile = self.dataPtsFile
 
-        self.spTimeStepIlluminance = 1 #This attribute determines the time step for stepping between different illuminance plots.
+                self.illData = Dayill(illFileNames[0],self.ptsFile)
 
-        #Changing/clicking any of the below controls should trigger the illuminance plots.
-        self.calSpaceDateTimeIllum.dateChanged.connect(self.spSetCurrentIlluminanceHourCalendar)
-        self.cmbSpaceTimeIllum.currentIndexChanged.connect(self.spSetCurrentIlluminanceHourCalendar)
+                hourFormat = self.illData.timedata[0:24]
+                hourFormat = [hourVal['tstamp'].strftime("%I:%M %p") for hourVal in hourFormat]
 
+                #Set valid time stamps for all the drop boxes that show time.
+                self.cmbSpaceTimeIllum.clear()
+                self.cmbSpaceTimeIllum.addItems(map(str,hourFormat))
+                self.cmbSpaceTimeIllum.setCurrentIndex(9)
 
-        self.btnSpacePrevHour.clicked.connect(lambda:self.spSetCurrentIlluminanceHourTimeStep(False))
-        self.btnSpaceNextHour.clicked.connect(lambda:self.spSetCurrentIlluminanceHourTimeStep(True))
+                self.cmbSpaceTimeIntervalMax.clear()
+                self.cmbSpaceTimeIntervalMax.addItems(map(str,hourFormat))
+                self.cmbSpaceTimeIntervalMax.setCurrentIndex(23)
 
-        #If the timestep settings are changed, change the time step but don't trigger the illuminance plot.
-        self.cmbSpaceIlluminanceStepType.currentIndexChanged.connect(self.spUpdateIlluminanceTimeStep)
-        self.cmbSpaceIluminanceStepValue.currentIndexChanged.connect(self.spUpdateIlluminanceTimeStep)
+                self.cmbSpaceTimeIntervalMin.clear()
+                self.cmbSpaceTimeIntervalMin.addItems(map(str,hourFormat))
+                self.cmbSpaceTimeIntervalMin.setCurrentIndex(0)
 
+                self.spAllFilesDict = self.dataAllFiles
 
-        self.spIlluminanceActivated = False
-        self.spCurrentIlluminanceHour = 9
+                # Addedd this test as sometimes metrics are not calculated. In those cases it's just the illuminance data.
+                try:
+                    resultsFiles,resultsFilesNames = zip(*self.dataMetricsFilesList)
+                    mainComboBoxContents = [illFileKeys[0]]+ sorted(list(resultsFiles))
+                except ValueError:
+                    mainComboBoxContents = [illFileKeys[0]]
 
-
-        #Settings for displaying the opacity value on a box.
-        self.sliderSpaceOpacity.valueChanged.connect(self.spOpacitySliderChanged)
-
-
-        #Settings for color values of the illuminance plot.
-        self.btnSelectColorLowerMask.clicked.connect(lambda:self.spMaskSettingsActivated(False))
-        self.btnSelectColorUpperMask.clicked.connect(lambda:self.spMaskSettingsActivated(True))
-
-        self.spIlluminanceMaxVal = 5000
-        self.spIlluminanceMinVal = 1
-
-        self.spIlluminanceMaxValDefault = 5000
-        self.spIlluminanceMinValDefault = 1
-        self.spIlluminanceUpperMaskValue = None
-        self.spIlluminanceLowerMaskValue = None
-        self.spIlluminanceUpperMaskColor = None
-        self.spIlluminanceLowerMaskColor = None
+                self.cmbSpacePlotType.clear()
+                self.cmbSpacePlotType.addItems(mainComboBoxContents)
+                self.cmbSpacePlotType.currentIndexChanged.connect(self.spPlotTypeSelect)
 
 
-        self.spMetricsMaxVal = 1.0
-        self.spMetricsMinVal = 0.0
-        self.spMetricsMaxValDefault = 1.0
-        self.spMetricsMinValDefault = 0
-        self.spMetricsUpperMaskValue = None
-        self.spMetricsLowerMaskValue = None
-        self.spMetricsUpperMaskColor = None
-        self.spMetricsLowerMaskColor = None
+                self.cmbSpaceSelectIlluminanceFile.clear()
+                self.cmbSpaceSelectIlluminanceFile.addItems(illFileKeys)
+                self.cmbSpaceSelectIlluminanceFile.currentIndexChanged.connect(self.spLoadDifferentIlluminanceFile)
 
 
-        self.spCurrentPlotIsIlluminance = True
+                self.spacePlotTypeDict = self.dataAllFilesAvailable
 
 
-        self.txtSpaceColorsMax.setText(str(self.spIlluminanceMaxValDefault))
-        self.txtSpaceColorsMin.setText(str(self.spIlluminanceMinValDefault))
-        self.txtSpaceColorsMax.setValidator(floatValidator)
-        self.txtSpaceColorsMin.setValidator(floatValidator)
-
-        self.btnSpaceResetColors.clicked.connect(self.spResetColorSettings)
-        self.btnSpaceSetColors.clicked.connect(self.spSetColorSettings)
+                self.txtSpaceMsgBox.setText(self.dataLog)
 
 
-        self.chkSpaceColors.clicked.connect(self.spRefreshPlots)
-        self.spPlotIlluminanceColors = True
-
-
-        #settings for contour values for the illuminance plot.
-        self.cmbSpaceContourQuantity.currentIndexChanged.connect(self.spSetContourQuantity)
-        #Put all contourboxes inside a list for easy iteration.
-        self.spContourBoxes = [self.txtSpaceCountourValue1, self.txtSpaceCountourValue2, self.txtSpaceCountourValue3, self.txtSpaceCountourValue4,
-                               self.txtSpaceCountourValue5, self.txtSpaceCountourValue6, self.txtSpaceCountourValue7, self.txtSpaceCountourValue8]
-
-        for contourBox in self.spContourBoxes:
-            contourBox.setValidator(floatValidator)
-
-        self.chkSpaceContours.clicked.connect(self.spRefreshPlots)
-
-        self.spContourValuesIlluminance = (50, 100, 500, 1000, 2000, 3000, 5000, 10000)
-        self.spContourValuesIlluminanceDefault = (50, 100, 500, 1000, 2000, 3000, 5000, 10000)
-        self.spContourValuesMetrics = (0.1, 0.2, 0.3, 0.4, 0.5, 0.7, 0.9, 1.0)
-        self.spContourValuesMetricsDefault = (0.1, 0.2, 0.3, 0.4, 0.5, 0.7, 0.9, 1.0)
-
-        self.btnSpaceResetContours.clicked.connect(self.spResetContourSettings)
-        self.btnSpaceSetContours.clicked.connect(self.spSetContourSettings)
-
-
-        #chartScheme Settings
-
-        #Contstuctor Stuff
-        self.spColorMapTuple = (('Uniform01', 'viridis'), ('Uniform02', 'inferno'), ('Uniform03', 'plasma'), ('Uniform04', 'magma'), ('Blues', 'Blues'),
-                                ('BlueGreen','BuGn'), ('BluePurple','BuPu'), ('GreenBlue','GnBu'), ('Greens','Greens'), ('Greys','Greys'), ('Oranges','Oranges'),
-                                ('OrangeRed','OrRd'), ('PurpleBlue','PuBu'), ('PurpleBlueGreen','PuBuGn'), ('PurpleRed','PuRd'), ('Purples','Purples'),
-                                ('RedPurple','RdPu'), ('Reds','Reds'), ('YellowGreen','YlGn'), ('YellowGreenBlue','YlGnBu'), ('YellowOrangeBrown','YlOrBr'),
-                                ('YellowOrangeRed','YlOrRd'), ('Hot01','afmhot'), ('Hot02','hot'), ('Hot03','gist_heat'), ('Autumn','autumn'), ('Bone','bone'), ('Cool','cool'),
-                                ('Copper','copper'), ('Spring','spring'), ('Summer','summer'), ('Winter','winter'))
-
-        colorNames = [name for name,plotName in self.spColorMapTuple]
-        self.spColorDict =dict(self.spColorMapTuple)
-        self.cmbSpaceColorScheme.addItems(colorNames)
-        self.cmbSpaceColorScheme.setCurrentIndex(21)
-
-        self.spCurrentColorScheme = 'YlOrRd'
-        self.spCurrentSpaceChartOpacityValue = 1
-
-        self.spCurrentColorSchemeMetrics = 'YlOrRd'
-        self.spCurrentSpaceChartOpacityValueMetrics = 1
-
-        self.btnSpaceSetColorScheme.clicked.connect(self.spAssignSpaceColorScheme)
-
-
-        self.txtSpaceStatusDisplay.setEnabled(False)
-
-
-        #Open json file settings.
-        self.btnOpenJson.clicked.connect(self.spOpenJsonFileDirectly)
-        self.btnSelectSpaceName.clicked.connect(self.spLoadVisualsFromOpenedJsonFile)
-
-
-        self.cmbSpacePlotType.currentIndexChanged.connect(self.spPlotTypeSelect)
-        self.spacePlotTypeDict = None
-
-        if jsonFile and spaceID is not None:
-            self.jsonFile = jsonFile
-            self.grpFileDialog.setEnabled(False)
-            self.tabWidget.setEnabled(True)
-            self.spLoadJson(jsonFile, spaceID)
 
     def spSetContourSettings(self):
         contourList = []
@@ -204,7 +231,6 @@ class Spatial(QtGui.QDialog, Ui_Form):
             else:
                 box.setText(str(self.spContourValuesMetricsDefault[idx]))
 
-
     def spRefreshPlots(self):
         """
         This is required because there are certain events that just need to trigger the current plot.
@@ -219,9 +245,8 @@ class Spatial(QtGui.QDialog, Ui_Form):
         selectedIllFileKey = str(self.cmbSpaceSelectIlluminanceFile.currentText())
         selectedIllFile = self.spAllFilesDict[selectedIllFileKey]
         self.illData = Dayill(selectedIllFile,self.ptsFile)
-        self.txtSpaceStatusDisplay.setText("Current space: {} \tCurrent data set: {}.\t Source:{}".format(self.spaceName,selectedIllFileKey,selectedIllFile))
+        self.txtSpaceStatusDisplay.setText("Current space: {} \tCurrent data set: {}.\t Source:{}".format(self.dataSpaceNameSelected, selectedIllFileKey, selectedIllFile))
         self.spPlotIlluminance()
-
 
     def spOpenJsonFileDirectly(self):
         jsonFileName = QtGui.QFileDialog.getOpenFileName(self,"Select a json file to open","C:/","Json File (*.json)")
@@ -266,8 +291,6 @@ class Spatial(QtGui.QDialog, Ui_Form):
 
         # TODO:Change this to mean all plots later.
 
-
-
     def spSetContourQuantity(self):
         contourQuantity = int(self.cmbSpaceContourQuantity.currentText())
         for idx,contourBoxes in enumerate(self.spContourBoxes):
@@ -276,7 +299,6 @@ class Spatial(QtGui.QDialog, Ui_Form):
                 contourBoxes.setEnabled(False)
             else:
                 contourBoxes.setEnabled(True)
-
 
     def spMaskSettingsActivated(self, isUpperMask):
         colorDialog = QtGui.QColorDialog
@@ -444,85 +466,6 @@ class Spatial(QtGui.QDialog, Ui_Form):
             self.btnSpaceSettingsColours.setText("Show Settings")
             self.grpColoursIlluminance.setVisible(False)
 
-
-    def spLoadJson(self, jsonFileName, spaceID):
-        projectJson = jsonFileName
-
-        project = StadicProject(projectJson)
-        illFile = project.spaces[spaceID].resultsFile
-        ptsFile = project.spaces[spaceID].analysisPointsFiles[0]
-
-        self.spaceName =project.spaces[0].spaceName
-
-        self.spAllFilesDict = project.spaces[spaceID].filesDict
-
-        self.txtSpaceMsgBox.setText(project.spaces[spaceID].log)
-
-
-
-
-        filesExisting = [(fileKey,fileName) for fileKey,fileName in self.spAllFilesDict.items() if fileName]
-
-        #Get the names and keys for all the results files.
-        resultsFilesOnly = [(fileKey,fileName)for fileKey,fileName in filesExisting if fileName.endswith(".res")]
-        resultsFilesOnly = sorted(resultsFilesOnly,key=operator.itemgetter(1))
-
-
-        #Make a list of all the ill files.
-        illFilesOnly = [fileKey for fileKey,fileName in filesExisting if fileName.endswith('.ill') and fileName != illFile]
-        illFilesOnlyNames = [fileName for fileKey,fileName in filesExisting if fileName.endswith('.ill') and fileName != illFile]
-        mainIllFile = [fileKey for fileKey,fileName in filesExisting if fileName.endswith('.ill') and fileName == illFile]
-
-        illFilesOnly = mainIllFile + sorted(illFilesOnly)
-
-        if illFile:
-            resultsFilesOnly.insert(0,("Illuminance",illFile))
-
-        else:
-            resultsFilesOnly.insert(0,("Illuminance",illFilesOnlyNames[0]))
-
-        self.cmbSpacePlotType.clear()
-        self.cmbSpacePlotType.addItems([fileKey for fileKey,fileName in resultsFilesOnly])
-
-        self.spacePlotTypeDict = dict(resultsFilesOnly)
-
-        self.cmbSpaceSelectIlluminanceFile.clear()
-        self.cmbSpaceSelectIlluminanceFile.addItems(illFilesOnly)
-        self.cmbSpaceSelectIlluminanceFile.currentIndexChanged.connect(self.spLoadDifferentIlluminanceFile)
-
-        self.ptsFile = ptsFile
-
-        if illFile:
-            self.illData = Dayill(illFile,ptsFile)
-            self.txtSpaceStatusDisplay.setText("Current space: {} \tCurrent data set: {}.\t Source:{}".format(self.spaceName,mainIllFile[0],illFile))
-        else:
-            self.illData = Dayill(illFilesOnlyNames[0],ptsFile)
-            self.txtSpaceStatusDisplay.setText("Current space: {} \tCurrent data set: {}.\t Source:{}".format(self.spaceName,illFilesOnly[0],illFilesOnlyNames[0]))
-
-
-        hourFormat = self.illData.timedata[0:24]
-        hourFormat = [hourVal['tstamp'].strftime("%I:%M %p") for hourVal in hourFormat]
-
-        #Set valid time stamps for all the drop boxes that show time.
-        self.cmbSpaceTimeIllum.clear()
-        self.cmbSpaceTimeIllum.addItems(map(str,hourFormat))
-        self.cmbSpaceTimeIllum.setCurrentIndex(9)
-
-        self.cmbSpaceTimeIntervalMax.clear()
-        self.cmbSpaceTimeIntervalMax.addItems(map(str,hourFormat))
-        self.cmbSpaceTimeIntervalMax.setCurrentIndex(23)
-
-        self.cmbSpaceTimeIntervalMin.clear()
-        self.cmbSpaceTimeIntervalMin.addItems(map(str,hourFormat))
-        self.cmbSpaceTimeIntervalMin.setCurrentIndex(0)
-
-
-
-
-
-        newWindowTitle =  jsonFileName+"  --  "+self.defaultWindowTitle
-        self.setWindowTitle(newWindowTitle)
-
     def spPlotTypeSelect(self):
         """
             Plot metrics or illuminance data based on the selection from the main combo box for space.
@@ -536,7 +479,7 @@ class Spatial(QtGui.QDialog, Ui_Form):
             if currentFile.endswith(".ill"):
                 selectedIllFileKey = [key for key,items in self.spAllFilesDict.items() if items == currentFile][0]
                 self.illData = Dayill(currentFile,self.ptsFile)
-                self.txtSpaceStatusDisplay.setText("Current space: {} \tCurrent data set: {}.\t Source:{}".format(self.spaceName,selectedIllFileKey,currentFile))
+                self.txtSpaceStatusDisplay.setText("Current space: {} \tCurrent data set: {}.\t Source:{}".format(self.dataSpaceNameSelected, selectedIllFileKey, currentFile))
                 self.spPlotIlluminance()
                 self.grpSpaceIlluminance.setVisible(True)
                 self.spCurrentPlotIsIlluminance=True
@@ -550,7 +493,7 @@ class Spatial(QtGui.QDialog, Ui_Form):
                     self.metricsData = list(metricsData)
                     self.currentMetricsName = currentSelection
                     self.spPlotMetrics()
-                self.txtSpaceStatusDisplay.setText("Current space: {} \tCurrent data set: {}.\t Source:{}".format(self.spaceName,currentSelection,currentFile))
+                self.txtSpaceStatusDisplay.setText("Current space: {} \tCurrent data set: {}.\t Source:{}".format(self.dataSpaceNameSelected,currentSelection,currentFile))
                 self.grpSpaceIlluminance.setVisible(False)
                 self.spCurrentPlotIsIlluminance = False
                 self.sliderSpaceOpacity.setValue(self.spCurrentSpaceChartOpacityValueMetrics * 100)
