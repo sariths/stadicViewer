@@ -17,7 +17,7 @@ from visuals.heatMaps import thermalPlots
 
 from results.dayIll import Dayill
 from software.stadic.readStadic import StadicProject
-
+from results.timeSeries import TimeArray
 
 
 class Spatial(QtGui.QDialog, Ui_Form,VisData):
@@ -155,13 +155,6 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
 
                 self.txtSpaceStatusDisplay.setEnabled(False)
 
-
-
-
-
-
-
-
                 illFileKeys,illFileNames = zip(*self.dataDayIllFilesList)
 
                 self.ptsFile = self.dataPtsFile
@@ -204,6 +197,17 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
 
 
                 self.spacePlotTypeDict = self.dataAllFilesAvailable
+
+
+                self.spShadeSchedule = self.dataProject.spaces[self.dataSpaceIndex].scheduleShades
+                self.spWindowGroupNames = [windowGroup.name for windowGroup in self.dataProject.spaces[self.dataSpaceIndex].windowGroups]
+                self.spShowWindowGroupInfo = True #Toggle this to False in case window Group info isn't to be shown.
+
+                if self.spShadeSchedule and self.spShowWindowGroupInfo:
+                    shadeData = TimeArray(self.spShadeSchedule)
+                    shadeData = [map(int,timedata['data']) for timedata in shadeData.timedata]
+                    self.spShadeSchedule = shadeData
+
 
 
                 self.txtSpaceMsgBox.setText(self.dataLog)
@@ -543,10 +547,21 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
         upperMask = self.spIlluminanceUpperMaskColor
         lowerMask = self.spIlluminanceLowerMaskColor
 
-
+        plotTitle = str("Illuminance at {}".format(timeStamp).strip())
+        try:
+            if self.spShowWindowGroupInfo and self.spShadeSchedule:
+                shadeScheduleCurrentHour = self.spShadeSchedule[self.spCurrentIlluminanceHour]
+                groupNames = map(str,self.spWindowGroupNames)
+                groupNames = map(str.strip,groupNames)
+                shadeSettings = zip(groupNames,shadeScheduleCurrentHour)
+                shadeSettings = str("\nShade Settings: {}".format(shadeSettings))
+                plotTitle += shadeSettings
+        #TODO: Find out why this exception occurs when the program loads.
+        except AttributeError:
+            pass
         contourValues = self.spContourValuesIlluminance
 
-        gridPlot(data, xCor, yCor,"Illuminance at {}".format(timeStamp),"X Coordinates","Y Coordinates",
+        gridPlot(data, xCor, yCor,plotTitle,"X Coordinates","Y Coordinates",
                  fullDataGrid=self.illData.roomgrid.gridMatrixLocations, figVal=self.spFigure, colormap=colorScheme,
                  alpha=alphaVal, colorMax=self.spIlluminanceMaxVal, colorMin=self.spIlluminanceMinVal, lowerMask=lowerMask,
                  upperMask=upperMask, plotColors=self.chkSpaceColors.checkState(), plotContours=self.chkSpaceContours.checkState(),
@@ -601,6 +616,6 @@ def main(jsonFile=None,spaceID=None,*args):
     app.exec_()
 
 if __name__ =="__main__":
-     sys.argv.extend([r"C:\C-SHAP\testC.json", 0])
-     # sys.argv.extend([r'E:\debug2\base2wgangsig2.json',0])
+     # sys.argv.extend([r"C:\C-SHAP\testC.json", 0])
+     sys.argv.extend([r'E:\debug2\base2wgangsig2.json',0])
      main()

@@ -19,7 +19,7 @@ class TimeSeries(QtGui.QDialog, Ui_Form,VisData):
     def setupGui(self):
 
         #Turn this off later ;-)
-        self.grpTimeSeriesMain.setVisible(False)
+        self.grpTimeSeriesMain.setVisible(True)
 
 
         self.tsFigure = Figure()

@@ -25,7 +25,8 @@ class Main(QtGui.QDialog,Ui_Form):
 
         self.defaultWindowTitle = str(self.windowTitle())
 
-        # TODO: Disable runtime warnings eventually.
+        # TODO: Remove this one by one. :)
+        self.btnSpaceSettingsContour.setVisible(False)
 
 
         # TODO:Contours
@@ -526,6 +527,10 @@ class Main(QtGui.QDialog,Ui_Form):
             Plot metrics or illuminance data based on the selection from the main combo box for space.
 
         """
+
+        # TODO: Remove this too :)
+        self.grpSpaceColorScheme.setVisible(False)
+
         currentSelection = str(self.cmbSpacePlotType.currentText())
         filesDict = self.spacePlotTypeDict
         if filesDict:

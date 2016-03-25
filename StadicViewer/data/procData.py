@@ -54,6 +54,8 @@ class VisData(object):
         project = StadicProject(fileName)
         self.dataProject = project
 
+        self.dataSpaceIndex = spaceIndex
+
         self.dataPtsFile =  project.spaces[spaceIndex].analysisPointsFiles[0]
         self.dataSpaceNames = [project.spaces[idx].spaceName for idx, space in enumerate(project.spaces)]
         self.dataSpaceNameSelected = self.dataSpaceNames[spaceIndex]
