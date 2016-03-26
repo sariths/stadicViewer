@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d6f4dbd-bde3-448c-a001-ea6a4035a40c" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/StadicViewer/abc.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StadicViewer/data/procData.py" afterPath="$PROJECT_DIR$/StadicViewer/data/procData.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StadicViewer/gui/spatial.py" afterPath="$PROJECT_DIR$/StadicViewer/gui/spatial.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StadicViewer/gui/timeSeries.py" afterPath="$PROJECT_DIR$/StadicViewer/gui/timeSeries.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StadicViewer/stadicVis2.py" afterPath="$PROJECT_DIR$/StadicViewer/stadicVis2.py" />
     </list>
     <list id="7a9896ae-cba5-4943-a8d8-b3fdde8a5ffb" name="DeploymentFiles" comment="I don't really want to sync these files everytime." />
     <ignored path="stadicViewer.iws" />
@@ -25,32 +23,6 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="stadicVis.py" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/StadicViewer/stadicVis.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.87190527">
-                    <caret line="58" column="11" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
-                    <folding>
-                      <element signature="e#30#68#0" expanded="true" />
-                      <element signature="e#320#490#1" expanded="true" />
-                      <element signature="e#563#802#0" expanded="true" />
-                      <element signature="e#849#1063#0" expanded="true" />
-                      <element signature="e#1115#1373#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="stadicViewer" />
@@ -61,9 +33,9 @@
         <entry file="file://$PROJECT_DIR$/StadicViewer/stadicVis2.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="86" column="37" selection-start-line="86" selection-start-column="37" selection-end-line="86" selection-end-column="37" />
+              <caret line="574" column="64" selection-start-line="574" selection-start-column="64" selection-end-line="574" selection-end-column="64" />
               <folding>
-                <element signature="e#21269#24000#0" expanded="true" />
+                <element signature="e#659#7541#0" expanded="true" />
                 <element signature="e#27072#27325#0" expanded="true" />
               </folding>
             </state>
@@ -121,42 +93,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="visualizePts.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../sarith/sarith/radiance/radutil/visualizePts.py">
+      <file leaf-file-name="gridPlots.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../sarith/sarith/visuals/gridPlots.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="97" column="47" selection-start-line="97" selection-start-column="47" selection-end-line="97" selection-end-column="47" />
-              <folding>
-                <element signature="e#0#192#1" expanded="true" />
-                <element signature="e#1378#3666#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="spatial.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/StadicViewer/gui/spatial.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38046646">
-              <caret line="551" column="66" selection-start-line="551" selection-start-column="66" selection-end-line="551" selection-end-column="66" />
-              <folding>
-                <element signature="e#15#53#0" expanded="true" />
-                <element signature="e#720#10482#0" expanded="true" />
-                <element signature="e#10530#10944#0" expanded="true" />
-                <element signature="e#15067#15353#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="timeSeries.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../sarith/sarith/results/timeSeries.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#186#1" expanded="true" />
-              </folding>
+              <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -165,18 +107,21 @@
         <entry file="file://$PROJECT_DIR$/../sarith/sarith/software/stadic/readStadic.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="209" column="86" selection-start-line="209" selection-start-column="86" selection-end-line="209" selection-end-column="86" />
+              <caret line="305" column="0" selection-start-line="305" selection-start-column="0" selection-end-line="305" selection-end-column="0" />
               <folding>
                 <element signature="e#15#190#1" expanded="true" />
                 <element signature="e#191#202#0" expanded="true" />
-                <element signature="e#1148#7441#0" expanded="true" />
+                <element signature="e#1110#13799#0" expanded="false" />
+                <element signature="e#7483#10694#0" expanded="false" />
                 <element signature="e#7483#7539#1" expanded="true" />
+                <element signature="e#7626#10694#0" expanded="true" />
                 <element signature="e#10738#11519#0" expanded="false" />
                 <element signature="e#11558#11829#0" expanded="false" />
                 <element signature="e#11877#12245#0" expanded="false" />
                 <element signature="e#12285#12567#0" expanded="false" />
                 <element signature="e#12607#12937#0" expanded="false" />
                 <element signature="e#13016#13324#0" expanded="true" />
+                <element signature="e#13827#16296#0" expanded="false" />
                 <element signature="e#13864#13994#0" expanded="true" />
                 <element signature="e#14721#15076#0" expanded="true" />
                 <element signature="e#15115#16296#0" expanded="true" />
@@ -193,6 +138,38 @@
               <folding>
                 <element signature="e#279#1474#0" expanded="true" />
                 <element signature="e#3496#5090#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="spatial.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/StadicViewer/gui/spatial.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.57062936">
+              <caret line="24" column="46" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
+              <folding>
+                <element signature="e#15#53#0" expanded="true" />
+                <element signature="e#932#28437#0" expanded="false" />
+                <element signature="e#965#11366#0" expanded="true" />
+                <element signature="e#11415#11829#0" expanded="true" />
+                <element signature="e#24835#27081#0" expanded="true" />
+                <element signature="e#27120#28437#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="abc.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/StadicViewer/abc.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="10.931034">
+              <caret line="34" column="23" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="23" />
+              <folding>
+                <element signature="e#53#263#1" expanded="true" />
+                <element signature="e#297#572#0" expanded="true" />
+                <element signature="e#612#910#0" expanded="true" />
+                <element signature="e#1395#1862#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -233,6 +210,7 @@
         <option value="$PROJECT_DIR$/../sarith/sarith/utilities/files/search.py" />
         <option value="$PROJECT_DIR$/../sarith/sarith/utilities/decorators/printOutput.py" />
         <option value="$PROJECT_DIR$/StadicViewer/data/procData.py" />
+        <option value="$PROJECT_DIR$/StadicViewer/abc.py" />
         <option value="$PROJECT_DIR$/StadicViewer/gui/spatial.py" />
         <option value="$PROJECT_DIR$/StadicViewer/stadicVis.py" />
       </list>
@@ -269,6 +247,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Problems" />
         <subPane subId="Project Files">
@@ -299,6 +278,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="sarith" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stadicViewer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stadicViewer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sarith" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="visuals" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -446,7 +443,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -513,23 +509,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="search" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../sarith/sarith/utilities/files" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="stadicViewer" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../sarith/sarith/utilities/files/search.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="printOutput" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -560,6 +539,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="stadicViewer" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/StadicViewer/gui/spatial.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="abc" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/StadicViewer" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="stadicViewer" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/StadicViewer/abc.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -689,17 +685,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.stadicVis (1)" />
       <item index="1" class="java.lang.String" itemvalue="Python.stadicVis2" />
-      <item index="2" class="java.lang.String" itemvalue="Python.search" />
-      <item index="3" class="java.lang.String" itemvalue="Python.printOutput" />
-      <item index="4" class="java.lang.String" itemvalue="Python.spatial" />
+      <item index="2" class="java.lang.String" itemvalue="Python.printOutput" />
+      <item index="3" class="java.lang.String" itemvalue="Python.spatial" />
+      <item index="4" class="java.lang.String" itemvalue="Python.abc" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.stadicVis (1)" />
-        <item index="1" class="java.lang.String" itemvalue="Python.spatial" />
-        <item index="2" class="java.lang.String" itemvalue="Python.stadicVis2" />
-        <item index="3" class="java.lang.String" itemvalue="Python.printOutput" />
-        <item index="4" class="java.lang.String" itemvalue="Python.search" />
+        <item index="1" class="java.lang.String" itemvalue="Python.abc" />
+        <item index="2" class="java.lang.String" itemvalue="Python.spatial" />
+        <item index="3" class="java.lang.String" itemvalue="Python.stadicVis2" />
+        <item index="4" class="java.lang.String" itemvalue="Python.printOutput" />
       </list>
     </recent_temporary>
   </component>
@@ -808,12 +804,18 @@
       <option name="project" value="LOCAL" />
       <updated>1458534457623</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Almost finished space based charts. Added metrics, added contour manipulation etc.">
+      <created>1458867018096</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1458867018096</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25104168" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -858,41 +860,21 @@
           <url>file://$PROJECT_DIR$/StadicViewer/stadicVis2.py</url>
           <line>581</line>
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/../sarith/sarith/software/stadic/readStadic.py</url>
+          <line>305</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="3" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../sarith/sarith/software/stadic/readStadic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="350" column="0" selection-start-line="350" selection-start-column="0" selection-end-line="350" selection-end-column="17" />
-          <folding>
-            <element signature="e#15#190#1" expanded="true" />
-            <element signature="e#191#202#0" expanded="true" />
-            <element signature="e#1148#7441#0" expanded="true" />
-            <element signature="e#7483#7539#1" expanded="true" />
-            <element signature="e#10738#11519#0" expanded="false" />
-            <element signature="e#11558#11829#0" expanded="false" />
-            <element signature="e#11877#12245#0" expanded="false" />
-            <element signature="e#12285#12567#0" expanded="false" />
-            <element signature="e#12607#12937#0" expanded="false" />
-            <element signature="e#13016#13324#0" expanded="true" />
-            <element signature="e#13864#13994#0" expanded="true" />
-            <element signature="e#14721#15076#0" expanded="true" />
-            <element signature="e#15115#16296#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StadicViewer/deploySetup.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <element signature="e#405#437#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -915,7 +897,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="420" column="35" selection-start-line="420" selection-start-column="35" selection-end-line="420" selection-end-column="35" />
           <folding>
-            <element signature="e#21269#24000#0" expanded="true" />
+            <element signature="e#659#7541#0" expanded="true" />
             <element signature="e#27072#27325#0" expanded="true" />
           </folding>
         </state>
@@ -935,14 +917,17 @@
           <folding>
             <element signature="e#15#190#1" expanded="true" />
             <element signature="e#191#202#0" expanded="true" />
-            <element signature="e#1148#7441#0" expanded="true" />
+            <element signature="e#1110#13799#0" expanded="false" />
+            <element signature="e#7483#10694#0" expanded="false" />
             <element signature="e#7483#7539#1" expanded="true" />
+            <element signature="e#7626#10694#0" expanded="true" />
             <element signature="e#10738#11519#0" expanded="false" />
             <element signature="e#11558#11829#0" expanded="false" />
             <element signature="e#11877#12245#0" expanded="false" />
             <element signature="e#12285#12567#0" expanded="false" />
             <element signature="e#12607#12937#0" expanded="false" />
             <element signature="e#13016#13324#0" expanded="true" />
+            <element signature="e#13827#16296#0" expanded="false" />
             <element signature="e#13864#13994#0" expanded="true" />
             <element signature="e#14721#15076#0" expanded="true" />
             <element signature="e#15115#16296#0" expanded="true" />
@@ -954,9 +939,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#405#437#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -979,7 +961,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="420" column="35" selection-start-line="420" selection-start-column="35" selection-end-line="420" selection-end-column="35" />
           <folding>
-            <element signature="e#21269#24000#0" expanded="true" />
+            <element signature="e#659#7541#0" expanded="true" />
             <element signature="e#27072#27325#0" expanded="true" />
           </folding>
         </state>
@@ -999,14 +981,17 @@
           <folding>
             <element signature="e#15#190#1" expanded="true" />
             <element signature="e#191#202#0" expanded="true" />
-            <element signature="e#1148#7441#0" expanded="true" />
+            <element signature="e#1110#13799#0" expanded="false" />
+            <element signature="e#7483#10694#0" expanded="false" />
             <element signature="e#7483#7539#1" expanded="true" />
+            <element signature="e#7626#10694#0" expanded="true" />
             <element signature="e#10738#11519#0" expanded="false" />
             <element signature="e#11558#11829#0" expanded="false" />
             <element signature="e#11877#12245#0" expanded="false" />
             <element signature="e#12285#12567#0" expanded="false" />
             <element signature="e#12607#12937#0" expanded="false" />
             <element signature="e#13016#13324#0" expanded="true" />
+            <element signature="e#13827#16296#0" expanded="false" />
             <element signature="e#13864#13994#0" expanded="true" />
             <element signature="e#14721#15076#0" expanded="true" />
             <element signature="e#15115#16296#0" expanded="true" />
@@ -1018,9 +1003,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#405#437#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1043,7 +1025,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="29" column="67" selection-start-line="29" selection-start-column="67" selection-end-line="29" selection-end-column="67" />
           <folding>
-            <element signature="e#21269#24000#0" expanded="true" />
+            <element signature="e#659#7541#0" expanded="true" />
             <element signature="e#27072#27325#0" expanded="true" />
           </folding>
         </state>
@@ -1056,14 +1038,17 @@
           <folding>
             <element signature="e#15#190#1" expanded="true" />
             <element signature="e#191#202#0" expanded="true" />
-            <element signature="e#1148#7441#0" expanded="true" />
+            <element signature="e#1110#13799#0" expanded="false" />
+            <element signature="e#7483#10694#0" expanded="false" />
             <element signature="e#7483#7539#1" expanded="true" />
+            <element signature="e#7626#10694#0" expanded="true" />
             <element signature="e#10738#11519#0" expanded="false" />
             <element signature="e#11558#11829#0" expanded="false" />
             <element signature="e#11877#12245#0" expanded="false" />
             <element signature="e#12285#12567#0" expanded="false" />
             <element signature="e#12607#12937#0" expanded="false" />
             <element signature="e#13016#13324#0" expanded="true" />
+            <element signature="e#13827#16296#0" expanded="false" />
             <element signature="e#13864#13994#0" expanded="true" />
             <element signature="e#14721#15076#0" expanded="true" />
             <element signature="e#15115#16296#0" expanded="true" />
@@ -1090,7 +1075,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#21269#24000#0" expanded="true" />
+            <element signature="e#659#7541#0" expanded="true" />
             <element signature="e#27072#27325#0" expanded="true" />
           </folding>
         </state>
@@ -1115,7 +1100,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#21269#24000#0" expanded="true" />
+            <element signature="e#659#7541#0" expanded="true" />
             <element signature="e#27072#27325#0" expanded="true" />
           </folding>
         </state>
@@ -1133,7 +1118,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#21269#24000#0" expanded="true" />
+            <element signature="e#659#7541#0" expanded="true" />
             <element signature="e#27072#27325#0" expanded="true" />
           </folding>
         </state>
@@ -1144,7 +1129,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#21269#24000#0" expanded="true" />
+            <element signature="e#659#7541#0" expanded="true" />
             <element signature="e#27072#27325#0" expanded="true" />
           </folding>
         </state>
@@ -1168,13 +1153,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../sarith/sarith/visuals/gridPlots.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30456027">
-          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="12" selection-end-column="110" />
         </state>
       </provider>
     </entry>
@@ -1245,9 +1223,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <element signature="e#405#437#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1256,8 +1231,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="97" column="47" selection-start-line="97" selection-start-column="47" selection-end-line="97" selection-end-column="47" />
           <folding>
-            <element signature="e#0#192#1" expanded="true" />
-            <element signature="e#1378#3666#0" expanded="true" />
+            <element signature="e#0#192#1" expanded="false" />
+            <element signature="e#1378#3666#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1302,27 +1277,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../sarith/sarith/utilities/decorators/printOutput.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
-          <folding>
-            <element signature="e#15#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StadicViewer/stadicVis2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="86" column="37" selection-start-line="86" selection-start-column="37" selection-end-line="86" selection-end-column="37" />
-          <folding>
-            <element signature="e#21269#24000#0" expanded="true" />
-            <element signature="e#27072#27325#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StadicViewer/data/procData.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1334,31 +1288,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../sarith/sarith/results/timeSeries.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#186#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../sarith/sarith/software/stadic/readStadic.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="209" column="86" selection-start-line="209" selection-start-column="86" selection-end-line="209" selection-end-column="86" />
+          <caret line="305" column="0" selection-start-line="305" selection-start-column="0" selection-end-line="305" selection-end-column="0" />
           <folding>
             <element signature="e#15#190#1" expanded="true" />
             <element signature="e#191#202#0" expanded="true" />
-            <element signature="e#1148#7441#0" expanded="true" />
+            <element signature="e#1110#13799#0" expanded="false" />
+            <element signature="e#7483#10694#0" expanded="false" />
             <element signature="e#7483#7539#1" expanded="true" />
+            <element signature="e#7626#10694#0" expanded="true" />
             <element signature="e#10738#11519#0" expanded="false" />
             <element signature="e#11558#11829#0" expanded="false" />
             <element signature="e#11877#12245#0" expanded="false" />
             <element signature="e#12285#12567#0" expanded="false" />
             <element signature="e#12607#12937#0" expanded="false" />
             <element signature="e#13016#13324#0" expanded="true" />
+            <element signature="e#13827#16296#0" expanded="false" />
             <element signature="e#13864#13994#0" expanded="true" />
             <element signature="e#14721#15076#0" expanded="true" />
             <element signature="e#15115#16296#0" expanded="true" />
@@ -1366,9 +1313,76 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../sarith/sarith/utilities/decorators/printOutput.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+          <folding>
+            <element signature="e#15#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../sarith/sarith/results/timeSeries.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#186#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StadicViewer/stadicVis2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="574" column="64" selection-start-line="574" selection-start-column="64" selection-end-line="574" selection-end-column="64" />
+          <folding>
+            <element signature="e#659#7541#0" expanded="true" />
+            <element signature="e#27072#27325#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../sarith/sarith/visuals/gridPlots.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StadicViewer/abc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="10.931034">
+          <caret line="34" column="23" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="23" />
+          <folding>
+            <element signature="e#53#263#1" expanded="true" />
+            <element signature="e#297#572#0" expanded="true" />
+            <element signature="e#612#910#0" expanded="true" />
+            <element signature="e#1395#1862#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StadicViewer/gui/spatial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.57062936">
+          <caret line="24" column="46" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
+          <folding>
+            <element signature="e#15#53#0" expanded="true" />
+            <element signature="e#932#28437#0" expanded="false" />
+            <element signature="e#965#11366#0" expanded="true" />
+            <element signature="e#11415#11829#0" expanded="true" />
+            <element signature="e#24835#27081#0" expanded="true" />
+            <element signature="e#27120#28437#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/StadicViewer/stadicVis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.87190527">
+        <state vertical-scroll-proportion="0.8335664">
           <caret line="58" column="11" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
           <folding>
             <element signature="e#30#68#0" expanded="true" />
@@ -1376,19 +1390,6 @@
             <element signature="e#563#802#0" expanded="true" />
             <element signature="e#849#1063#0" expanded="true" />
             <element signature="e#1115#1373#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StadicViewer/gui/spatial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38046646">
-          <caret line="551" column="66" selection-start-line="551" selection-start-column="66" selection-end-line="551" selection-end-column="66" />
-          <folding>
-            <element signature="e#15#53#0" expanded="true" />
-            <element signature="e#720#10482#0" expanded="true" />
-            <element signature="e#10530#10944#0" expanded="true" />
-            <element signature="e#15067#15353#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -19,7 +19,9 @@ from results.dayIll import Dayill
 from software.stadic.readStadic import StadicProject
 from results.timeSeries import TimeArray
 
-
+#~~~~~DevNotes: 25Mar2016:~~~~~~~
+# Fixed display limits to conform to illuminance units.
+# Moved all the connect signals to the end so that they don't get triggered in the beginning the data is being loaded into all the comboBoxes and textBoxes
 class Spatial(QtGui.QDialog, Ui_Form,VisData):
 
     def setupGui(self):
@@ -34,14 +36,14 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                 self.spCanvas = FigureCanvas(self.spFigure)
 
 
+
                 #Validator for setting values
                 floatValidator = QtGui.QDoubleValidator(0.0,20000.0,3)
 
                 #Settings for showing and hiding color and contours.
                 self.grpColoursIlluminance.setVisible(False)
                 self.grpContoursIlluminance.setVisible(False)
-                self.btnSpaceSettingsContour.clicked.connect(self.spToggleContourSettings)
-                self.btnSpaceSettingsColours.clicked.connect(self.spToggleColorSettings)
+
 
                 #Initiate a dictioanry for ill files.
                 self.spAllFilesDict = {}
@@ -52,34 +54,27 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                 self.spTimeStepIlluminance = 1 #This attribute determines the time step for stepping between different illuminance plots.
 
                 #Changing/clicking any of the below controls should trigger the illuminance plots.
-                self.calSpaceDateTimeIllum.dateChanged.connect(self.spSetCurrentIlluminanceHourCalendar)
-                self.cmbSpaceTimeIllum.currentIndexChanged.connect(self.spSetCurrentIlluminanceHourCalendar)
 
 
-                self.btnSpacePrevHour.clicked.connect(lambda:self.spSetCurrentIlluminanceHourTimeStep(False))
-                self.btnSpaceNextHour.clicked.connect(lambda:self.spSetCurrentIlluminanceHourTimeStep(True))
 
-                #If the timestep settings are changed, change the time step but don't trigger the illuminance plot.
-                self.cmbSpaceIlluminanceStepType.currentIndexChanged.connect(self.spUpdateIlluminanceTimeStep)
-                self.cmbSpaceIluminanceStepValue.currentIndexChanged.connect(self.spUpdateIlluminanceTimeStep)
+
 
 
                 self.spIlluminanceActivated = False
                 self.spCurrentIlluminanceHour = 9
 
 
-                #Settings for displaying the opacity value on a box.
-                self.sliderSpaceOpacity.valueChanged.connect(self.spOpacitySliderChanged)
 
 
-                #Settings for color values of the illuminance plot.
-                self.btnSelectColorLowerMask.clicked.connect(lambda:self.spMaskSettingsActivated(False))
-                self.btnSelectColorUpperMask.clicked.connect(lambda:self.spMaskSettingsActivated(True))
 
-                self.spIlluminanceMaxVal = 5000
+                units = self.dataProject.unitsIlluminance
+                unitsMultiplier = {'lux':1,'fc':0.1}[str(units)]
+
+
+                self.spIlluminanceMaxVal = 5000*unitsMultiplier
                 self.spIlluminanceMinVal = 1
 
-                self.spIlluminanceMaxValDefault = 5000
+                self.spIlluminanceMaxValDefault = 5000*unitsMultiplier
                 self.spIlluminanceMinValDefault = 1
                 self.spIlluminanceUpperMaskValue = None
                 self.spIlluminanceLowerMaskValue = None
@@ -105,16 +100,11 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                 self.txtSpaceColorsMax.setValidator(floatValidator)
                 self.txtSpaceColorsMin.setValidator(floatValidator)
 
-                self.btnSpaceResetColors.clicked.connect(self.spResetColorSettings)
-                self.btnSpaceSetColors.clicked.connect(self.spSetColorSettings)
 
-
-                self.chkSpaceColors.clicked.connect(self.spRefreshPlots)
                 self.spPlotIlluminanceColors = True
 
 
-                #settings for contour values for the illuminance plot.
-                self.cmbSpaceContourQuantity.currentIndexChanged.connect(self.spSetContourQuantity)
+
                 #Put all contourboxes inside a list for easy iteration.
                 self.spContourBoxes = [self.txtSpaceCountourValue1, self.txtSpaceCountourValue2, self.txtSpaceCountourValue3, self.txtSpaceCountourValue4,
                                        self.txtSpaceCountourValue5, self.txtSpaceCountourValue6, self.txtSpaceCountourValue7, self.txtSpaceCountourValue8]
@@ -122,15 +112,24 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                 for contourBox in self.spContourBoxes:
                     contourBox.setValidator(floatValidator)
 
-                self.chkSpaceContours.clicked.connect(self.spRefreshPlots)
+
+
+
+
 
                 self.spContourValuesIlluminance = (50, 100, 500, 1000, 2000, 3000, 5000, 10000)
+                self.spContourValuesIlluminance = map(lambda x:x*unitsMultiplier,self.spContourValuesIlluminance)
+
                 self.spContourValuesIlluminanceDefault = (50, 100, 500, 1000, 2000, 3000, 5000, 10000)
+                self.spContourValuesIlluminanceDefault = map(lambda x:x*unitsMultiplier,self.spContourValuesIlluminanceDefault)
+
+                for idx,contourBox in enumerate(self.spContourBoxes):
+                    contourBox.setText(str(self.spContourValuesIlluminance[idx]))
+
                 self.spContourValuesMetrics = (0.1, 0.2, 0.3, 0.4, 0.5, 0.7, 0.9, 1.0)
                 self.spContourValuesMetricsDefault = (0.1, 0.2, 0.3, 0.4, 0.5, 0.7, 0.9, 1.0)
 
-                self.btnSpaceResetContours.clicked.connect(self.spResetContourSettings)
-                self.btnSpaceSetContours.clicked.connect(self.spSetContourSettings)
+
 
                 #Contstuctor Stuff
                 self.spColorMapTuple = (('Uniform01', 'viridis'), ('Uniform02', 'inferno'), ('Uniform03', 'plasma'), ('Uniform04', 'magma'), ('Blues', 'Blues'),
@@ -151,7 +150,7 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                 self.spCurrentColorSchemeMetrics = 'YlOrRd'
                 self.spCurrentSpaceChartOpacityValueMetrics = 1
 
-                self.btnSpaceSetColorScheme.clicked.connect(self.spAssignSpaceColorScheme)
+
 
                 self.txtSpaceStatusDisplay.setEnabled(False)
 
@@ -188,12 +187,12 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
 
                 self.cmbSpacePlotType.clear()
                 self.cmbSpacePlotType.addItems(mainComboBoxContents)
-                self.cmbSpacePlotType.currentIndexChanged.connect(self.spPlotTypeSelect)
+
 
 
                 self.cmbSpaceSelectIlluminanceFile.clear()
                 self.cmbSpaceSelectIlluminanceFile.addItems(illFileKeys)
-                self.cmbSpaceSelectIlluminanceFile.currentIndexChanged.connect(self.spLoadDifferentIlluminanceFile)
+
 
 
                 self.spacePlotTypeDict = self.dataAllFilesAvailable
@@ -208,9 +207,51 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                     shadeData = [map(int,timedata['data']) for timedata in shadeData.timedata]
                     self.spShadeSchedule = shadeData
 
+                self.btnSpaceSettingsContour.clicked.connect(self.spToggleContourSettings)
+                self.btnSpaceSettingsColours.clicked.connect(self.spToggleColorSettings)
+                self.calSpaceDateTimeIllum.dateChanged.connect(self.spSetCurrentIlluminanceHourCalendar)
+                self.cmbSpaceTimeIllum.currentIndexChanged.connect(self.spSetCurrentIlluminanceHourCalendar)
+
+                self.btnSpacePrevHour.clicked.connect(lambda:self.spSetCurrentIlluminanceHourTimeStep(False))
+                self.btnSpaceNextHour.clicked.connect(lambda:self.spSetCurrentIlluminanceHourTimeStep(True))
+
+                #If the timestep settings are changed, change the time step but don't trigger the illuminance plot.
+                self.cmbSpaceIlluminanceStepType.currentIndexChanged.connect(self.spUpdateIlluminanceTimeStep)
+                self.cmbSpaceIluminanceStepValue.currentIndexChanged.connect(self.spUpdateIlluminanceTimeStep)
+
+                #Settings for displaying the opacity value on a box.
+                self.sliderSpaceOpacity.valueChanged.connect(self.spOpacitySliderChanged)
+
+
+                #Settings for color values of the illuminance plot.
+                self.btnSelectColorLowerMask.clicked.connect(lambda:self.spMaskSettingsActivated(False))
+                self.btnSelectColorUpperMask.clicked.connect(lambda:self.spMaskSettingsActivated(True))
+
+                self.btnSpaceResetColors.clicked.connect(self.spResetColorSettings)
+                self.btnSpaceSetColors.clicked.connect(self.spSetColorSettings)
+
+                #settings for contour values for the illuminance plot.
+                self.cmbSpaceContourQuantity.currentIndexChanged.connect(self.spSetContourQuantity)
+
+
+                self.chkSpaceColors.clicked.connect(self.spRefreshPlots)
+                self.chkSpaceContours.clicked.connect(self.spRefreshPlots)
+
+                self.btnSpaceResetContours.clicked.connect(self.spResetContourSettings)
+                self.btnSpaceSetContours.clicked.connect(self.spSetContourSettings)
+
+                self.btnSpaceSetColorScheme.clicked.connect(self.spAssignSpaceColorScheme)
+
+                self.cmbSpacePlotType.currentIndexChanged.connect(self.spPlotTypeSelect)
+
+                self.cmbSpaceSelectIlluminanceFile.currentIndexChanged.connect(self.spLoadDifferentIlluminanceFile)
+
+                self.cmbSpaceTimeIllum.setCurrentIndex(10)
+
 
 
                 self.txtSpaceMsgBox.setText(self.dataLog)
+
 
 
 
@@ -549,6 +590,7 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
 
         plotTitle = str("Illuminance at {}".format(timeStamp).strip())
         try:
+            #TODO
             if self.spShowWindowGroupInfo and self.spShadeSchedule:
                 shadeScheduleCurrentHour = self.spShadeSchedule[self.spCurrentIlluminanceHour]
                 groupNames = map(str,self.spWindowGroupNames)
@@ -558,7 +600,8 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                 plotTitle += shadeSettings
         #TODO: Find out why this exception occurs when the program loads.
         except AttributeError:
-            pass
+            print(sys.exc_traceback)
+            print(sys.exc_info())
         contourValues = self.spContourValuesIlluminance
 
         gridPlot(data, xCor, yCor,plotTitle,"X Coordinates","Y Coordinates",
@@ -616,6 +659,6 @@ def main(jsonFile=None,spaceID=None,*args):
     app.exec_()
 
 if __name__ =="__main__":
-     # sys.argv.extend([r"C:\C-SHAP\testC.json", 0])
-     sys.argv.extend([r'E:\debug2\base2wgangsig2.json',0])
+     sys.argv.extend([r"C:\C-SHAP\testC.json", 0])
+     # sys.argv.extend([r'E:\debug2\base2wgangsig2.json',0])
      main()
