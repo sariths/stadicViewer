@@ -8,6 +8,7 @@ from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
 import warnings
 import os,sys,operator
+import bisect
 
 from StadicViewer.data.procData import VisData
 
@@ -72,10 +73,10 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
 
 
                 self.spIlluminanceMaxVal = 5000*unitsMultiplier
-                self.spIlluminanceMinVal = 1
+                self.spIlluminanceMinVal = 0
 
                 self.spIlluminanceMaxValDefault = 5000*unitsMultiplier
-                self.spIlluminanceMinValDefault = 1
+                self.spIlluminanceMinValDefault = 0
                 self.spIlluminanceUpperMaskValue = None
                 self.spIlluminanceLowerMaskValue = None
                 self.spIlluminanceUpperMaskColor = None
@@ -151,6 +152,7 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                 self.spCurrentSpaceChartOpacityValueMetrics = 1
 
 
+                self.spInterpolateColorScheme= None
 
                 self.txtSpaceStatusDisplay.setEnabled(False)
 
@@ -248,12 +250,31 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
 
                 self.cmbSpaceTimeIllum.setCurrentIndex(10)
 
+                # self.spCanvas.mpl_connect('motion_notify_event',self.spMouseClicked)
+
+                # self.spCurrentDataSet = None
+
 
 
                 self.txtSpaceMsgBox.setText(self.dataLog)
 
 
+    def spMouseClicked(self,event):
+        """
+        I am leaving this on for future reference for event releated stuff
+        :param event:
+        :return:
+        """
+        xdata,ydata = event.xdata,event.ydata
 
+        if xdata and ydata:
+            xCor = list(self.illData.roomgrid.uniCorX)
+            yCor = list(self.illData.roomgrid.uniCorY)
+            xCorLen,yCorLen = len(xCor),len(yCor)
+            currentData = self.spCurrentDataSet
+            xloc = bisect.bisect(xCor,xdata)
+            yloc = bisect.bisect(yCor,ydata)
+            print(xloc,yloc)
 
     def spSetContourSettings(self):
         contourList = []
@@ -323,6 +344,11 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
 
         if self.chkSpaceColorSchemeInvert.checkState():
             currentColor += "_r"
+
+        if self.chkSpaceColorSchemeInterpolate.checkState():
+            self.spInterpolateColorScheme = 'nearest'
+        else:
+            self.spInterpolateColorScheme = None
 
         if self.spCurrentPlotIsIlluminance:
             self.spCurrentColorScheme = currentColor
@@ -559,6 +585,11 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
             else:
                 self.chkSpaceColorSchemeInvert.setChecked(False)
 
+            if self.spInterpolateColorScheme == 'nearest':
+                self.chkSpaceColorSchemeInterpolate.setChecked(True)
+            else:
+                self.chkSpaceColorSchemeInterpolate.setChecked(False)
+
             colorSchemes= zip(*self.spColorMapTuple)[1]
 
             currentColorIndex = colorSchemes.index(currentColorScheme)
@@ -576,6 +607,9 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
         yCor = self.illData.roomgrid.uniCor['y']
         data = self.illData.timedata[self.spCurrentIlluminanceHour]['data'].illarr
 
+
+
+
         # if len(data)<len(xCor)*len(yCor):
         #     data = data + [0]*(len(xCor)*len(yCor)-len(data))
 
@@ -589,26 +623,25 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
         lowerMask = self.spIlluminanceLowerMaskColor
 
         plotTitle = str("Illuminance at {}".format(timeStamp).strip())
-        try:
-            #TODO
-            if self.spShowWindowGroupInfo and self.spShadeSchedule:
-                shadeScheduleCurrentHour = self.spShadeSchedule[self.spCurrentIlluminanceHour]
-                groupNames = map(str,self.spWindowGroupNames)
-                groupNames = map(str.strip,groupNames)
-                shadeSettings = zip(groupNames,shadeScheduleCurrentHour)
-                shadeSettings = str("\nShade Settings: {}".format(shadeSettings))
-                plotTitle += shadeSettings
-        #TODO: Find out why this exception occurs when the program loads.
-        except AttributeError:
-            print(sys.exc_traceback)
-            print(sys.exc_info())
+
+        if self.spShowWindowGroupInfo and self.spShadeSchedule:
+            shadeScheduleCurrentHour = self.spShadeSchedule[self.spCurrentIlluminanceHour]
+            groupNames = map(str,self.spWindowGroupNames)
+            groupNames = map(str.strip,groupNames)
+            shadeSettings = zip(groupNames,shadeScheduleCurrentHour)
+            shadeSettings = str("\nShade Settings: {}".format(shadeSettings))
+            plotTitle += shadeSettings
+
         contourValues = self.spContourValuesIlluminance
+
+
+        self.spCurrentDataSet = data
 
         gridPlot(data, xCor, yCor,plotTitle,"X Coordinates","Y Coordinates",
                  fullDataGrid=self.illData.roomgrid.gridMatrixLocations, figVal=self.spFigure, colormap=colorScheme,
                  alpha=alphaVal, colorMax=self.spIlluminanceMaxVal, colorMin=self.spIlluminanceMinVal, lowerMask=lowerMask,
                  upperMask=upperMask, plotColors=self.chkSpaceColors.checkState(), plotContours=self.chkSpaceContours.checkState(),
-                 contourValues=contourValues)
+                 contourValues=contourValues,interpolationVal=self.spInterpolateColorScheme)
 
         self.spCanvas.draw()
 
@@ -634,10 +667,13 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
         #This replace is a quick hack for cases where Illuminance is abbreivated as Illuminance
         currentMetricsName = self.currentMetricsName.replace("Illum","Illuminance")
 
+        self.spCurrentDataSet = data
+
         gridPlot(data, xCor, yCor, currentMetricsName,"X Coordinates","Y Coordinates",
                  fullDataGrid=self.illData.roomgrid.gridMatrixLocations, figVal=self.spFigure, colormap=colorScheme,
                  alpha=alphaVal, colorMax=self.spMetricsMaxVal, colorMin=self.spMetricsMinVal, lowerMask=lowerMask,
-                 upperMask=upperMask, plotColors=self.chkSpaceColors.checkState(), plotContours=self.chkSpaceContours.checkState(), contourValues=self.spContourValuesMetrics)
+                 upperMask=upperMask, plotColors=self.chkSpaceColors.checkState(), plotContours=self.chkSpaceContours.checkState(), contourValues=self.spContourValuesMetrics,
+                 interpolationVal=self.spInterpolateColorScheme)
 
         self.spCanvas.draw()
 

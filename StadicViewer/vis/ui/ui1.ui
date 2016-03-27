@@ -44,7 +44,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tabSpace">
     <attribute name="title">
@@ -973,9 +973,14 @@
        <rect>
         <x>10</x>
         <y>20</y>
-        <width>121</width>
+        <width>111</width>
         <height>21</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>7</pointsize>
+       </font>
       </property>
       <property name="toolTip">
        <string>Select a color scheme for the chart.</string>
@@ -984,8 +989,8 @@
      <widget class="QCheckBox" name="chkSpaceColorSchemeInvert">
       <property name="geometry">
        <rect>
-        <x>150</x>
-        <y>15</y>
+        <x>130</x>
+        <y>0</y>
         <width>51</width>
         <height>31</height>
        </rect>
@@ -1011,6 +1016,22 @@
       </property>
       <property name="text">
        <string>Confirm</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="chkSpaceColorSchemeInterpolate">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>20</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>Check this box to show discrete color patches in the plot.</string>
+      </property>
+      <property name="text">
+       <string>Discretize</string>
       </property>
      </widget>
     </widget>
@@ -1863,11 +1884,6 @@
       </property>
       <layout class="QVBoxLayout" name="layoutTimeSeries"/>
      </widget>
-     <zorder>cmbTimeSeriesPlotType</zorder>
-     <zorder>grpTimeSeriesColorScheme</zorder>
-     <zorder>txtTimeSeriesMsgBox</zorder>
-     <zorder>verticalLayoutWidget_2</zorder>
-     <zorder>txtTimeSeriesStatusDisplay</zorder>
     </widget>
     <widget class="QLineEdit" name="txtTimeSeriesStatusDisplay">
      <property name="enabled">

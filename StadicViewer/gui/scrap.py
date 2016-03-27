@@ -1,26 +1,15 @@
-class Main(object):
-    def __init__(self,a,b):
-        self.a = a
-        self.b = b
+import matplotlib.pyplot as plt
 
+pt_no = [1,2,3]
+coord_x = [6035763.111, 6035765.251, 6035762.801]
+coord_y = [6439524.100, 6439522.251, 6439518.298]
 
-class JsonData(object):
-    def __init__(self,p,q):
-        self.p = p
-        self.q = q
+fig, ax = plt.subplots()
+ax.scatter(coord_y, coord_x, marker='x')
+ax.axes.get_xaxis().set_visible(False)
+ax.axes.get_yaxis().set_visible(False)
+for i, txt in enumerate(pt_no):
+    ax.annotate(txt, (coord_y[i], coord_x[i]))
 
-class Main2(Main,JsonData):
-    def __init__(self):
-        print("ia m ")
-        self.x = 42
-    def something(self):
-        print(self.p)
-class Main3(Main,JsonData):
-    def __init__(self):
-        self.x = 43
-        print("I am going to run")
-
-class Final(Main2,Main3,JsonData):
-    def __init__(self,a,b):
-        pass
-
+# ax.format_coord = lambda x, y: "({0:f}, ".format(y) +  "{0:f})".format(x)
+plt.show()
