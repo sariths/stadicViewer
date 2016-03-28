@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d6f4dbd-bde3-448c-a001-ea6a4035a40c" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/todoList.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
     </list>
     <list id="7a9896ae-cba5-4943-a8d8-b3fdde8a5ffb" name="DeploymentFiles" comment="I don't really want to sync these files everytime." />
     <ignored path="stadicViewer.iws" />
@@ -108,10 +108,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="readme.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="readme.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/readme.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.17171717">
+            <state vertical-scroll-proportion="-4.1034484">
               <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
             </state>
@@ -121,13 +121,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="objview.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../sarith/sarith/radiance/radbin/objview.py">
+      <file leaf-file-name="todoList.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/todoList.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="111" column="66" selection-start-line="111" selection-start-column="66" selection-end-line="111" selection-end-column="66" />
+            <state vertical-scroll-proportion="0.12265512">
+              <caret line="5" column="78" selection-start-line="5" selection-start-column="78" selection-end-line="5" selection-end-column="78" />
               <folding />
             </state>
+          </provider>
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
           </provider>
         </entry>
       </file>
@@ -201,6 +204,7 @@
         <option value="$PROJECT_DIR$/StadicViewer/gui/timeSeries.py" />
         <option value="$PROJECT_DIR$/StadicViewer/stadicVis.py" />
         <option value="$PROJECT_DIR$/readme.md" />
+        <option value="$PROJECT_DIR$/todoList.md" />
       </list>
     </option>
   </component>
@@ -684,7 +688,13 @@
       <option name="project" value="LOCAL" />
       <updated>1459137650303</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Added 0.02 release notes.">
+      <created>1459138077284</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1459138077284</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -748,7 +758,8 @@
     <MESSAGE value="Changed the plots from pcolormesh to imshow. I noticed that with pcolor mesh the data was getting truncated.&#10;Add interpolation options for plots.&#10;Modified the gui slightly by adding a checkbox." />
     <MESSAGE value="Updates on 03/27/2016.&#10;&#10;1. Added tooltips for plots. Created a subclass of Naviation toolbar to make that happen.   &#10;2. Fixed relative path issues for imports.  &#10;3. Changed the deployment file to work with the new setup.&#10;4. stadicVis2 is not needed anymore, so I deleted it.&#10;" />
     <MESSAGE value="Started a readme file." />
-    <option name="LAST_COMMIT_MESSAGE" value="Started a readme file." />
+    <MESSAGE value="Added 0.02 release notes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added 0.02 release notes." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -764,18 +775,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/StadicViewer/data/procData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="e#279#1474#0" expanded="true" />
-            <element signature="e#1535#3436#0" expanded="true" />
-            <element signature="e#3496#5090#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StadicViewer/gui/base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1269,8 +1268,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/readme.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17171717">
+        <state vertical-scroll-proportion="-4.1034484">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/todoList.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12265512">
+          <caret line="5" column="78" selection-start-line="5" selection-start-column="78" selection-end-line="5" selection-end-column="78" />
           <folding />
         </state>
       </provider>
