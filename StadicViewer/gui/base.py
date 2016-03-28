@@ -2,9 +2,9 @@
 from __future__ import print_function
 
 from PyQt4 import QtCore,QtGui
-from StadicViewer.vis.gui import Ui_Form
+from vis.gui import Ui_Form
 import os,sys,operator
-from StadicViewer.data.procData import VisData
+from data.procData import VisData
 from software.stadic.readStadic import StadicProject
 # TODO: Define a jsonobject class that will then be inherited by others
 
@@ -74,4 +74,5 @@ def main():
 
 if __name__ == "__main__":
     sys.argv.extend([r"C:\C-SHAP\testC.json", 0])
+
     main()

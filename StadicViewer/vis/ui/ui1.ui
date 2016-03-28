@@ -29,7 +29,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>STADICvis 0.01</string>
+   <string>STADICvis 0.02</string>
   </property>
   <widget class="QTabWidget" name="tabWidget">
    <property name="enabled">

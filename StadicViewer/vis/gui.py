@@ -539,7 +539,7 @@ class Ui_Form(object):
         Form.setTabOrder(self.btnOpenJson, self.tabWidget)
 
     def retranslateUi(self, Form):
-        Form.setWindowTitle(_translate("Form", "STADICvis 0.01", None))
+        Form.setWindowTitle(_translate("Form", "STADICvis 0.02", None))
         self.grpSpaceIlluminance.setTitle(_translate("Form", "Illuminance Settings", None))
         self.groupSpaceNavigateIlluminance.setToolTip(_translate("Form", "The navigation settings can be used to view plots corresponding to different dates and hours.", None))
         self.groupSpaceNavigateIlluminance.setTitle(_translate("Form", "Navigate", None))

@@ -5,6 +5,9 @@
 #Use console to launch this from cmd prompt
 #Copy mkl_avx2.dll and mkl_p4.dll into the dist folder to run.
 
+
+
+
 from distutils.core import setup
 import py2exe,sys
 import matplotlib
@@ -33,10 +36,8 @@ setup(windows=[{"script" : r"C:\Users\Sarith\Projects\stadicViewer\StadicViewer\
                            "includes" : ["matplotlib.backends","matplotlib.backends.backend_tkagg","matplotlib.backends.backend_qt4agg","matplotlib.figure",
                                          "pylab","sip", "scipy","PyQt4","PyQt4.QtCore","PyQt4.QtGui","sys","signal","numpy","pdb","datetime","csv","itertools","os","matplotlib","functools",
                                          "scipy.special._ufuncs_cxx",'matplotlib','results'],
-
                            'packages':['FileDialog'],
-                           'optimize':2,
-                           'compressed':True,
-                           "dist_dir": r"C:\Users\Sarith\Projects\stadicViewer\StadicViewer\deploy\vis",
-						   'bundle_files':1}},
+                           'compressed':False,
+                           "dist_dir": r"C:\Users\Sarith\Projects\stadicViewer\StadicViewer\vis2",
+						   'bundle_files':3}},
       data_files=dataFilesList)

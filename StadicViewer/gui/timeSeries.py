@@ -1,9 +1,9 @@
 # coding=utf-8
 from __future__ import  print_function
 
-from StadicViewer.data.procData import VisData
+from data.procData import VisData
 from PyQt4 import QtCore,QtGui
-from StadicViewer.vis.gui import Ui_Form
+from vis.gui import Ui_Form
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
@@ -18,8 +18,8 @@ class TimeSeries(QtGui.QDialog, Ui_Form,VisData):
 
     def setupGui(self):
 
-        #Turn this off later ;-)
-        self.grpTimeSeriesMain.setVisible(True)
+        #TODO: Turn this off later ;-)
+        self.grpTimeSeriesMain.setVisible(False)
 
 
         self.tsFigure = Figure()

@@ -2,15 +2,16 @@
 from __future__ import  print_function
 
 from PyQt4 import QtCore,QtGui
-from StadicViewer.vis.gui import Ui_Form
+from vis.gui import Ui_Form
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
-import warnings
-import os,sys,operator
-import bisect
 
-from StadicViewer.data.procData import VisData
+import sys
+import bisect
+sys.path.append(r'C:\Users\Sarith\Projects\stadicViewer')
+
+from data.procData import VisData
 
 
 from visuals.gridPlots import gridPlot
@@ -23,6 +24,59 @@ from results.timeSeries import TimeArray
 #~~~~~DevNotes: 25Mar2016:~~~~~~~
 # Fixed display limits to conform to illuminance units.
 # Moved all the connect signals to the end so that they don't get triggered in the beginning the data is being loaded into all the comboBoxes and textBoxes
+
+
+class NavigationToolbarStadic(NavigationToolbar):
+
+    dataDescr = None
+    dataType = None
+
+    def mouse_move(self, event):
+        self._set_cursor(event)
+
+        if event.inaxes and event.inaxes.get_navigate():
+
+            try:
+                s = event.inaxes.format_coord(event.xdata, event.ydata)
+            except (ValueError, OverflowError):
+                pass
+            else:
+                artists = [a for a in event.inaxes.mouseover_set
+                           if a.contains(event)]
+
+                if artists:
+
+                    a = max(enumerate(artists), key=lambda x: x[1].zorder)[1]
+                    if a is not event.inaxes.patch:
+                        data = a.get_cursor_data(event)
+                        if data is not None:
+                            if self.dataDescr:
+                                s += " {} ".format(self.dataDescr)
+
+                            if self.dataType:
+                                if self.dataType == 'lux':
+                                    dataVal = int(data)
+                                elif self.dataType == 'fc':
+                                    dataVal = round(data,3)
+                                else:
+                                    dataVal = round(data*100,3)
+                            s += '{}'.format(dataVal)
+
+                            if self.dataType != "%":
+                                s += ' {}'.format(self.dataType)
+                            else:
+                                s += '{}'.format(self.dataType)
+                if data < 0:
+                    s = ''
+
+                if len(self.mode):
+
+                        self.set_message('%s, %s' % (self.mode, s))
+                else:
+                    self.set_message(s)
+        else:
+            self.set_message(self.mode)
+
 class Spatial(QtGui.QDialog, Ui_Form,VisData):
 
     def setupGui(self):
@@ -30,7 +84,10 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
             if self.dataSpaceNameSelected:
                 self.tabWidget.setEnabled(True)
                 self.grpContoursIlluminance.setEnabled(True)
+
                 self.btnSpaceSettingsContour.setEnabled(True)
+                #TODO: Change the visiblity settings to True later ;)
+                self.btnSpaceSettingsContour.setVisible(False)
 
                 #Setup matplotlib inside Qt.
                 self.spFigure = Figure()
@@ -597,17 +654,16 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
 
     def spPlotIlluminance(self):
         if not self.spIlluminanceActivated:
-            self.spToolbar = NavigationToolbar(self.spCanvas, self)
+
+            self.spToolbar = NavigationToolbarStadic(self.spCanvas, self)
+
             self.layoutSpace.addWidget(self.spToolbar)
             self.layoutSpace.addWidget(self.spCanvas)
             self.spIlluminanceActivated = True
 
-
         xCor = self.illData.roomgrid.uniCor['x']
         yCor = self.illData.roomgrid.uniCor['y']
         data = self.illData.timedata[self.spCurrentIlluminanceHour]['data'].illarr
-
-
 
 
         # if len(data)<len(xCor)*len(yCor):
@@ -634,8 +690,10 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
 
         contourValues = self.spContourValuesIlluminance
 
+        self.spToolbar.dataType = self.dataProject.unitsIlluminance
 
         self.spCurrentDataSet = data
+
 
         gridPlot(data, xCor, yCor,plotTitle,"X Coordinates","Y Coordinates",
                  fullDataGrid=self.illData.roomgrid.gridMatrixLocations, figVal=self.spFigure, colormap=colorScheme,
@@ -669,6 +727,8 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
 
         self.spCurrentDataSet = data
 
+        self.spToolbar.dataType = "%"
+
         gridPlot(data, xCor, yCor, currentMetricsName,"X Coordinates","Y Coordinates",
                  fullDataGrid=self.illData.roomgrid.gridMatrixLocations, figVal=self.spFigure, colormap=colorScheme,
                  alpha=alphaVal, colorMax=self.spMetricsMaxVal, colorMin=self.spMetricsMinVal, lowerMask=lowerMask,
@@ -676,8 +736,6 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                  interpolationVal=self.spInterpolateColorScheme)
 
         self.spCanvas.draw()
-
-
 
 
 def main(jsonFile=None,spaceID=None,*args):

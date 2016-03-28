@@ -54,6 +54,6 @@ def main(jsonFile=None,spaceID=None,*args):
     app.exec_()
 
 if __name__ =="__main__":
-     sys.argv.extend([r"C:\C-SHAP\testC.json", 0])
+     # sys.argv.extend([r"E:\C-SHAP\testC.json", 0])
      # sys.argv.extend([r"E:\SExample\SExample.json",0])
      main()
