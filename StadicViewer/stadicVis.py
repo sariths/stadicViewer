@@ -5,7 +5,7 @@ from __future__ import  print_function
 from PyQt4 import QtCore,QtGui
 
 from gui.base import Base
-from gui.spatial import Spatial
+from gui.spatial2 import Spatial
 from gui.timeSeries import TimeSeries
 
 import warnings
@@ -55,5 +55,6 @@ def main(jsonFile=None,spaceID=None,*args):
 
 if __name__ =="__main__":
      # sys.argv.extend([r"E:\C-SHAP\testC.json", 0])
+     sys.argv.extend([r'E:\Stadic6\MG6.json',0])
      # sys.argv.extend([r"E:\SExample\SExample.json",0])
      main()

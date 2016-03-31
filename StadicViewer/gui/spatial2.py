@@ -14,7 +14,7 @@ from data.procData import VisData
 
 
 
-from visuals.gridPlots import gridPlot
+from visuals.scatterPlots import scatterPlot
 from visuals.heatMaps import thermalPlots
 
 from results.dayIll import Dayill
@@ -72,9 +72,11 @@ class NavigationToolbarStadic(NavigationToolbar):
                                 s += ' {}'.format(self.dataType)
                             else:
                                 s += '{}'.format(self.dataType)
-                if data < 0:
-                    s = ''
-
+                try:
+                    if data < 0:
+                        s = ''
+                except UnboundLocalError: #in the case of scatter plots
+                    pass
                 if len(self.mode):
 
                         self.set_message('%s, %s' % (self.mode, s))
@@ -668,6 +670,18 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
 
         xCor = self.illData.roomgrid.uniCor['x']
         yCor = self.illData.roomgrid.uniCor['y']
+
+        xCorAll = self.illData.roomgrid.ptArrayX
+        yCorAll = self.illData.roomgrid.ptArrayY
+
+        maxX = self.illData.roomgrid.maxX
+        minX = self.illData.roomgrid.minX
+        areaValue = 3.14*(abs(maxX-minX)/20)**2
+
+
+        corSpacings = sorted(self.illData.roomgrid.spacingX + self.illData.roomgrid.spacingY)
+
+
         data = self.illData.timedata[self.spCurrentIlluminanceHour]['data'].illarr
 
 
@@ -700,11 +714,11 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
         self.spCurrentDataSet = data
 
 
-        gridPlot(data, xCor, yCor,plotTitle,"X Coordinates","Y Coordinates",
+        scatterPlot(data, xCorAll, yCorAll,plotTitle,"X Coordinates","Y Coordinates",
                  fullDataGrid=self.illData.roomgrid.gridMatrixLocations, figVal=self.spFigure, colormap=colorScheme,
                  alpha=alphaVal, colorMax=self.spIlluminanceMaxVal, colorMin=self.spIlluminanceMinVal, lowerMask=lowerMask,
                  upperMask=upperMask, plotColors=self.chkSpaceColors.checkState(), plotContours=self.chkSpaceContours.checkState(),
-                 contourValues=contourValues,interpolationVal=self.spInterpolateColorScheme)
+                 contourValues=contourValues,areaValue=areaValue)
 
         self.spCanvas.draw()
 
