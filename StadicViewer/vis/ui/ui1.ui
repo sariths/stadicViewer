@@ -44,7 +44,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tabSpace">
     <attribute name="title">
@@ -1718,7 +1718,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>2</y>
+        <y>242</y>
         <width>181</width>
         <height>21</height>
        </rect>
@@ -1852,40 +1852,199 @@
        </property>
       </widget>
      </widget>
-     <widget class="QTextBrowser" name="txtTimeSeriesMsgBox">
-      <property name="geometry">
-       <rect>
-        <x>610</x>
-        <y>580</y>
-        <width>361</width>
-        <height>101</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>7</pointsize>
-       </font>
-      </property>
-      <property name="toolTip">
-       <string>This text panel displays data pertaining to visualizations and file paths which might be helpful in troubleshooting errors.</string>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-     </widget>
      <widget class="QWidget" name="verticalLayoutWidget_2">
       <property name="geometry">
        <rect>
         <x>210</x>
-        <y>30</y>
+        <y>0</y>
         <width>761</width>
-        <height>411</height>
+        <height>681</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="layoutTimeSeries"/>
      </widget>
+     <widget class="QComboBox" name="cmbTimeSeriesPlotType2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>280</y>
+        <width>181</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>Select the type of data that you wish to plot</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="cmbTimeSeriesPlotType3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>320</y>
+        <width>181</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>Select the type of data that you wish to plot</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="cmbTimeSeriesPlotType4">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>360</y>
+        <width>181</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>Select the type of data that you wish to plot</string>
+      </property>
+     </widget>
     </widget>
-    <widget class="QLineEdit" name="txtTimeSeriesStatusDisplay">
+   </widget>
+   <widget class="QWidget" name="tabCombined">
+    <attribute name="title">
+     <string>Combined Plots</string>
+    </attribute>
+    <widget class="QGroupBox" name="grpCombinedColorScheme">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>570</y>
+       <width>201</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QLabel" name="lblCombinedChartOpacity">
+      <property name="geometry">
+       <rect>
+        <x>11</x>
+        <y>50</y>
+        <width>121</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>Select an opacity for the colors in the chart by using the slider.</string>
+      </property>
+      <property name="text">
+       <string>Select Chart Opacity</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txtCombinedOpacityValue">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>60</y>
+        <width>31</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>100</string>
+      </property>
+     </widget>
+     <widget class="QSlider" name="sliderCombinedOpacity">
+      <property name="geometry">
+       <rect>
+        <x>11</x>
+        <y>60</y>
+        <width>141</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>Select an opacity for the colors in the chart by using the slider.</string>
+      </property>
+      <property name="maximum">
+       <number>100</number>
+      </property>
+      <property name="sliderPosition">
+       <number>100</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblCombinedColorSchemeSelect">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>0</y>
+        <width>121</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Color Scheme</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="cmbCombinedColorScheme">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>121</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>Select a color scheme for the chart.</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="chkCombinedColorSchemeInvert">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>15</y>
+        <width>51</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>Check this box to invert the selected color scheme.</string>
+      </property>
+      <property name="text">
+       <string>Invert</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnCombinedSetColorScheme">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>82</y>
+        <width>181</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>Click to confirm the Color Scheme and Opacity settings.</string>
+      </property>
+      <property name="text">
+       <string>Confirm</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="verticalLayoutWidget_3">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>30</y>
+       <width>761</width>
+       <height>651</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="layoutCombined"/>
+    </widget>
+    <widget class="QLineEdit" name="txtCombinedStatusDisplay">
      <property name="enabled">
       <bool>false</bool>
      </property>
@@ -1896,6 +2055,19 @@
        <width>761</width>
        <height>20</height>
       </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="cmbCombinedPlotType">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>2</y>
+       <width>181</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Select the type of data that you wish to plot</string>
      </property>
     </widget>
    </widget>

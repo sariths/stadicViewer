@@ -6,8 +6,60 @@ from vis.gui import Ui_Form
 import os,sys,operator
 from data.procData import VisData
 from software.stadic.readStadic import StadicProject
+from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
+
 # TODO: Define a jsonobject class that will then be inherited by others
 
+class NavigationToolbarStadic(NavigationToolbar):
+
+    dataDescr = None
+    dataType = None
+
+    def mouse_move(self, event):
+        self._set_cursor(event)
+
+        if event.inaxes and event.inaxes.get_navigate():
+
+            try:
+                s = event.inaxes.format_coord(event.xdata, event.ydata)
+            except (ValueError, OverflowError):
+                pass
+            else:
+                artists = [a for a in event.inaxes.mouseover_set
+                           if a.contains(event)]
+
+                if artists:
+
+                    a = max(enumerate(artists), key=lambda x: x[1].zorder)[1]
+                    if a is not event.inaxes.patch:
+                        data = a.get_cursor_data(event)
+                        if data is not None:
+                            if self.dataDescr:
+                                s += " {} ".format(self.dataDescr)
+
+                            if self.dataType:
+                                if self.dataType == 'lux':
+                                    dataVal = int(data)
+                                elif self.dataType == 'fc':
+                                    dataVal = round(data,3)
+                                else:
+                                    dataVal = round(data*100,3)
+                            s += '{}'.format(dataVal)
+
+                            if self.dataType != "%":
+                                s += ' {}'.format(self.dataType)
+                            else:
+                                s += '{}'.format(self.dataType)
+                if data < 0:
+                    s = ''
+
+                if len(self.mode):
+
+                        self.set_message('%s, %s' % (self.mode, s))
+                else:
+                    self.set_message(s)
+        else:
+            self.set_message(self.mode)
 
 class Base(QtGui.QDialog,Ui_Form,VisData):
     """
