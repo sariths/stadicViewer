@@ -44,7 +44,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tabSpace">
     <attribute name="title">
@@ -1714,19 +1714,6 @@
      <property name="title">
       <string/>
      </property>
-     <widget class="QComboBox" name="cmbTimeSeriesPlotType">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>242</y>
-        <width>181</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Select the type of data that you wish to plot</string>
-      </property>
-     </widget>
      <widget class="QGroupBox" name="grpTimeSeriesColorScheme">
       <property name="geometry">
        <rect>
@@ -1863,176 +1850,432 @@
       </property>
       <layout class="QVBoxLayout" name="layoutTimeSeries"/>
      </widget>
-     <widget class="QComboBox" name="cmbTimeSeriesPlotType2">
+     <widget class="QGroupBox" name="grpTimeSeriesChart1">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>191</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>The controls in this group are meant for selecting thermal plots</string>
+      </property>
+      <property name="title">
+       <string>Chart 1</string>
+      </property>
+      <widget class="QComboBox" name="cmbTimeSeriesPlotType">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>171</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Select the type of data that you wish to plot</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtTimeSeriesChart1Min">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>50</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Set the minimum value for the thermal plot.</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtTimeSeriesChart1Max">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>50</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Set the maximum value for the thermal plot</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnTimeSeriesChart1">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>80</y>
+         <width>171</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Click to confirm the thermal plot details.</string>
+       </property>
+       <property name="text">
+        <string>Confirm</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblTimeSeriesChart1Max">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>50</y>
+         <width>31</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Set the maximum value for the thermal plot</string>
+       </property>
+       <property name="text">
+        <string>Max</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblTimeSeriesChart1Min">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>50</y>
+         <width>31</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Set the minimum value for the thermal plot.</string>
+       </property>
+       <property name="text">
+        <string>Min</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="grpTimeSeriesChart2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>150</y>
+        <width>191</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Chart 2</string>
+      </property>
+      <widget class="QLineEdit" name="txtTimeSeriesChart2Max">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>50</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Set the maximum value for the thermal plot</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtTimeSeriesChart2Min">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>50</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Set the minimum value for the thermal plot.</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnTimeSeriesChart2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>80</y>
+         <width>171</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Click to confirm the thermal plot details.</string>
+       </property>
+       <property name="text">
+        <string>Confirm</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cmbTimeSeriesPlotType2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>171</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Select the type of data that you wish to plot</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblTimeSeriesChart2Max">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>50</y>
+         <width>31</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Set the maximum value for the thermal plot</string>
+       </property>
+       <property name="text">
+        <string>Max</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblTimeSeriesChart2Min">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>50</y>
+         <width>31</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Set the minimum value for the thermal plot.</string>
+       </property>
+       <property name="text">
+        <string>Min</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="grpTimeSeriesChart3">
       <property name="geometry">
        <rect>
         <x>10</x>
         <y>280</y>
-        <width>181</width>
-        <height>21</height>
+        <width>191</width>
+        <height>111</height>
        </rect>
       </property>
-      <property name="toolTip">
-       <string>Select the type of data that you wish to plot</string>
+      <property name="title">
+       <string>Chart 3</string>
       </property>
+      <widget class="QPushButton" name="btnTimeSeriesChart3">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>80</y>
+         <width>171</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Click to confirm the thermal plot details.</string>
+       </property>
+       <property name="text">
+        <string>Confirm</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblTimeSeriesChart3Min">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>50</y>
+         <width>31</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Set the minimum value for the thermal plot.</string>
+       </property>
+       <property name="text">
+        <string>Min</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtTimeSeriesChart3Max">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>50</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Set the maximum value for the thermal plot</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cmbTimeSeriesPlotType3">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>171</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Select the type of data that you wish to plot</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblTimeSeriesChart3Max">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>50</y>
+         <width>31</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Set the maximum value for the thermal plot</string>
+       </property>
+       <property name="text">
+        <string>Max</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtTimeSeriesChart3Min">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>50</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Set the minimum value for the thermal plot.</string>
+       </property>
+      </widget>
      </widget>
-     <widget class="QComboBox" name="cmbTimeSeriesPlotType3">
+     <widget class="QGroupBox" name="grpTimeSeriesChart4">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>320</y>
-        <width>181</width>
-        <height>21</height>
+        <y>410</y>
+        <width>191</width>
+        <height>111</height>
        </rect>
       </property>
-      <property name="toolTip">
-       <string>Select the type of data that you wish to plot</string>
+      <property name="title">
+       <string>Chart 4</string>
       </property>
+      <widget class="QPushButton" name="btnTimeSeriesChart4">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>80</y>
+         <width>171</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Click to confirm the thermal plot details.</string>
+       </property>
+       <property name="text">
+        <string>Confirm</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblTimeSeriesChart4Min">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>50</y>
+         <width>31</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Set the minimum value for the thermal plot.</string>
+       </property>
+       <property name="text">
+        <string>Min</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtTimeSeriesChart4Min">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>50</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Set the minimum value for the thermal plot.</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cmbTimeSeriesPlotType4">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>171</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Select the type of data that you wish to plot</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtTimeSeriesChart4Max">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>50</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Set the maximum value for the thermal plot</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblTimeSeriesChart4Max">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>50</y>
+         <width>31</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Set the maximum value for the thermal plot</string>
+       </property>
+       <property name="text">
+        <string>Max</string>
+       </property>
+      </widget>
      </widget>
-     <widget class="QComboBox" name="cmbTimeSeriesPlotType4">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>360</y>
-        <width>181</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Select the type of data that you wish to plot</string>
-      </property>
-     </widget>
+     <zorder>grpTimeSeriesColorScheme</zorder>
+     <zorder>verticalLayoutWidget_2</zorder>
+     <zorder>grpTimeSeriesChart1</zorder>
+     <zorder>lineEdit_15</zorder>
+     <zorder>label_6</zorder>
+     <zorder>cmbTimeSeriesPlotType_7</zorder>
+     <zorder>label_5</zorder>
+     <zorder>lineEdit_14</zorder>
+     <zorder>pushButton_7</zorder>
+     <zorder>btnTimeSeriesChart1_3</zorder>
+     <zorder>txtTimeSeriesChart1Min_3</zorder>
+     <zorder>lblTimeSeriesChart1Min_3</zorder>
+     <zorder>cmbTimeSeriesPlotType_8</zorder>
+     <zorder>lblTimeSeriesChart1Max_3</zorder>
+     <zorder>grpTimeSeriesChart2</zorder>
+     <zorder>grpTimeSeriesChart3</zorder>
+     <zorder>grpTimeSeriesChart4</zorder>
     </widget>
    </widget>
    <widget class="QWidget" name="tabCombined">
     <attribute name="title">
      <string>Combined Plots</string>
     </attribute>
-    <widget class="QGroupBox" name="grpCombinedColorScheme">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>570</y>
-       <width>201</width>
-       <height>111</height>
-      </rect>
-     </property>
-     <property name="title">
-      <string/>
-     </property>
-     <widget class="QLabel" name="lblCombinedChartOpacity">
-      <property name="geometry">
-       <rect>
-        <x>11</x>
-        <y>50</y>
-        <width>121</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Select an opacity for the colors in the chart by using the slider.</string>
-      </property>
-      <property name="text">
-       <string>Select Chart Opacity</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="txtCombinedOpacityValue">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>160</x>
-        <y>60</y>
-        <width>31</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="placeholderText">
-       <string>100</string>
-      </property>
-     </widget>
-     <widget class="QSlider" name="sliderCombinedOpacity">
-      <property name="geometry">
-       <rect>
-        <x>11</x>
-        <y>60</y>
-        <width>141</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Select an opacity for the colors in the chart by using the slider.</string>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-      <property name="sliderPosition">
-       <number>100</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-     <widget class="QLabel" name="lblCombinedColorSchemeSelect">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>0</y>
-        <width>121</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Color Scheme</string>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="cmbCombinedColorScheme">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>20</y>
-        <width>121</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Select a color scheme for the chart.</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="chkCombinedColorSchemeInvert">
-      <property name="geometry">
-       <rect>
-        <x>150</x>
-        <y>15</y>
-        <width>51</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Check this box to invert the selected color scheme.</string>
-      </property>
-      <property name="text">
-       <string>Invert</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btnCombinedSetColorScheme">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>82</y>
-        <width>181</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>Click to confirm the Color Scheme and Opacity settings.</string>
-      </property>
-      <property name="text">
-       <string>Confirm</string>
-      </property>
-     </widget>
-    </widget>
     <widget class="QWidget" name="verticalLayoutWidget_3">
      <property name="geometry">
       <rect>
@@ -2057,18 +2300,808 @@
       </rect>
      </property>
     </widget>
-    <widget class="QComboBox" name="cmbCombinedPlotType">
+    <widget class="QGroupBox" name="grpCombinedIlluminance">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>2</y>
-       <width>181</width>
-       <height>21</height>
+       <x>0</x>
+       <y>30</y>
+       <width>201</width>
+       <height>231</height>
       </rect>
      </property>
-     <property name="toolTip">
-      <string>Select the type of data that you wish to plot</string>
+     <property name="title">
+      <string>Illuminance Settings</string>
      </property>
+     <widget class="QComboBox" name="cmbCombinedSelectIlluminanceFile">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>181</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select the annual illuminance data that is to be plotted. The data selected by default is from the final illuminance file.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupCombinedNavigateIlluminance">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>40</y>
+        <width>201</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Navigate</string>
+      </property>
+      <widget class="QGroupBox" name="grpCombinedIlluminanceNavigateDetailed">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>60</y>
+         <width>201</width>
+         <height>131</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <widget class="QComboBox" name="cmbCombinedlluminanceStepType">
+        <property name="geometry">
+         <rect>
+          <x>69</x>
+          <y>100</y>
+          <width>55</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Choose between an hour or day.</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Hour</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Day</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QComboBox" name="cmbCombinedTimeIntervalMax">
+        <property name="geometry">
+         <rect>
+          <x>119</x>
+          <y>40</y>
+          <width>71</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>7</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>The interval settings, both inclusive, can be used to specify the time intervals for which the data is to be shown.</string>
+        </property>
+        <property name="currentIndex">
+         <number>8</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>3</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>4</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>5</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>6</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>7</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>8</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>9</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>10</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>11</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>12</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>13</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>14</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>15</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>16</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>17</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>18</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>19</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>20</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>21</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>22</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>23</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>24</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QComboBox" name="cmbCombinedTimeIntervalMin">
+        <property name="geometry">
+         <rect>
+          <x>42</x>
+          <y>40</y>
+          <width>71</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>7</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>The interval settings, both inclusive, can be used to specify the time intervals for which the data is to be shown.</string>
+        </property>
+        <property name="currentIndex">
+         <number>8</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>3</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>4</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>5</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>6</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>7</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>8</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>9</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>10</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>11</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>12</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>13</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>14</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>15</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>16</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>17</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>18</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>19</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>20</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>21</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>22</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>23</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>24</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QCheckBox" name="chkCombinedSkipDarkHours">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>70</y>
+          <width>181</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Check this to skip over hours for which illuminance at every grid point is zero.</string>
+        </property>
+        <property name="text">
+         <string>Skip dark hours</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnCombinedPrevHour">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>88</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Click to plot the previous hour/day as per the options specified in the controls below.</string>
+        </property>
+        <property name="text">
+         <string>Previous</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="lblCombinedDayInterval">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>40</y>
+          <width>41</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>The interval settings, both inclusive, can be used to specify the time intervals for which the data is to be shown.</string>
+        </property>
+        <property name="text">
+         <string>Intvl</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnCombinedNextHour">
+        <property name="geometry">
+         <rect>
+          <x>103</x>
+          <y>10</y>
+          <width>88</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Click to plot the next hour/day as per the options specified in the controls below.</string>
+        </property>
+        <property name="text">
+         <string>Next</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="cmbCombinedIluminanceStepValue">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>100</y>
+          <width>56</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Choose a multiplier for the timestep.</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>3</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>4</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>5</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>6</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>7</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>8</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>9</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>10</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>11</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>12</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>13</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>14</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>15</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>16</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>17</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>18</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>19</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>20</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>21</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>22</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>23</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>24</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="lblCombinedTimeStep">
+        <property name="geometry">
+         <rect>
+          <x>7</x>
+          <y>100</y>
+          <width>56</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>The Time Step settings can be used to specify a time step for navigating between different plots.</string>
+        </property>
+        <property name="text">
+         <string>Time Step</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QLabel" name="lblCombinedDate">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>10</y>
+         <width>31</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Date</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblCombinedTime">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>0</y>
+         <width>31</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Time</string>
+       </property>
+      </widget>
+      <widget class="QDateTimeEdit" name="calCombinedDateTimeIllum">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Select a date by clicking on the pop-up calendar. Please note that selecting a year has no bearing on the data being displayed.</string>
+       </property>
+       <property name="wrapping">
+        <bool>true</bool>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="date">
+        <date>
+         <year>2015</year>
+         <month>1</month>
+         <day>1</day>
+        </date>
+       </property>
+       <property name="time">
+        <time>
+         <hour>0</hour>
+         <minute>0</minute>
+         <second>0</second>
+        </time>
+       </property>
+       <property name="maximumDateTime">
+        <datetime>
+         <hour>23</hour>
+         <minute>59</minute>
+         <second>59</second>
+         <year>2015</year>
+         <month>12</month>
+         <day>31</day>
+        </datetime>
+       </property>
+       <property name="minimumDateTime">
+        <datetime>
+         <hour>0</hour>
+         <minute>0</minute>
+         <second>0</second>
+         <year>2015</year>
+         <month>1</month>
+         <day>1</day>
+        </datetime>
+       </property>
+       <property name="minimumDate">
+        <date>
+         <year>2015</year>
+         <month>1</month>
+         <day>1</day>
+        </date>
+       </property>
+       <property name="displayFormat">
+        <string>MMMM/d</string>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cmbCombinedTimeIllum">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>30</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Select a time for which the data is to be displayed.</string>
+       </property>
+       <property name="currentIndex">
+        <number>8</number>
+       </property>
+       <item>
+        <property name="text">
+         <string>1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>3</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>4</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>5</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>6</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>7</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>8</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>9</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>10</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>11</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>12</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>13</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>14</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>15</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>16</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>17</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>18</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>19</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>20</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>21</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>22</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>23</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>24</string>
+        </property>
+       </item>
+      </widget>
+     </widget>
     </widget>
    </widget>
   </widget>

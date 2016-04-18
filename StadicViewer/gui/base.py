@@ -37,6 +37,7 @@ class NavigationToolbarStadic(NavigationToolbar):
                             if self.dataDescr:
                                 s += " {} ".format(self.dataDescr)
 
+
                             if self.dataType:
                                 if self.dataType == 'lux':
                                     dataVal = int(data)
@@ -60,6 +61,9 @@ class NavigationToolbarStadic(NavigationToolbar):
                     self.set_message(s)
         else:
             self.set_message(self.mode)
+
+    def pick_event(self,event):
+        print(event.ind)
 
 class Base(QtGui.QDialog,Ui_Form,VisData):
     """

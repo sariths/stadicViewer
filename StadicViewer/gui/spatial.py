@@ -40,6 +40,9 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
     def setupGui(self):
             if self.dataSpaceNameSelected:
                 self.tabWidget.setEnabled(True)
+
+
+
                 self.grpContoursIlluminance.setEnabled(True)
 
                 self.btnSpaceSettingsContour.setEnabled(True)
@@ -192,6 +195,19 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                 self.cmbSpaceTimeIntervalMin.addItems(map(str,hourFormat))
                 self.cmbSpaceTimeIntervalMin.setCurrentIndex(0)
 
+                # Set valid time stamps for all the drop boxes that show time.
+                self.cmbCombinedTimeIllum.clear()
+                self.cmbCombinedTimeIllum.addItems(map(str, hourFormat))
+                self.cmbCombinedTimeIllum.setCurrentIndex(9)
+
+                self.cmbCombinedTimeIntervalMax.clear()
+                self.cmbCombinedTimeIntervalMax.addItems(map(str, hourFormat))
+                self.cmbCombinedTimeIntervalMax.setCurrentIndex(23)
+
+                self.cmbCombinedTimeIntervalMin.clear()
+                self.cmbCombinedTimeIntervalMin.addItems(map(str, hourFormat))
+                self.cmbCombinedTimeIntervalMin.setCurrentIndex(0)
+
                 self.spAllFilesDict = self.dataAllFiles
 
                 # Addedd this test as sometimes metrics are not calculated. In those cases it's just the illuminance data.
@@ -208,7 +224,8 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
 
                 self.cmbSpaceSelectIlluminanceFile.clear()
                 self.cmbSpaceSelectIlluminanceFile.addItems(illFileKeys)
-
+                self.cmbCombinedSelectIlluminanceFile.clear()
+                self.cmbCombinedSelectIlluminanceFile.addItems(illFileKeys)
 
 
                 self.spacePlotTypeDict = self.dataAllFilesAvailable
@@ -272,6 +289,8 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
 
                 self.txtSpaceMsgBox.setText(self.dataLog)
 
+                # TODO: Delete the line below to enable the timeseries stuff.
+                self.tabWidget.removeTab(2)
 
     def spMouseClicked(self,event):
         """
@@ -288,7 +307,7 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
             currentData = self.spCurrentDataSet
             xloc = bisect.bisect(xCor,xdata)
             yloc = bisect.bisect(yCor,ydata)
-            print(xloc,yloc)
+
 
     def spSetContourSettings(self):
         contourList = []
