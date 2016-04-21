@@ -68,7 +68,13 @@ class VisData(object):
         mainIllFile = project.spaces[spaceIndex].resultsFile
 
 
-        self.dataDayIllFilesList = [(fileKey, fileName) for fileKey, fileName in self.dataAllFilesAvailable.items() if fileName.lower().endswith(".ill") and fileName != mainIllFile]
+        self.dataDayIllFilesList = [(fileKey, fileName) for fileKey, fileName in self.dataAllFilesAvailable.items() if fileName.lower().endswith(".ill")
+                                    and fileName != mainIllFile
+                                    and 'electric zone' not in fileKey.lower()]
+
+        self.dataElectricIllFilesList = [(fileKey,fileName) for fileKey,fileName in self.dataAllFilesAvailable.items() if 'electric zone' in fileKey.lower()]
+
+
         if mainIllFile: #If the main illuminance file exists, insert it at 0 position.
             self.dataDayIllFilesList.insert(0, ("Main Illuminance File", mainIllFile))
 
@@ -86,7 +92,10 @@ class VisData(object):
         self.dataTimeSeriesLists = self.dataExtractTimeSeriesData(self.dataSignalsFilesList + self.dataScheduleFilesList + self.dataSettingsFilesList)
 
         self.dataLog = project.spaces[0].log
-
+        #TODO: Implement a lookup dictionary for years.
+        dataYearFirstDayDict = {4:2015,3:2014,2:2013,6:2011,5:2010,1:2007,7:2006}
+        dataFirstDay = self.dataProject.firstDay
+        self.dataYear = dataYearFirstDayDict[dataFirstDay]
 
 
     def dataExtractTimeSeriesData(self, lists):

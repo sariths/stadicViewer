@@ -30,36 +30,58 @@ from visuals.heatMaps import heatMaps
 dates = None
 
 class NavigationToolbarStadic(NavigationToolbar):
-
     dataDescr = None
     dataType = None
 
     def mouse_move(self, event):
         self._set_cursor(event)
 
-
         if event.inaxes and event.inaxes.get_navigate():
-            dateVal = bisect.bisect_left(self.tsDateIntervals, event.xdata) - 1
-            hourVal = bisect.bisect_left(self.tsHourIntervals,event.ydata)-1
 
-            dataIndex = dateVal*24+hourVal
-            #TODO: Enable the lines below and disable s=''
-            s = self.tsDateList[dateVal].strftime("%B-%d ")
-            s += self.tsHourList[hourVal]+" --  "
-
-            dataList = []
-            for dataset in self.dataSets:
-                dataList.append(dataset[dataIndex])
-            s += ",\t\t".join(map(str,dataList))
-
-            #TODO: Delete this line below
-            s = ''
-
-
-            if len(self.mode):
-                    self.set_message('%s, %s' % (self.mode, s))
+            try:
+                s = event.inaxes.format_coord(event.xdata, event.ydata)
+            except (ValueError, OverflowError):
+                pass
             else:
-                self.set_message(s)
+                artists = [a for a in event.inaxes.mouseover_set
+                           if a.contains(event)]
+
+                if artists:
+
+                    a = max(enumerate(artists), key=lambda x: x[1].zorder)[1]
+                    if a is not event.inaxes.patch:
+                        data = a.get_cursor_data(event)
+                        if data is not None:
+
+                            dateVal = bisect.bisect_left(self.tsDateIntervals,
+                                                         event.xdata) - 1
+
+                            hourVal = bisect.bisect_left(self.tsHourIntervals,
+                                                         event.ydata) - 1
+
+                            dataIndex = dateVal * 24 + hourVal
+
+                            s = self.tsDateList[dateVal].strftime("%B-%d ")
+                            s += self.tsHourList[hourVal] + "  Current Chart: %s --  All Charts:("%data
+
+                            dataList = []
+
+                            for dataset in self.dataSets:
+                                dataList.append(dataset[dataIndex])
+                            s += ",\t\t".join(map(str, dataList))
+
+                            s += ")"
+
+                if data < 0:
+                    s = ''
+
+                if len(self.mode):
+
+                    self.set_message('%s, %s' % (self.mode, s))
+                else:
+                    self.set_message(s)
+        else:
+            self.set_message(self.mode)
 
 
 
@@ -203,8 +225,8 @@ class TimeSeries(QtGui.QDialog, Ui_Form,VisData):
             obj.setEnabled(False)
 
         # TODO: Disable the setvisible and enable the setEnabled.
-        for obj in self.tsTxtMaxList+self.tsTxtMinList+self.tsLabelList:
-            obj.setVisible(False)
+        # for obj in self.tsTxtMaxList+self.tsTxtMinList+self.tsLabelList:
+        #     obj.setVisible(False)
 
 
 

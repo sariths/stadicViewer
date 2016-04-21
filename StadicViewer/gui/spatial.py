@@ -5,11 +5,13 @@ from PyQt4 import QtCore,QtGui
 from vis.gui import Ui_Form
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
+import numpy as np
 
-from base import NavigationToolbarStadic
+from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
 
 import sys
 import bisect
+import numbers
 
 from data.procData import VisData
 
@@ -29,17 +31,84 @@ from results.timeSeries import TimeArray
 
 # TODO: Add a Qmessagebox to show an error message in case the grid..
 # TODO:..spacings aren't uniform.
-# TODO: Fix the calendar year.
+# TODO: Fix the calendar year. (Almost done) !
 # TODO: Mask missing points.
-# TODO: Enable contours ;)
 
 
+class NavigationToolbarStadic(NavigationToolbar):
+
+    dataDescr = None
+    dataType = None
+
+    def mouse_move(self, event):
+        self._set_cursor(event)
+
+
+        if event.inaxes and event.inaxes.get_navigate():
+
+            try:
+                s = event.inaxes.format_coord(event.xdata, event.ydata)
+            except (ValueError, OverflowError):
+                pass
+            else:
+                artists = [a for a in event.inaxes.mouseover_set
+                           if a.contains(event)]
+
+                if artists:
+
+                    a = max(enumerate(artists), key=lambda x: x[1].zorder)[1]
+                    if a is not event.inaxes.patch:
+                        data = a.get_cursor_data(event)
+
+                        if isinstance(data,numbers.Number):
+                            if self.dataDescr:
+                                s += " {} ".format(self.dataDescr)
+
+
+                            if self.dataType:
+                                if self.dataType == 'lux':
+                                    dataVal = int(data)
+                                elif self.dataType == 'fc':
+                                    dataVal = round(data,3)
+                                else:
+                                    dataVal = round(data*100,3)
+                            s += '{}'.format(dataVal)
+
+                            if self.dataType != "%":
+                                s += ' {}'.format(self.dataType)
+                            else:
+                                s += '{}'.format(self.dataType)
+                        else:
+                            s = ''
+
+                # if data is np.NaN or data < 0 :
+                #     s = ''
+
+                if len(self.mode):
+
+                        self.set_message('%s, %s' % (self.mode, s))
+                else:
+                    self.set_message(s)
+        else:
+            self.set_message(self.mode)
+
+    def pick_event(self,event):
+        print(event.ind)
 
 class Spatial(QtGui.QDialog, Ui_Form,VisData):
 
     def setupGui(self):
             if self.dataSpaceNameSelected:
                 self.tabWidget.setEnabled(True)
+
+                #Set the calendar as per the starting year.
+                self.calSpaceDateTimeIllum.setMinimumDateTime(
+                    QtCore.QDateTime(self.dataYear,1,1,0,0))
+                self.calSpaceDateTimeIllum.setDateTime(
+                    QtCore.QDateTime(self.dataYear, 1, 1, 0, 0))
+                self.calSpaceDateTimeIllum.setMaximumDateTime(
+                    QtCore.QDateTime(self.dataYear,12,31,23,59))
+
 
 
 
@@ -99,6 +168,15 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                 self.spIlluminanceUpperMaskColor = None
                 self.spIlluminanceLowerMaskColor = None
 
+                self.spElectricMaxVal = 400 * unitsMultiplier
+                self.spElectricMinVal = 0
+
+                self.spElectricMaxValDefault = 400 * unitsMultiplier
+                self.spElectricMinValDefault = 0
+                self.spElectricUpperMaskValue = None
+                self.spElectricLowerMaskValue = None
+                self.spElectricUpperMaskColor = None
+                self.spElectricLowerMaskColor = None
 
                 self.spMetricsMaxVal = 1.0
                 self.spMetricsMinVal = 0.0
@@ -111,6 +189,7 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
 
 
                 self.spCurrentPlotIsIlluminance = True
+                self.spCurrentPlotIsElectric = False
 
 
                 self.txtSpaceColorsMax.setText(str(self.spIlluminanceMaxValDefault))
@@ -138,8 +217,15 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                 self.spContourValuesIlluminance = (50, 100, 500, 1000, 2000, 3000, 5000, 10000)
                 self.spContourValuesIlluminance = map(lambda x:x*unitsMultiplier,self.spContourValuesIlluminance)
 
+                self.spContourValuesElectric = (50, 100, 150, 200, 250, 300, 350, 400)
+                self.spContourValuesElectric = map(lambda x:x*unitsMultiplier,self.spContourValuesElectric)
+
+
                 self.spContourValuesIlluminanceDefault = (50, 100, 500, 1000, 2000, 3000, 5000, 10000)
                 self.spContourValuesIlluminanceDefault = map(lambda x:x*unitsMultiplier,self.spContourValuesIlluminanceDefault)
+
+                self.spContourValuesElectricDefault = (50, 100, 150, 200, 250, 300, 350, 400)
+                self.spContourValuesElectricDefault = map(lambda x:x*unitsMultiplier,self.spContourValuesElectricDefault)
 
                 for idx,contourBox in enumerate(self.spContourBoxes):
                     contourBox.setText(str(self.spContourValuesIlluminance[idx]))
@@ -168,6 +254,8 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                 self.spCurrentColorSchemeMetrics = 'YlOrRd'
                 self.spCurrentSpaceChartOpacityValueMetrics = 1
 
+                self.spCurrentColorSchemeElectric = 'YlOrRd'
+                self.spCurrentSpaceChartOpacityValueElectric = 1
 
                 self.spInterpolateColorScheme= None
 
@@ -213,7 +301,12 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                 # Addedd this test as sometimes metrics are not calculated. In those cases it's just the illuminance data.
                 try:
                     resultsFiles,resultsFilesNames = zip(*self.dataMetricsFilesList)
-                    mainComboBoxContents = [illFileKeys[0]]+ sorted(list(resultsFiles))
+                    electricFiles,electricFilesNames = zip(*self.dataElectricIllFilesList)
+
+                    mainComboBoxContents = [illFileKeys[0]]+ \
+                                           sorted(list(resultsFiles))+ \
+                                           sorted(list(electricFiles))
+
                 except ValueError:
                     mainComboBoxContents = [illFileKeys[0]]
 
@@ -317,6 +410,9 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
         if self.spCurrentPlotIsIlluminance:
             self.spContourValuesIlluminance = list(contourList)
             self.spPlotIlluminance()
+        elif self.spCurrentPlotIsElectric:
+            self.spContourValuesElectric = list(contourList)
+            self.spPlotElectric()
         else:
             self.spContourValuesMetrics = list(contourList)
             self.spPlotMetrics()
@@ -327,6 +423,8 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
         for idx,box in enumerate(self.spContourBoxes):
             if self.spCurrentPlotIsIlluminance:
                 box.setText(str(self.spContourValuesIlluminanceDefault[idx]))
+            elif self.spCurrentPlotIsElectric:
+                box.setText(str(self.spContourValuesElectricDefault[idx]))
             else:
                 box.setText(str(self.spContourValuesMetricsDefault[idx]))
 
@@ -337,6 +435,8 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
         """
         if self.spCurrentPlotIsIlluminance:
             self.spPlotIlluminance()
+        elif self.spCurrentPlotIsElectric:
+           self.spPlotElectric()
         else:
             self.spPlotMetrics()
 
@@ -381,12 +481,17 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
         if self.chkSpaceColorSchemeInterpolate.checkState():
             self.spInterpolateColorScheme = 'nearest'
         else:
-            self.spInterpolateColorScheme = None
+            self.spInterpolateColorScheme = 'hanning'
 
         if self.spCurrentPlotIsIlluminance:
             self.spCurrentColorScheme = currentColor
             self.spCurrentSpaceChartOpacityValue = self.sliderSpaceOpacity.value() / 100.0
             self.spPlotIlluminance()
+        elif self.spCurrentPlotIsElectric:
+            self.spCurrentColorSchemeElectric = currentColor
+            self.spCurrentSpaceChartOpacityValueElectric = self.sliderSpaceOpacity.value() / 100.0
+            self.spPlotElectric()
+
         else:
 
             self.spCurrentColorSchemeMetrics = currentColor
@@ -414,12 +519,16 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                 self.txtSpaceColorsUpperMask.setStyleSheet("background-color: rgb{}".format(selectedColor))
                 if self.spCurrentPlotIsIlluminance:
                     self.spIlluminanceUpperMaskColor = selectedColor
+                elif self.spCurrentPlotIsElectric:
+                    self.spElectricUpperMaskColor = selectedColor
                 else:
                     self.spMetricsUpperMaskColor = selectedColor
             else:
                 self.txtSpaceColorsLowerMask.setStyleSheet("background-color: rgb{}".format(selectedColor))
                 if self.spCurrentPlotIsIlluminance:
                     self.spIlluminanceLowerMaskColor = selectedColor
+                elif self.spCurrentPlotIsElectric:
+                    self.spElectricLowerMaskColor = selectedColor
                 else:
                     self.spMetricsLowerMaskColor = selectedColor
 
@@ -516,6 +625,19 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
             self.spIlluminanceMinVal = float(self.txtSpaceColorsMin.text())
             self.spPlotIlluminance()
 
+        elif self.spCurrentPlotIsElectric:
+            try:
+                self.spElectricUpperMaskValue = float(str(self.txtSpaceColorsUpperMask.text()))
+            except ValueError:
+                pass
+            try:
+                self.spElectricLowerMaskValue = float(self.txtSpaceColorsLowerMask.text())
+            except ValueError:
+                pass
+            self.spElectricMaxVal = float(self.txtSpaceColorsMax.text())
+            self.spElectricMinVal = float(self.txtSpaceColorsMin.text())
+            self.spPlotElectric()
+
         else:
             try:
                 self.spMetricsUpperMaskValue = float(str(self.txtSpaceColorsUpperMask.text()))
@@ -548,6 +670,15 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
             self.spIlluminanceMaxVal = float(self.txtSpaceColorsMax.text())
             self.spIlluminanceMinVal = float(self.txtSpaceColorsMin.text())
             self.spPlotIlluminance()
+        elif self.spCurrentPlotIsElectric:
+            self.txtSpaceColorsMax.setText(str(self.spElectricMaxValDefault))
+            self.txtSpaceColorsMin.setText(str (self.spElectricMinValDefault))
+            self.spElectricLowerMaskColor = None
+            self.spElectricUpperMaskColor = None
+            self.spElectricMaxVal = float(self.txtSpaceColorsMax.text())
+            self.spElectricMinVal = float(self.txtSpaceColorsMin.text())
+            self.spPlotElectric()
+
         else:
             self.txtSpaceColorsMax.setText(str(self.spMetricsMaxValDefault))
             self.txtSpaceColorsMin.setText(str (self.spMetricsMinValDefault))
@@ -580,7 +711,7 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
         if filesDict:
             currentFile = filesDict[currentSelection]
 
-            if currentFile.endswith(".ill"):
+            if currentFile.endswith(".ill") and 'electric zone' not in currentSelection.lower():
                 selectedIllFileKey = [key for key,items in self.spAllFilesDict.items() if items == currentFile][0]
                 self.illData = Dayill(currentFile,self.ptsFile)
                 self.txtSpaceStatusDisplay.setText("Current space: {} \tCurrent data set: {}.\t Source:{}".format(self.dataSpaceNameSelected, selectedIllFileKey, currentFile))
@@ -591,15 +722,34 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                 self.sliderSpaceOpacity.setValue(self.spCurrentSpaceChartOpacityValue * 100)
                 currentColorScheme = self.spCurrentColorScheme
 
-            elif currentFile.endswith(".res"):
+            elif 'electric zone' in currentSelection.lower():
                 with open(currentFile)as metricsFile:
-                    metricsData = map(float,metricsFile.read().split())
-                    self.metricsData = list(metricsData)
-                    self.currentMetricsName = currentSelection
-                    self.spPlotMetrics()
+                    electricData = map(float,metricsFile.read().split())
+                    self.spElectricData = list(electricData)
+                    self.spCurrentElectricZoneName = currentSelection
+                    self.spPlotElectric()
                 self.txtSpaceStatusDisplay.setText("Current space: {} \tCurrent data set: {}.\t Source:{}".format(self.dataSpaceNameSelected,currentSelection,currentFile))
                 self.grpSpaceIlluminance.setVisible(False)
                 self.spCurrentPlotIsIlluminance = False
+                self.spCurrentPlotIsElectric = True
+                self.sliderSpaceOpacity.setValue(self.spCurrentSpaceChartOpacityValueMetrics * 100)
+                currentColorScheme = self.spCurrentColorSchemeElectric
+
+
+
+            elif currentFile.endswith(".res"):
+                with open(currentFile)as metricsFile:
+                    metricsData = map(float,metricsFile.read().split())
+                    self.spMetricsData = list(metricsData)
+                    self.spCurrentMetricsName = currentSelection
+                    self.spPlotMetrics()
+                self.txtSpaceStatusDisplay.setText("Current space: {} \tCurrent data set: {}.\t Source:{}".format(self.dataSpaceNameSelected,currentSelection,currentFile))
+                self.grpSpaceIlluminance.setVisible(False)
+
+                self.spCurrentPlotIsIlluminance = False
+
+                # TODO: Uncomment this one. !
+                # self.spCurrentPlotIsElectric = False
                 self.sliderSpaceOpacity.setValue(self.spCurrentSpaceChartOpacityValueMetrics * 100)
                 currentColorScheme = self.spCurrentColorSchemeMetrics
 
@@ -689,7 +839,7 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
 
         xCor = self.illData.roomgrid.uniCor['x']
         yCor = self.illData.roomgrid.uniCor['y']
-        data = self.metricsData
+        data = self.spMetricsData
 
 
         colorScheme = self.spCurrentColorSchemeMetrics
@@ -699,7 +849,7 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
         lowerMask = self.spMetricsLowerMaskColor
 
         #This replace is a quick hack for cases where Illuminance is abbreivated as Illuminance
-        currentMetricsName = self.currentMetricsName.replace("Illum","Illuminance")
+        currentMetricsName = self.spCurrentMetricsName.replace("Illum", "Illuminance")
 
         self.spCurrentDataSet = data
 
@@ -709,6 +859,44 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                  fullDataGrid=self.illData.roomgrid.gridMatrixLocations, figVal=self.spFigure, colormap=colorScheme,
                  alpha=alphaVal, colorMax=self.spMetricsMaxVal, colorMin=self.spMetricsMinVal, lowerMask=lowerMask,
                  upperMask=upperMask, plotColors=self.chkSpaceColors.checkState(), plotContours=self.chkSpaceContours.checkState(), contourValues=self.spContourValuesMetrics,
+                 interpolationVal=self.spInterpolateColorScheme)
+
+        self.spCanvas.draw()
+
+
+    def spPlotElectric(self):
+        if not self.spIlluminanceActivated:
+            self.spToolbar = NavigationToolbarStadic(self.spCanvas, self)
+            self.layoutSpace.addWidget(self.spToolbar)
+            self.layoutSpace.addWidget(self.spCanvas)
+            self.spIlluminanceActivated = True
+
+        xCor = self.illData.roomgrid.uniCor['x']
+        yCor = self.illData.roomgrid.uniCor['y']
+        data = self.spElectricData
+
+        colorScheme = self.spCurrentColorSchemeElectric
+        alphaVal = self.spCurrentSpaceChartOpacityValueElectric
+
+        upperMask = self.spElectricUpperMaskColor
+        lowerMask = self.spElectricLowerMaskColor
+
+        # This replace is a quick hack for cases where Illuminance is abbreivated as Illuminance
+        currentZoneName = self.spCurrentElectricZoneName
+
+        self.spCurrentDataSet = data
+
+        self.spToolbar.dataType = self.dataProject.unitsIlluminance
+
+        gridPlot(data, xCor, yCor, currentZoneName, "X Coordinates",
+                 "Y Coordinates",
+                 fullDataGrid=self.illData.roomgrid.gridMatrixLocations,
+                 figVal=self.spFigure, colormap=colorScheme,
+                 alpha=alphaVal, colorMax=self.spElectricMaxVal,
+                 colorMin=self.spElectricMinVal, lowerMask=lowerMask,
+                 upperMask=upperMask, plotColors=self.chkSpaceColors.checkState(),
+                 plotContours=self.chkSpaceContours.checkState(),
+                 contourValues=self.spContourValuesElectric,
                  interpolationVal=self.spInterpolateColorScheme)
 
         self.spCanvas.draw()

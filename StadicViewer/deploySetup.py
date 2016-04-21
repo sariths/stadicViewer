@@ -18,7 +18,7 @@ import os
 # Removed from Excludes: 'libgdk-win32-2.0-0.dll'
 #Removed from options: "dist_dir": "F:\Dropbox\StadicViewer\Deploy",
 sys.path.append(r"C:\Users\Sarith\Anaconda2\Lib\site-packages\numpy\core")
-sys.path.append(r'C:\Users\Sarith\Projects\sarith\sarith')
+sys.path.append(r'C:\Users\Sarith\Projects\sarith\sarith\pyscripts')
 sys.path.append(r'C:\Users\Sarith\Projects\stadicViewer\StadicViewer')
 
 

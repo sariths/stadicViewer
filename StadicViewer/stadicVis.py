@@ -32,7 +32,8 @@ class StadicVis(Base,Spatial,TimeSeries):
 
     def __initializeCharts__(self):
         """
-        This function is actually first defined by the base class as the actions for buttons are defined over there.
+        This function is actually first defined by the base class as the
+        actions for buttons are defined over there.
         :return:
         """
         Spatial.setupGui(self)
@@ -54,8 +55,9 @@ def main(jsonFile=None,spaceID=None,*args):
     app.exec_()
 
 if __name__ =="__main__":
+     sys.argv.extend([r"C:\LF_ST\cl.json",0])
      # sys.argv.extend([r"E:\C-SHAP\testC.json", 0])
      # sys.argv.extend([r'E:\Stadic6\MG6.json',0])
      # sys.argv.extend([r"E:\SExample\SExample.json",0])
-     sys.argv.extend(([r'C:\donut\donut.json',0]))
+     # sys.argv.extend(([r'C:\donut\donut.json',0]))
      main()
