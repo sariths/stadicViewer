@@ -29,7 +29,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>STADICvis 1.0</string>
+   <string>STADICvis 1.2</string>
   </property>
   <widget class="QTabWidget" name="tabWidget">
    <property name="enabled">
@@ -872,7 +872,7 @@
        </font>
       </property>
       <property name="toolTip">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select the annual illuminance data that is to be plotted. The data selected by default is from the final illuminance file.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select the annual illuminance data that is to be plotted. The data selected by default is from the final illuminance file.&lt;/p&gt;&lt;p&gt;If present, (WG) and (Set.) in the name indicate Window Group and Shade Setting respectively.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </widget>

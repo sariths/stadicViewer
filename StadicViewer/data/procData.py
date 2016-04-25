@@ -59,6 +59,7 @@ class VisData(object):
         self.dataPtsFile =  project.spaces[spaceIndex].analysisPointsFiles[0]
         self.dataSpaceNames = [project.spaces[idx].spaceName for idx, space in enumerate(project.spaces)]
         self.dataSpaceNameSelected = self.dataSpaceNames[spaceIndex]
+        self.dataSpaceNamesDict = project.spaces[spaceIndex].namesDict
 
 
         self.dataAllFiles = project.spaces[spaceIndex].filesDict

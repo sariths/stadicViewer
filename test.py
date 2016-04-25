@@ -8,8 +8,8 @@ def dosomething(listName):
     for lines in listName:
         yield lines
 
-x = xrange(40)
-print(x)
+
+
 x = range(30,60,2)
 y = dosomething(x)
 print(next(y))

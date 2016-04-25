@@ -81,8 +81,8 @@ class NavigationToolbarStadic(NavigationToolbar):
                         else:
                             s = ''
 
-                # if data is np.NaN or data < 0 :
-                #     s = ''
+                if data is np.NaN or data < 0 :
+                    s = ''
 
                 if len(self.mode):
 
@@ -301,8 +301,11 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                 # Addedd this test as sometimes metrics are not calculated. In those cases it's just the illuminance data.
                 try:
                     resultsFiles,resultsFilesNames = zip(*self.dataMetricsFilesList)
-                    electricFiles,electricFilesNames = zip(*self.dataElectricIllFilesList)
-
+                    if self.dataElectricIllFilesList:
+                        electricFiles,electricFilesNames = zip(*self.dataElectricIllFilesList)
+                    else:
+                        electricFiles=[]
+                        electricFilesNames=[]
                     mainComboBoxContents = [illFileKeys[0]]+ \
                                            sorted(list(resultsFiles))+ \
                                            sorted(list(electricFiles))
@@ -749,7 +752,7 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                 self.spCurrentPlotIsIlluminance = False
 
                 # TODO: Uncomment this one. !
-                # self.spCurrentPlotIsElectric = False
+                self.spCurrentPlotIsElectric = False
                 self.sliderSpaceOpacity.setValue(self.spCurrentSpaceChartOpacityValueMetrics * 100)
                 currentColorScheme = self.spCurrentColorSchemeMetrics
 
@@ -850,7 +853,7 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
 
         #This replace is a quick hack for cases where Illuminance is abbreivated as Illuminance
         currentMetricsName = self.spCurrentMetricsName.replace("Illum", "Illuminance")
-
+        currentMetricsName = self.dataSpaceNamesDict[self.spCurrentMetricsName]
         self.spCurrentDataSet = data
 
         self.spToolbar.dataType = "%"

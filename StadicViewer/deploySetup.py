@@ -26,13 +26,13 @@ sys.path.append(r'C:\Users\Sarith\Projects\stadicViewer\StadicViewer')
 dataFilesList = matplotlib.get_py2exe_datafiles() #Add matplotlib files.
 
 
-dataFilesList += [(".",[r"C:\Users\Sarith\Anaconda2\Library\bin\mkl_avx.dll",r"C:\Users\Sarith\Anaconda2\Library\bin\mkl_p4.dll"])]
+dataFilesList += [(".",[r"C:\Users\Sarith\Anaconda2\Library\bin\mkl_avx.dll",r"C:\Users\Sarith\Anaconda2\Library\bin\mkl_p4.dll",
+                        r"C:\Users\Sarith\Anaconda2\Library\bin\libiomp5md.dll",r"C:\Users\Sarith\Anaconda2\Library\bin\mkl_core.dll"])]
 
-
+# "dll_excludes": ["MSVCP90.dll",'libgdk-win32-2.0-0.dll','mkl_avx.dll','mkl_p4.dll'],
 #PyQt4.QtNetwork was added in this case because the program uses a web viewer.
 setup(windows=[{"script" : r"C:\Users\Sarith\Projects\stadicViewer\StadicViewer\stadicVis.py"}],
-      options={"py2exe" : {"dll_excludes": ["MSVCP90.dll",'libgdk-win32-2.0-0.dll','mkl_avx.dll','mkl_p4.dll'],
-                           # "dll_includes":['mkl_avx.dll','mkl_p4.dll'],
+      options={"py2exe" : {
                            "includes" : ["matplotlib.backends","matplotlib.backends.backend_tkagg","matplotlib.backends.backend_qt4agg","matplotlib.figure",
                                          "pylab","sip", "scipy","PyQt4","PyQt4.QtCore","PyQt4.QtGui","sys","signal","numpy","pdb","datetime","csv","itertools","os","matplotlib","functools",
                                          "scipy.special._ufuncs_cxx",'matplotlib','results'],

@@ -791,7 +791,7 @@ class Ui_Form(object):
         Form.setTabOrder(self.btnOpenJson, self.tabWidget)
 
     def retranslateUi(self, Form):
-        Form.setWindowTitle(_translate("Form", "STADICvis 1.2", None))
+        Form.setWindowTitle(_translate("Form", "STADICvis 1.1", None))
         self.grpSpaceIlluminance.setTitle(_translate("Form", "Illuminance Settings", None))
         self.groupSpaceNavigateIlluminance.setToolTip(_translate("Form", "The navigation settings can be used to view plots corresponding to different dates and hours.", None))
         self.groupSpaceNavigateIlluminance.setTitle(_translate("Form", "Navigate", None))
@@ -912,7 +912,7 @@ class Ui_Form(object):
         self.btnSpacePrevHour.setText(_translate("Form", "Previous", None))
         self.btnSpaceNextHour.setToolTip(_translate("Form", "Click to plot the next hour/day as per the options specified in the controls below.", None))
         self.btnSpaceNextHour.setText(_translate("Form", "Next", None))
-        self.cmbSpaceSelectIlluminanceFile.setToolTip(_translate("Form", "<html><head/><body><p>Select the annual illuminance data that is to be plotted. The data selected by default is from the final illuminance file.</p><p>If present, (WG) and (Set.) in the name indicate Window Group and Shade Setting respectively.</p></body></html>", None))
+        self.cmbSpaceSelectIlluminanceFile.setToolTip(_translate("Form", "<html><head/><body><p>Select the annual illuminance data that is to be plotted. The data selected by default is from the final illuminance file.</p></body></html>", None))
         self.cmbSpacePlotType.setToolTip(_translate("Form", "Select the type of data that you wish to plot", None))
         self.lblSpaceChartOpacity.setToolTip(_translate("Form", "Select an opacity for the colors in the chart by using the slider.", None))
         self.lblSpaceChartOpacity.setText(_translate("Form", "Select Chart Opacity", None))
