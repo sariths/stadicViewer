@@ -6,9 +6,7 @@ from vis.gui import Ui_Form
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 import numpy as np
-
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
-
 import sys
 import bisect
 import numbers
@@ -20,9 +18,9 @@ from data.procData import VisData
 from visuals.gridPlots import gridPlot
 
 
-from results.dayIll import Dayill
-from software.stadic.readStadic import StadicProject
-from results.timeSeries import TimeArray
+from dependencies.dayIll import Dayill
+from dependencies.readStadic import StadicProject
+from dependencies.timeSeries import TimeArray
 
 #~~~~~DevNotes: 25Mar2016:~~~~~~~
 # Fixed display limits to conform to illuminance units.

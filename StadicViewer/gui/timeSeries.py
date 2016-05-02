@@ -16,7 +16,6 @@ import datetime
 import bisect
 
 
-from visuals.gridPlots import gridPlot
 from visuals.heatMaps import heatMaps
 
 # hours = HourLocator()

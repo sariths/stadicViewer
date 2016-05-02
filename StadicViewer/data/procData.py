@@ -5,8 +5,8 @@
 
 from __future__ import print_function
 
-from results.dayIll import Dayill
-from software.stadic.readStadic import StadicProject
+from dependencies.dayIll import Dayill
+from dependencies.readStadic import StadicProject
 
 class VisData(object):
     def __init__(self,fileName=None,spaceIndex=0):
@@ -54,9 +54,13 @@ class VisData(object):
         project = StadicProject(fileName)
         self.dataProject = project
 
+
+
         self.dataSpaceIndex = spaceIndex
 
         self.dataPtsFile =  project.spaces[spaceIndex].analysisPointsFiles[0]
+
+
         self.dataSpaceNames = [project.spaces[idx].spaceName for idx, space in enumerate(project.spaces)]
         self.dataSpaceNameSelected = self.dataSpaceNames[spaceIndex]
         self.dataSpaceNamesDict = project.spaces[spaceIndex].namesDict

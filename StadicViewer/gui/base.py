@@ -5,8 +5,7 @@ from PyQt4 import QtCore,QtGui
 from vis.gui import Ui_Form
 import os,sys,operator
 from data.procData import VisData
-from software.stadic.readStadic import StadicProject
-
+from dependencies.readStadic import StadicProject
 
 # TODO: Define a jsonobject class that will then be inherited by others
 
