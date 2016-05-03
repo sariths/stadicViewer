@@ -253,7 +253,7 @@ class Ui_Form(object):
         self.chkSpaceColorSchemeInterpolate.setGeometry(QtCore.QRect(130, 20, 71, 31))
         self.chkSpaceColorSchemeInterpolate.setObjectName(_fromUtf8("chkSpaceColorSchemeInterpolate"))
         self.txtSpaceMsgBox = QtGui.QTextBrowser(self.tabSpace)
-        self.txtSpaceMsgBox.setGeometry(QtCore.QRect(610, 580, 361, 101))
+        self.txtSpaceMsgBox.setGeometry(QtCore.QRect(210, 590, 361, 91))
         font = QtGui.QFont()
         font.setPointSize(7)
         self.txtSpaceMsgBox.setFont(font)
@@ -423,6 +423,19 @@ class Ui_Form(object):
         self.chkSpaceColors.setGeometry(QtCore.QRect(110, 0, 81, 20))
         self.chkSpaceColors.setChecked(True)
         self.chkSpaceColors.setObjectName(_fromUtf8("chkSpaceColors"))
+        self.txtSpaceErrorBox = QtGui.QTextBrowser(self.tabSpace)
+        self.txtSpaceErrorBox.setGeometry(QtCore.QRect(600, 590, 371, 91))
+        self.txtSpaceErrorBox.setStyleSheet(_fromUtf8("background-color: rgb(255, 255, 255);\n"
+"color: rgb(255, 0, 0);"))
+        self.txtSpaceErrorBox.setObjectName(_fromUtf8("txtSpaceErrorBox"))
+        self.lblSpaceProjectLog = QtGui.QLabel(self.tabSpace)
+        self.lblSpaceProjectLog.setGeometry(QtCore.QRect(210, 571, 81, 20))
+        self.lblSpaceProjectLog.setObjectName(_fromUtf8("lblSpaceProjectLog"))
+        self.lblSpaceErrorLog = QtGui.QLabel(self.tabSpace)
+        self.lblSpaceErrorLog.setGeometry(QtCore.QRect(600, 570, 101, 20))
+        self.lblSpaceErrorLog.setStyleSheet(_fromUtf8("color: rgb(255, 0, 0);\n"
+"font: 75 8pt \"MS Shell Dlg 2\";"))
+        self.lblSpaceErrorLog.setObjectName(_fromUtf8("lblSpaceErrorLog"))
         self.tabWidget.addTab(self.tabSpace, _fromUtf8(""))
         self.tabTimeSeries = QtGui.QWidget()
         self.tabTimeSeries.setObjectName(_fromUtf8("tabTimeSeries"))
@@ -791,7 +804,7 @@ class Ui_Form(object):
         Form.setTabOrder(self.btnOpenJson, self.tabWidget)
 
     def retranslateUi(self, Form):
-        Form.setWindowTitle(_translate("Form", "STADICvis 1.2", None))
+        Form.setWindowTitle(_translate("Form", "STADICvis 1.3", None))
         self.grpSpaceIlluminance.setTitle(_translate("Form", "Illuminance Settings", None))
         self.groupSpaceNavigateIlluminance.setToolTip(_translate("Form", "The navigation settings can be used to view plots corresponding to different dates and hours.", None))
         self.groupSpaceNavigateIlluminance.setTitle(_translate("Form", "Navigate", None))
@@ -971,6 +984,13 @@ class Ui_Form(object):
         self.btnSpaceSettingsContour.setText(_translate("Form", "Show Settings", None))
         self.chkSpaceColors.setToolTip(_translate("Form", "Click to toggle between display of colored grids on the plot.", None))
         self.chkSpaceColors.setText(_translate("Form", "Colors", None))
+        self.txtSpaceErrorBox.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p></body></html>", None))
+        self.lblSpaceProjectLog.setText(_translate("Form", "Project Data Log", None))
+        self.lblSpaceErrorLog.setText(_translate("Form", "Errors and Warnings", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabSpace), _translate("Form", "Spatial Plots", None))
         self.lblTimeSeriesChartOpacity.setToolTip(_translate("Form", "Select an opacity for the colors in the chart by using the slider.", None))
         self.lblTimeSeriesChartOpacity.setText(_translate("Form", "Select Chart Opacity", None))

@@ -234,30 +234,33 @@ class __StadicSpace__:
             self.fileBase = fileBaseName
             self.fileBaseDirect = fileBaseDirectName
 
+            try:
+                settings = windowDict['shade_settings']
+                settingsFiles = [spaceName+"_"+windowDict['name']+"_"+'set{}'.format(idx+1)+".ill" for idx,setting in enumerate(settings)]
+                settingsFilesKeys = [windowDict['name']+"(WG), "+'set{}(Set.)'.format(idx+1) for idx,setting in enumerate(settings)]
 
-            settings = windowDict['shade_settings']
-            settingsFiles = [spaceName+"_"+windowDict['name']+"_"+'set{}'.format(idx+1)+".ill" for idx,setting in enumerate(settings)]
-            settingsFilesKeys = [windowDict['name']+"(WG), "+'set{}(Set.)'.format(idx+1) for idx,setting in enumerate(settings)]
+                #Mar-20-2016: This step gets repeatd later on but I am doing this here to just append the file exists info to log.
+                for index,files in enumerate(settingsFiles):
+                    fileName,fileExists = fixPaths("Illuminace File for WindowGroup:{}, Setting{}".format(self.name,index+1),spaceDirectory,resFolder,files)
+                    self.log += "\n"+fileExists
+            except KeyError:
+                pass
 
-            #Mar-20-2016: This step gets repeatd later on but I am doing this here to just append the file exists info to log.
-            for index,files in enumerate(settingsFiles):
-                fileName,fileExists = fixPaths("Illuminace File for WindowGroup:{}, Setting{}".format(self.name,index+1),spaceDirectory,resFolder,files)
-                self.log += "\n"+fileExists
+            try:
+                directSettingsFiles = [spaceName+"_"+windowDict['name']+"_"+'set{}'.format(idx+1)+"_direct.ill" for idx,setting in enumerate(settings)]
+                for index,files in enumerate(directSettingsFiles):
+                    fileName,fileExists = fixPaths("Direct Illuminace File for WindowGroup:{}, Setting{}".format(self.name,index+1),spaceDirectory,resFolder,files)
+                    self.log += "\n"+fileExists
 
+                settingsFiles += directSettingsFiles
+                settingsFilesKeys += [windowDict['name']+"(WG), "+'set{}(Set.), Direct'.format(idx+1) for idx,setting in enumerate(settings)]
 
-            directSettingsFiles = [spaceName+"_"+windowDict['name']+"_"+'set{}'.format(idx+1)+"_direct.ill" for idx,setting in enumerate(settings)]
-            for index,files in enumerate(directSettingsFiles):
-                fileName,fileExists = fixPaths("Direct Illuminace File for WindowGroup:{}, Setting{}".format(self.name,index+1),spaceDirectory,resFolder,files)
-                self.log += "\n"+fileExists
+                for idx,files in enumerate(settingsFiles):
+                    settingsFiles[idx],fileDetails=fixPaths("settingsFile",spaceDirectory,resFolder,files)
 
-            settingsFiles += directSettingsFiles
-            settingsFilesKeys += [windowDict['name']+"(WG), "+'set{}(Set.), Direct'.format(idx+1) for idx,setting in enumerate(settings)]
-
-            for idx,files in enumerate(settingsFiles):
-                settingsFiles[idx],fileDetails=fixPaths("settingsFile",spaceDirectory,resFolder,files)
-
-            filesDict.update(zip(settingsFilesKeys,settingsFiles))
-
+                filesDict.update(zip(settingsFilesKeys,settingsFiles))
+            except (KeyError,UnboundLocalError):
+                settingsFiles = []
 
             self.fileSettings = list(settingsFiles)
 

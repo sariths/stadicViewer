@@ -38,6 +38,6 @@ setup(windows=[{"script" : r"C:\Users\Sarith\Projects\stadicViewer\StadicViewer\
                                          "scipy.special._ufuncs_cxx",'matplotlib','results'],
                            'packages':['FileDialog'],
                            'compressed':False,
-                           "dist_dir": r"C:\Users\Sarith\Projects\stadicViewer\StadicViewer\vis2",
+                           "dist_dir": r"C:\Users\Sarith\Projects\stadicViewer\StadicViewer\vis1.3",
 						   'bundle_files':3}},
       data_files=dataFilesList)

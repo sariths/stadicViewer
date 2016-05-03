@@ -59,6 +59,7 @@ if __name__ =="__main__":
      # sys.argv.extend([r"C:\ST\Rick.json",0])
      # sys.argv.extend([r"E:\C-SHAP\testC.json", 0])
      # sys.argv.extend([r'E:\Stadic6\MG6.json',0])
-     sys.argv.extend([r"E:\SExample\SExample.json",0])
+     # sys.argv.extend([r"E:\SExample\SExample.json",0])
      # sys.argv.extend(([r"C:\East\HW6\HW6_Ho_Jiang.json",0]))
+     # sys.argv.extend(["C:\donut\donut.json",0])
      main()

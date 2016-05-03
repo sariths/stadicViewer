@@ -21,6 +21,11 @@ class Base(QtGui.QDialog,Ui_Form,VisData):
         self.setupUi(self)
         self.defaultWindowTitle = str(self.windowTitle())
 
+        self.spErrorDataDisplay = [self.lblSpaceErrorLog,
+                                   self.txtSpaceErrorBox]
+        self.spErrorDataDisplayVisible = False
+        for values in self.spErrorDataDisplay:
+            values.setVisible(False)
 
         self.btnOpenJson.clicked.connect(self.__readJson__)
         self.btnSelectSpaceName.clicked.connect(self.__loadJson__)

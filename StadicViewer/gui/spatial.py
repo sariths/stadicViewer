@@ -141,15 +141,8 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                 #Changing/clicking any of the below controls should trigger the illuminance plots.
 
 
-
-
-
-
                 self.spIlluminanceActivated = False
                 self.spCurrentIlluminanceHour = 9
-
-
-
 
 
                 units = self.dataProject.unitsIlluminance
@@ -264,6 +257,7 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                 self.ptsFile = self.dataPtsFile
 
                 self.illData = Dayill(illFileNames[0],self.ptsFile)
+
 
                 hourFormat = self.illData.timedata[0:24]
                 hourFormat = [hourVal['tstamp'].strftime("%I:%M %p") for hourVal in hourFormat]
@@ -652,7 +646,6 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
             self.spMetricsMinVal = float(self.txtSpaceColorsMin.text())
             self.spPlotMetrics()
 
-
     def spResetColorSettings(self):
         self.txtSpaceColorsLowerMask.setStyleSheet("")
         self.txtSpaceColorsUpperMask.setStyleSheet("")
@@ -690,7 +683,6 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
             self.spMetricsMinVal = float(self.txtSpaceColorsMin.text())
 
             self.spPlotMetrics()
-
 
     def spToggleColorSettings(self):
         visibility = self.grpColoursIlluminance.isVisible()
@@ -864,7 +856,6 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
 
         self.spCanvas.draw()
 
-
     def spPlotElectric(self):
         if not self.spIlluminanceActivated:
             self.spToolbar = NavigationToolbarStadic(self.spCanvas, self)
@@ -903,6 +894,62 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
         self.spCanvas.draw()
 
 
+    @property
+    def illData(self):
+        return self._illData
+
+    @illData.setter
+    def illData(self,value):
+        self._illData = value
+        self.checkPointsFileSpacing(value)
+
+    @property
+    def spMetricsData(self):
+        return self._spMetricsData
+
+    @spMetricsData.setter
+    def spMetricsData(self,value):
+        self._spMetricsData = value
+        self.checkPointsFileSpacing(self.illData)
+
+
+    def checkPointsFileSpacing(self,illData):
+        roomGrid = illData.roomgrid
+        coordDict = {'z_spacings': 'coordinates in the Z axis',
+                     'y_spacings': 'coordinates in the Y axis',
+                     'x_spacings': 'coordinates in the X axis'}
+        msg = ''
+        setPtsErrorMsg = ''
+        for key, value in roomGrid.testUniformSpc.items():
+            if len(value) > 1:
+                if not setPtsErrorMsg:
+                    setPtsErrorMsg = "The data set cannot be plotted properly due to " \
+                                     "the structure of the points file {} " \
+                                     "not being in a compatible format.\n\n".format(self.dataPtsFile)
+                    msg += setPtsErrorMsg
+                msg += "The {} are not uniformly spaced. The spacing intervals" \
+                       " are {}.\n".\
+                    format(coordDict[key],",".join(map(str, value)))
+
+        if len(roomGrid.testUniformSpc['z_spacings'])>0:
+            msg += "There are multiple values for the z coordinate in the points" \
+                   " file. The values are {}".format(",".join(map(str,roomGrid.uniCorZ)))
+
+        if msg:
+            self.displayInErrorBox(msg)
+
+    def displayInErrorBox(self,msg):
+        """Copy existing data, then add new data to the error box and display."""
+        if not self.spErrorDataDisplayVisible:
+            for values in self.spErrorDataDisplay:
+                values.setVisible(True)
+        currentText = str(self.txtSpaceErrorBox.toPlainText())
+        msg = "{0}\n{1}\n{0}".format("-"*84,msg)
+        if currentText:
+            newText = currentText + "\n\n" + msg
+        else:
+            newText = msg
+        self.txtSpaceErrorBox.setText(newText)
 def main(jsonFile=None,spaceID=None,*args):
 
     app = QtGui.QApplication(sys.argv)
