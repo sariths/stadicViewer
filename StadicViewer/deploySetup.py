@@ -1,9 +1,13 @@
-#This script will create a standalone program for a pythonn script using py2exe.
-#The syntax for running this file is: python setup.py py2exe
-#The options, notes etc. for the syntax below can be found at: http://www.py2exe.org/index.cgi/ListOfOptions
-#This file worked with Python 3.4 64bit, pyqt
-#Use console to launch this from cmd prompt
-#Copy mkl_avx2.dll and mkl_p4.dll into the dist folder to run.
+"""
+This script will create a standalone program for a pythonn script using py2exe.
+The syntax for running this file is: python setup.py py2exe
+
+The options, notes etc. for the syntax below can be found at: http://www.py2exe.org/index.cgi/ListOfOptions
+Use console to launch this from cmd prompt. Copy mkl_avx2.dll and mkl_p4.dll into the dist folder to run.
+"""
+
+
+
 
 
 

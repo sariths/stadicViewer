@@ -1,1 +1,0 @@
-pyuic4 ui1.ui -o gui2.py

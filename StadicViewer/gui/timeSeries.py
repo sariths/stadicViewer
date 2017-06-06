@@ -1,30 +1,20 @@
-# coding=utf-8
-from __future__ import  print_function
+"""This module enables the GUI, buttons and control logic for time-series based thermal plots."""
+
 from __future__ import division
+from __future__ import  print_function
 
-from data.procData import VisData
-from PyQt4 import QtCore,QtGui
-from vis.gui import Ui_Form
-from matplotlib.figure import Figure
-from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
-# from base import NavigationToolbarStadic
-from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
-from matplotlib.dates import MonthLocator,DateFormatter,HourLocator,DayLocator
-import warnings
-import os,sys,operator
-import datetime
 import bisect
+import datetime
 
+from PyQt4 import QtGui
+from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
+from matplotlib.dates import MonthLocator,DateFormatter
+from matplotlib.figure import Figure
 
-from visuals.heatMaps import heatMaps
-
-# hours = HourLocator()
-
-# months = DayLocator(range(1,366),interval=30)
-# TODO: This class should also inherit from a Json object class.
-#TODO: I have a feeling that not all the data is getting plotted due to a glitch.
-#check !
-
+from readStadicData.processVisData import VisData
+from pyqtGui.gui import Ui_Form
+from plotFunctions.heatMaps import heatMaps
 
 dates = None
 
@@ -330,7 +320,7 @@ class TimeSeries(QtGui.QDialog, Ui_Form,VisData):
                      alpha=alphaVal,
                      colorMin=minValList,colorMax=maxValList,
                      interpolationVal='nearest',aspectValue='auto',xLabels=self.tsXaxisFormat,
-                     xLabelFormatter=DateFormatter("%b"),yLabels=None,orientationValue='vertical')
+                     xLabelFormatter=DateFormatter("%b"),orientationValue='vertical')
 
             self.tsCanvas.draw()
 

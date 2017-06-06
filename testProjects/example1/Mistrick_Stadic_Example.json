@@ -1,0 +1,151 @@
+{
+    "spaces": [
+        {
+            "ies_directory": "ies/", 
+            "material_file": "cl_material.rad", 
+            "input_directory": "data/", 
+            "geometry_file": "classroom.rad", 
+            "cDA": {
+                "illuminance": 300, 
+                "calculate": true
+            }, 
+            "results_directory": "res/", 
+            "DF": false, 
+            "lighting_schedule": "8to6withDST.60min.csv", 
+            "occupancy_schedule": "8to6withDST.60min.csv", 
+            "window_groups": [
+                {
+                    "name": "South", 
+                    "glazing_materials": [
+                        "l_window_glass"
+                    ], 
+                    "base_geometry": "windows.rad", 
+                    "shade_control": {
+                        "elevation_azimuth": 0, 
+                        "method": "automated_profile_angle", 
+                        "angle_settings": [
+                            40
+                        ]
+                    }, 
+                    "shade_settings": [
+                        "shade.rad"
+                    ], 
+                    "calculate_base": true, 
+                    "calculate_setting": [
+                        true
+                    ]
+                }
+            ], 
+            "DA": {
+                "illuminance": 300, 
+                "calculate": true
+            }, 
+            "geometry_directory": "rad/", 
+            "occupied_sDA": {
+                "illuminance": 300, 
+                "calculate": false, 
+                "DA_fraction": 0.5
+            }, 
+            "sDA": {
+                "window_group_settings": [
+                    1
+                ], 
+                "start_time": 8, 
+                "DA_fraction": 0.5, 
+                "illuminance": 300, 
+                "end_time": 18, 
+                "calculate": false
+            }, 
+            "space_directory": "C:/example1/", 
+            "layout_base": [
+                "l_walls"
+            ], 
+            "space_name": "Classroom1", 
+            "target_illuminance": 30, 
+            "UDI": {
+                "minimum": 100, 
+                "calculate": true, 
+                "maximum": 2500
+            }, 
+            "analysis_points": {
+                "files": [
+                    "Classroom1_AutoGen.pts"
+                ], 
+                "x_spacing": 4.0, 
+                "offset": 2.0, 
+                "z_offset": 2.5, 
+                "modifier": [
+                    "l_floor"
+                ], 
+                "y_spacing": 4.0
+            }
+        }
+    ], 
+    "general": {
+        "target_illuminance": 300, 
+        "building_rotation": 0, 
+        "project_directory": "C:/example1/", 
+        "ground_reflectance": 0.2, 
+        "display_units": "ft", 
+        "import_units": "ft", 
+        "illum_units": "lux", 
+        "epw_file": "data/USA_PA_State.College-Penn.State.University.725128_TMY3.epw", 
+        "sun_divisions": 4, 
+        "daylight_savings_time": false, 
+        "first_day": 1, 
+        "radiance_parameters": {
+            "default": {
+                "aa": 0.1, 
+                "ab": 3, 
+                "dj": 0.0, 
+                "ad": 10000, 
+                "sj": 1.0, 
+                "dc": 1.0, 
+                "st": 0.15, 
+                "lw": 1e-09, 
+                "as": 256, 
+                "ar": 150, 
+                "lr": 6, 
+                "dt": 0.5, 
+                "dr": 2, 
+                "ds": 0.2, 
+                "dp": 1.0
+            }, 
+            "dmx": {
+                "aa": 0.1, 
+                "ab": 3, 
+                "dj": 0.0, 
+                "ad": 10000, 
+                "sj": 1.0, 
+                "dc": 1.0, 
+                "st": 0.15, 
+                "lw": 1e-09, 
+                "as": 256, 
+                "ar": 150, 
+                "lr": 6, 
+                "dt": 0.5, 
+                "dr": 2, 
+                "ds": 0.2, 
+                "dp": 1.0
+            }, 
+            "vmx": {
+                "aa": 0.1, 
+                "ab": 3, 
+                "dj": 0.0, 
+                "ad": 10000, 
+                "sj": 1.0, 
+                "dc": 1.0, 
+                "st": 0.15, 
+                "lw": 1e-09, 
+                "as": 256, 
+                "ar": 150, 
+                "lr": 6, 
+                "dt": 0.5, 
+                "dr": 2, 
+                "ds": 0.2, 
+                "dp": 1.0
+            }
+        }, 
+        "sky_divisions": 1
+    }
+}

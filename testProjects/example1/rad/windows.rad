@@ -1,0 +1,23 @@
+l_window_glass polygon l_window_glass.5.1
+0
+0
+12	3	0	3
+	3	0	9
+	11	0	9
+	11	0	3
+
+l_window_glass polygon l_window_glass.6.1
+0
+0
+12	13	0	3
+	13	0	9
+	21	0	9
+	21	0	3
+
+l_window_glass polygon l_window_glass.7.1
+0
+0
+12	23	0	3
+	23	0	9
+	31	0	9
+	31	0	3

@@ -1,8 +1,12 @@
-
 # coding=utf-8
+
+"""
+This is the base script for launching the STADIC readStadicData visualization software.
+"""
+
 from __future__ import  print_function
 
-from PyQt4 import QtCore,QtGui
+from PyQt4 import QtGui
 
 from gui.base import Base
 from gui.spatial import Spatial
@@ -55,11 +59,12 @@ def main(jsonFile=None,spaceID=None,*args):
     app.exec_()
 
 if __name__ =="__main__":
-     # sys.argv.extend([r"C:\LF_ST\cl.json",0])
-     # sys.argv.extend([r"C:\ST\Rick.json",0])
-     # sys.argv.extend([r"E:\C-SHAP\testC.json", 0])
-     # sys.argv.extend([r'E:\Stadic6\MG6.json',0])
-     # sys.argv.extend([r"E:\SExample\SExample.json",0])
-     # sys.argv.extend(([r"C:\East\HW6\HW6_Ho_Jiang.json",0]))
-     # sys.argv.extend(["C:\donut\donut.json",0])
+    #If this file is being compiled into an executable, then only the main() command should be left below this space.
+    #For troubleshooting, see Note 1 below.
+
+     #Note1: Uncomment the sys.argv statement below to launch a project directly. It is assumed that his project is
+    # already present on the disc. If not, it can be copied from the testProjects directory on to the C: drive.
+
+     sys.argv.extend([r"C:\example1\Mistrick_Stadic_Example.json",0])
+
      main()

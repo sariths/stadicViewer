@@ -1,0 +1,2 @@
+"""This package contains files for creating data structures from illuminance data, points file etc. These data structures
+are typically classes that contain methods for generating metrics, doing coordinate calculations etc."""

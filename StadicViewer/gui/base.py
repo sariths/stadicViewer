@@ -1,15 +1,16 @@
+"""This is the base level interface that gets launched regardless of whether data is present or not. It calls on other
+ child forms to do the subsequent work.
+"""
+
 # coding=utf-8
 from __future__ import print_function
 
-from PyQt4 import QtCore,QtGui
-from vis.gui import Ui_Form
-import os,sys,operator
-from data.procData import VisData
-from dependencies.readStadic import StadicProject
+import sys
 
-# TODO: Define a jsonobject class that will then be inherited by others
-
-
+from PyQt4 import QtGui
+from readStadicData.processVisData import VisData
+from readStadicData.parseJson import StadicProject
+from pyqtGui.gui import Ui_Form
 
 class Base(QtGui.QDialog,Ui_Form,VisData):
     """
@@ -80,6 +81,6 @@ def main():
     app.exec_()
 
 if __name__ == "__main__":
-    sys.argv.extend([r"C:\C-SHAP\testC.json", 0])
+    sys.argv.extend([r"C:\example1\Mistrick_Stadic_Example.json", 0])
 
     main()

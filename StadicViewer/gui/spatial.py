@@ -1,31 +1,30 @@
+"""This module enables the GUI, buttons and control logic for Room-based plots."""
+
 # coding=utf-8
 from __future__ import  print_function
 
-from PyQt4 import QtCore,QtGui
-from vis.gui import Ui_Form
-from matplotlib.figure import Figure
-from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
-import numpy as np
-from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
-import sys
 import bisect
 import numbers
+import sys
 
-from data.procData import VisData
+import numpy as np
+from PyQt4 import QtCore,QtGui
+from dataStructures.timeSeries import TimeArray
+from readStadicData.processVisData import VisData
+from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
+from matplotlib.figure import Figure
 
+from dataStructures.dayIll import Dayill
+from readStadicData.parseJson import StadicProject
+from pyqtGui.gui import Ui_Form
 
-
-from visuals.gridPlots import gridPlot
-
-
-from dependencies.dayIll import Dayill
-from dependencies.readStadic import StadicProject
-from dependencies.timeSeries import TimeArray
+from plotFunctions.gridPlots import gridPlot
 
 #~~~~~DevNotes: 25Mar2016:~~~~~~~
 # Fixed display limits to conform to illuminance units.
 # Moved all the connect signals to the end so that they don't get triggered..
-# in the beginning the data is being loaded into all the comboBoxes and textBoxes
+# in the beginning the readStadicData is being loaded into all the comboBoxes and textBoxes
 
 # TODO: Add a Qmessagebox to show an error message in case the grid..
 # TODO:..spacings aren't uniform.
@@ -290,7 +289,7 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
 
                 self.spAllFilesDict = self.dataAllFiles
 
-                # Addedd this test as sometimes metrics are not calculated. In those cases it's just the illuminance data.
+                # Addedd this test as sometimes metrics are not calculated. In those cases it's just the illuminance readStadicData.
                 try:
                     resultsFiles,resultsFilesNames = zip(*self.dataMetricsFilesList)
                     if self.dataElectricIllFilesList:
@@ -325,7 +324,7 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
 
                 if self.spShadeSchedule and self.spShowWindowGroupInfo:
                     shadeData = TimeArray(self.spShadeSchedule)
-                    shadeData = [map(int,timedata['data']) for timedata in shadeData.timedata]
+                    shadeData = [map(int,timedata['readStadicData']) for timedata in shadeData.timedata]
                     self.spShadeSchedule = shadeData
 
                 self.btnSpaceSettingsContour.clicked.connect(self.spToggleContourSettings)
@@ -439,7 +438,7 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
         selectedIllFileKey = str(self.cmbSpaceSelectIlluminanceFile.currentText())
         selectedIllFile = self.spAllFilesDict[selectedIllFileKey]
         self.illData = Dayill(selectedIllFile,self.ptsFile)
-        self.txtSpaceStatusDisplay.setText("Current space: {} \tCurrent data set: {}.\t Source:{}".format(self.dataSpaceNameSelected, selectedIllFileKey, selectedIllFile))
+        self.txtSpaceStatusDisplay.setText("Current space: {} \tCurrent readStadicData set: {}.\t Source:{}".format(self.dataSpaceNameSelected, selectedIllFileKey, selectedIllFile))
         self.spPlotIlluminance()
 
     def spOpenJsonFileDirectly(self):
@@ -559,7 +558,7 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                 currentDay += 1
                 currentHour = currentDay*24+intervals[0]
             if skipDarkHours:
-                while currentHour<8759 and max(self.illData.timedata[currentHour]['data'].illarr)==0:
+                while currentHour<8759 and max(self.illData.timedata[currentHour]['readStadicData'].illarr)==0:
                     currentHour += 1
 
         else:
@@ -570,11 +569,11 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                 currentDay -= 1
                 currentHour = currentDay*24+intervals[-1]
             if skipDarkHours:
-                while currentHour>-1 and max(self.illData.timedata[currentHour]['data'].illarr)==0:
+                while currentHour>-1 and max(self.illData.timedata[currentHour]['readStadicData'].illarr)==0:
                     currentHour -= 1
 
         #If the current skipped hour turns out to be dark, then just rever to the original value.
-        if skipDarkHours and -1<currentHour<8760 and  max(self.illData.timedata[currentHour]['data'].illarr)==0:
+        if skipDarkHours and -1<currentHour<8760 and  max(self.illData.timedata[currentHour]['readStadicData'].illarr)==0:
             currentHour = currentHourOriginal
 
         if -1<currentHour<8760:
@@ -696,7 +695,7 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
 
     def spPlotTypeSelect(self):
         """
-            Plot metrics or illuminance data based on the selection from the main combo box for space.
+            Plot metrics or illuminance readStadicData based on the selection from the main combo box for space.
 
         """
         currentSelection = str(self.cmbSpacePlotType.currentText())
@@ -707,7 +706,7 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
             if currentFile.endswith(".ill") and 'electric zone' not in currentSelection.lower():
                 selectedIllFileKey = [key for key,items in self.spAllFilesDict.items() if items == currentFile][0]
                 self.illData = Dayill(currentFile,self.ptsFile)
-                self.txtSpaceStatusDisplay.setText("Current space: {} \tCurrent data set: {}.\t Source:{}".format(self.dataSpaceNameSelected, selectedIllFileKey, currentFile))
+                self.txtSpaceStatusDisplay.setText("Current space: {} \tCurrent readStadicData set: {}.\t Source:{}".format(self.dataSpaceNameSelected, selectedIllFileKey, currentFile))
                 self.spPlotIlluminance()
                 self.grpSpaceIlluminance.setVisible(True)
                 self.spCurrentPlotIsIlluminance=True
@@ -721,7 +720,7 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                     self.spElectricData = list(electricData)
                     self.spCurrentElectricZoneName = currentSelection
                     self.spPlotElectric()
-                self.txtSpaceStatusDisplay.setText("Current space: {} \tCurrent data set: {}.\t Source:{}".format(self.dataSpaceNameSelected,currentSelection,currentFile))
+                self.txtSpaceStatusDisplay.setText("Current space: {} \tCurrent readStadicData set: {}.\t Source:{}".format(self.dataSpaceNameSelected,currentSelection,currentFile))
                 self.grpSpaceIlluminance.setVisible(False)
                 self.spCurrentPlotIsIlluminance = False
                 self.spCurrentPlotIsElectric = True
@@ -736,7 +735,7 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                     self.spMetricsData = list(metricsData)
                     self.spCurrentMetricsName = currentSelection
                     self.spPlotMetrics()
-                self.txtSpaceStatusDisplay.setText("Current space: {} \tCurrent data set: {}.\t Source:{}".format(self.dataSpaceNameSelected,currentSelection,currentFile))
+                self.txtSpaceStatusDisplay.setText("Current space: {} \tCurrent readStadicData set: {}.\t Source:{}".format(self.dataSpaceNameSelected,currentSelection,currentFile))
                 self.grpSpaceIlluminance.setVisible(False)
 
                 self.spCurrentPlotIsIlluminance = False
@@ -750,7 +749,7 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
                 # currentIndex = [idx for idx,value in enumerate(self.cmbSpaceColorScheme.)]
                 # print(currentIndex)
 
-            #I am resetting the values for colors and contours everytime. Ideally I should be saving state for each occassion but that will result in too much data getting store in
+            #I am resetting the values for colors and contours everytime. Ideally I should be saving state for each occassion but that will result in too much readStadicData getting store in
             #each instance.
             self.spResetColorSettings()
             self.spResetContourSettings()
@@ -782,11 +781,11 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
 
         xCor = self.illData.roomgrid.uniCor['x']
         yCor = self.illData.roomgrid.uniCor['y']
-        data = self.illData.timedata[self.spCurrentIlluminanceHour]['data'].illarr
+        data = self.illData.timedata[self.spCurrentIlluminanceHour]['readStadicData'].illarr
 
 
-        # if len(data)<len(xCor)*len(yCor):
-        #     data = data + [0]*(len(xCor)*len(yCor)-len(data))
+        # if len(readStadicData)<len(xCor)*len(yCor):
+        #     readStadicData = readStadicData + [0]*(len(xCor)*len(yCor)-len(readStadicData))
 
         timeStamp = self.illData.timedata[self.spCurrentIlluminanceHour]['tstamp']
         timeStamp = timeStamp.strftime("%I:%M%p on %b %d")
@@ -923,7 +922,7 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
         for key, value in roomGrid.testUniformSpc.items():
             if len(value) > 1:
                 if not setPtsErrorMsg:
-                    setPtsErrorMsg = "The data set cannot be plotted properly due to " \
+                    setPtsErrorMsg = "The readStadicData set cannot be plotted properly due to " \
                                      "the structure of the points file {} " \
                                      "not being in a compatible format.\n\n".format(self.dataPtsFile)
                     msg += setPtsErrorMsg
@@ -939,7 +938,7 @@ class Spatial(QtGui.QDialog, Ui_Form,VisData):
             self.displayInErrorBox(msg)
 
     def displayInErrorBox(self,msg):
-        """Copy existing data, then add new data to the error box and display."""
+        """Copy existing readStadicData, then add new readStadicData to the error box and display."""
         if not self.spErrorDataDisplayVisible:
             for values in self.spErrorDataDisplay:
                 values.setVisible(True)
@@ -960,11 +959,9 @@ def main(jsonFile=None,spaceID=None,*args):
     else:
         jsonFile=spaceID=None
 
-    form = Spatial(jsonFile=jsonFile, spaceID=spaceID)
+    form = Spatial()
     form.show()
     app.exec_()
 
 if __name__ =="__main__":
-     sys.argv.extend([r"C:\C-SHAP\testC.json", 0])
-     # sys.argv.extend([r'E:\debug2\base2wgangsig2.json',0])
-     main()
+    pass
