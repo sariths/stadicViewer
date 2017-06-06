@@ -1,5 +1,4 @@
 # coding=utf-8
-
 """
 This is the base script for launching the STADIC readStadicData visualization software.
 """
