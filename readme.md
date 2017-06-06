@@ -6,8 +6,8 @@
 
 
 ### (Open Source) Dependencies
-* Anaconda 2 (Contains Python 2.7, PyQT, Matplotlib and Numpy).
-* Pycharm Community Edition 2016 (Any Python-based editor would do, but Pycharm is highly recommended).
+* Anaconda 2 (Contains Python 2.7, PyQT, Matplotlib and Numpy). Link: https://repo.continuum.io/archive/Anaconda2-4.4.0-Windows-x86.exe
+* Pycharm Community Edition 2017 (Any Python-based editor would do, but Pycharm is highly recommended). Link: https://download.jetbrains.com/python/pycharm-community-2017.1.3.exe
 
 
 ## Testing the repository.
