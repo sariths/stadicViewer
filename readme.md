@@ -6,13 +6,15 @@
 
 
 ### (Open Source) Dependencies
+These should be installed in the below order.
 * Anaconda 2 (Contains Python 2.7, PyQT, Matplotlib and Numpy). Link: https://repo.continuum.io/archive/Anaconda2-4.4.0-Windows-x86.exe
 * Pycharm Community Edition 2017 (Any Python-based editor would do, but Pycharm is highly recommended). Link: https://download.jetbrains.com/python/pycharm-community-2017.1.3.exe
+* py2exe
 
 
 ## Testing the repository.
 1. Fork the repository.
-2. Run the file StadicViewer/stadicVis.py in Pycharm.
+2. Run the file StadicViewer/stadicVis.py.
 3. For a more thorough test, save one of the examples in the testProjects
 directory in the right location and open that project using stadicVis.py.
 
