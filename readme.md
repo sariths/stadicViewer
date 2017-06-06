@@ -6,7 +6,7 @@
 
 
 ### (Open Source) Dependencies
-These should be installed in the below order.
+These should be installed in the order that they are listed.
 * [Anaconda 2](https://repo.continuum.io/archive/Anaconda2-4.1.1-Windows-x86.exe) (Contains Python 2.7, PyQT, Matplotlib and Numpy)
 * [PyQT v4](https://downloads.sourceforge.net/project/pyqt/PyQt4/PyQt-4.11.4/PyQt4-4.11.4-gpl-Py2.7-Qt4.8.7-x32.exe?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fpyqt%2Ffiles%2FPyQt4%2FPyQt-4.11.4%2F&ts=1496769938&use_mirror=superb-sea2)
 * [Pycharm Community Edition 2017](https://download.jetbrains.com/python/pycharm-community-2017.1.3.exe). Any Python-based editor would do, but Pycharm is highly recommended.
