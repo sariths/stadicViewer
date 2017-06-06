@@ -1,5 +1,9 @@
 ## STADICvis: STADIC data visualization engine.
 
+![GitHub Logo](/StadicViewer/gui/__dump/titleImage.png)
+
+
+
 
 ### (Open Source) Dependencies
 * Anaconda 2 (Contains Python 2.7, PyQT, Matplotlib and Numpy).
