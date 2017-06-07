@@ -1,23 +1,21 @@
 ## STADICvis: STADIC data visualization engine.
 
-![GitHub Logo](/StadicViewer/gui/__dump/titleImage.png)
-
-
+![STADIC_LOGO](/StadicViewer/gui/__dump/titleImage.png)
 
 
 ### (Open Source) Dependencies
-These should be installed in the order that they are listed.
+These should be installed in the order that they are listed. 
 * [Anaconda 2](https://repo.continuum.io/archive/Anaconda2-4.1.1-Windows-x86.exe) (Contains Python 2.7, PyQT, Matplotlib and Numpy)
 * [PyQT v4](https://downloads.sourceforge.net/project/pyqt/PyQt4/PyQt-4.11.4/PyQt4-4.11.4-gpl-Py2.7-Qt4.8.7-x32.exe?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fpyqt%2Ffiles%2FPyQt4%2FPyQt-4.11.4%2F&ts=1496769938&use_mirror=superb-sea2)
 * [Pycharm Community Edition 2017](https://download.jetbrains.com/python/pycharm-community-2017.1.3.exe). Any Python-based editor would do, but Pycharm is highly recommended.
 * [py2exe](https://sourceforge.net/projects/py2exe/files/py2exe/0.6.9/py2exe-0.6.9.win32-py2.7.exe/download) (Needed for compiling to exe.).
+(Note for PSU-AE: A local copy of these files is also stored in O drive. Ask Corey for more details)
 
 
 ## Testing the repository.
 1. Fork the repository.
 2. Run the file StadicViewer/stadicVis.py.
-3. For a more thorough test, save one of the examples in the testProjects
-directory in the right location and open that project using stadicVis.py.
+3. For a more thorough test, save one of the examples in the testProjects directory in the right location and open that project using stadicVis.py.
 
 
 
